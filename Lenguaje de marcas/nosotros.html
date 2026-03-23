@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HAPPINESS & Co | Nuestra Filosofía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'h-rosa': '#ba007c', 'h-azul': '#009bdb', 'h-naranja': '#ff7b00', 'h-gris': '#555555' } } } }
+    </script>
+</head>
+<body class="bg-white text-h-gris font-light">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md p-6 flex justify-between items-center shadow-sm">
+        <div class="text-2xl font-black text-h-rosa">HAPPINESS & Co</div>
+        <div class="space-x-8 font-bold uppercase text-xs tracking-widest">
+            <a href="index.html" class="hover:text-h-rosa transition">Inicio</a>
+            <a href="eventos.html" class="hover:text-h-rosa transition">Eventos</a>
+            <a href="nosotros.html" class="text-h-rosa border-b-2 border-h-rosa pb-1">La Empresa</a>
+            <a href="contacto.html" class="hover:text-h-rosa transition">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="py-24 container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
+            <img src="happines-and-co-propuesta-02.jpg" class="rounded-[3rem] shadow-2xl" alt="Nuestra oficina">
+            <div>
+                <h2 class="text-6xl font-black mb-8 italic">Nuestra <span class="text-h-rosa">Esencia</span></h2>
+                <p class="text-xl text-gray-500 leading-relaxed mb-6">
+                    En **HAPPINESS & Co**, creemos que la cultura es el motor de cambio de la sociedad. No nos limitamos a organizar eventos; creamos ecosistemas donde el arte y la tecnología convergen.
+                </p>
+                <p class="text-lg text-gray-400 leading-relaxed">
+                    Desde nuestra fundación en 2026 en Gijón, hemos trabajado para que cada concierto, exposición o gala sea una experiencia sensorial completa, cuidando desde la acústica hasta el lenguaje visual.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="border-t-4 border-h-rosa pt-8">
+                <h4 class="font-black uppercase text-sm mb-4">Innovación</h4>
+                <p class="text-gray-500">Utilizamos herramientas de última generación para la gestión y difusión cultural.</p>
+            </div>
+            <div class="border-t-4 border-h-azul pt-8">
+                <h4 class="font-black uppercase text-sm mb-4">Sostenibilidad</h4>
+                <p class="text-gray-500">Eventos con impacto cero, respetando el entorno y fomentando el comercio local.</p>
+            </div>
+            <div class="border-t-4 border-h-naranja pt-8">
+                <h4 class="font-black uppercase text-sm mb-4">Inclusión</h4>
+                <p class="text-gray-500">Cultura accesible para todos los públicos, sin barreras físicas ni económicas.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-h-gris text-white py-12 text-center">
+        <p class="font-black uppercase tracking-widest text-xs">Propiedad de Marian MP | 2026</p>
+    </footer>
+
+</body>
+</html>

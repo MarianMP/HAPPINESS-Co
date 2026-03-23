@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HAPPINESS & Co | Eventos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'h-rosa': '#ba007c', 'h-azul': '#009bdb', 'h-naranja': '#ff7b00', 'h-gris': '#555555' } } } }
+    </script>
+</head>
+<body class="bg-slate-50">
+    <nav class="sticky top-0 z-50 bg-white p-6 flex justify-between items-center shadow-sm">
+        <div class="text-2xl font-black text-h-rosa">HAPPINESS & Co</div>
+        <div class="space-x-8 font-bold uppercase text-xs tracking-widest text-h-gris">
+            <a href="index.html" class="hover:text-h-rosa transition">Inicio</a>
+            <a href="eventos.html" class="text-h-rosa border-b-2 border-h-rosa pb-1">Eventos</a>
+            <a href="nosotros.html" class="hover:text-h-rosa transition">La Empresa</a>
+            <a href="contacto.html" class="hover:text-h-rosa transition text-white bg-h-rosa px-4 py-2 rounded">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="container mx-auto py-20 px-6">
+        <h2 class="text-5xl font-black mb-16 italic text-center uppercase tracking-tighter">Nuestra <span class="text-h-rosa">Agenda</span></h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl border-t-8 border-h-rosa">
+                <img src="happines-and-co-propuesta-06.jpg" class="h-64 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4 italic">Conciertos Live</h3>
+                    <p class="text-gray-500 mb-6">Las mejores bandas de la escena nacional.</p>
+                    <a href="contacto.html" class="text-h-rosa font-black text-xs uppercase tracking-widest border-b border-h-rosa pb-1">Reservar Entrada</a>
+                </div>
+            </div>
+            </div>
+    </section>
+</body>
+</html>
