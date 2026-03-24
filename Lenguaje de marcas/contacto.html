@@ -2,32 +2,144 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>HAPPINESS & Co | Contacto</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { colors: { 'h-rosa': '#ba007c', 'h-azul': '#009bdb', 'h-naranja': '#ff7b00', 'h-gris': '#555555' } } } }
-    </script>
-</head>
-<body class="bg-slate-50">
-    <nav class="bg-white p-6 flex justify-between items-center shadow-sm font-bold uppercase text-xs tracking-widest">
-        <div class="text-2xl font-black text-h-rosa">H&Co</div>
-        <div class="space-x-8 text-h-gris">
-            <a href="index.html" class="hover:text-h-rosa transition">Inicio</a>
-            <a href="eventos.html" class="hover:text-h-rosa transition">Eventos</a>
-            <a href="nosotros.html" class="hover:text-h-rosa transition">La Empresa</a>
-            <a href="contacto.html" class="text-h-rosa border-b-2 border-h-rosa pb-1">Contacto</a>
-        </div>
-    </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happiness & Co - Contacto</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            color: #333;
+        }
+        
+        /* Header idéntico al anterior */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 50px; 
+            border-bottom: 1px solid #eee;
+        }
+        .logo-img { height: 50px; width: auto; }
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #333; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+        .btn-contacto { background-color: #d10074; color: white !important; padding: 8px 15px; border-radius: 2px; }
 
-    <div class="max-w-4xl mx-auto py-24 px-6 text-center">
-        <h2 class="text-5xl font-black mb-6 italic uppercase">¿Hablamos?</h2>
-        <p class="text-gray-500 mb-12">Escríbenos para comprar entradas o proponer colaboraciones artísticas.</p>
-        <form class="grid md:grid-cols-2 gap-6 bg-white p-12 rounded-3xl shadow-2xl">
-            <input type="text" placeholder="Nombre" class="p-4 border-b-2 border-gray-100 outline-none focus:border-h-rosa font-bold">
-            <input type="email" placeholder="Email" class="p-4 border-b-2 border-gray-100 outline-none focus:border-h-rosa font-bold">
-            <textarea placeholder="Mensaje" class="md:col-span-2 p-4 border-b-2 border-gray-100 outline-none focus:border-h-rosa font-bold h-32"></textarea>
-            <button class="md:col-span-2 bg-h-rosa text-white py-5 rounded-xl font-black uppercase tracking-widest hover:scale-105 transition shadow-lg">Enviar</button>
-        </form>
-    </div>
+        /* Contenido Principal */
+        main { flex: 1; text-align: center; padding: 60px 20px; }
+        
+        h1 { font-size: 42px; color: #666; font-weight: lighter; margin-bottom: 10px; }
+        .subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 40px; }
+
+        /* Formulario estilo imagen */
+        .form-container { 
+            background-color: #dbdbdb; 
+            width: 100%; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 60px 40px; 
+            box-sizing: border-box;
+        }
+        
+        .form-group { 
+            display: flex; 
+            align-items: flex-end; 
+            margin-bottom: 35px; 
+        }
+        
+        label { 
+            font-size: 12px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            white-space: nowrap; 
+        }
+
+        input, textarea { 
+            background: transparent; 
+            border: none; 
+            border-bottom: 2px dotted #000; 
+            flex: 1; 
+            margin-left: 10px; 
+            padding: 5px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        textarea { height: 20px; resize: none; } /* En el diseño parece una sola línea de mensaje */
+
+        .btn-enviar { 
+            background-color: #bc006b; 
+            color: white; 
+            border: none; 
+            padding: 15px 50px; 
+            cursor: pointer; 
+            display: block; 
+            margin: 20px auto 0; 
+            font-size: 18px; 
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-enviar:hover { background-color: #d10074; }
+
+        /* Footer */
+        footer { 
+            background-color: #000; 
+            color: white; 
+            text-align: center; 
+            padding: 40px 0; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 10px 20px; flex-direction: column; gap: 15px; }
+            .form-group { flex-direction: column; align-items: flex-start; }
+            input, textarea { margin-left: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="image_f1a2e9.png" alt="Logo Happiness & Co" class="logo-img"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="nuestraempresa.html">La Empresa</a></li>
+                <li><a href="contacto.html" class="btn-contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>¿HABLAMOS?</h1>
+        <p class="subtitle">Escríbenos para comprar entradas o proponer nuevas colaboraciones</p>
+        
+        <div class="form-container">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>Insertar Nombre</label>
+                    <input type="text" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Insertar Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea name="mensaje" required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>PROPIEDAD DE MARIAN MALLOU PRIEDE | 2026</footer>
 </body>
 </html>
