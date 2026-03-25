@@ -1,145 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happiness & Co - Contacto</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            color: #333;
-        }
-        
-        /* Header idéntico al anterior */
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px 50px; 
-            border-bottom: 1px solid #eee;
-        }
-        .logo-img { height: 50px; width: auto; }
-        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; margin: 0; padding: 0; }
-        nav a { text-decoration: none; color: #333; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .btn-contacto { background-color: #d10074; color: white !important; padding: 8px 15px; border-radius: 2px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co - Contacto</title>
 
-        /* Contenido Principal */
-        main { flex: 1; text-align: center; padding: 60px 20px; }
-        
-        h1 { font-size: 42px; color: #666; font-weight: lighter; margin-bottom: 10px; }
-        .subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 40px; }
+<style>
+:root {
+  --magenta: #d10074;
+  --azul: #0099da;
+  --naranja: #ff8000;
+}
 
-        /* Formulario estilo imagen */
-        .form-container { 
-            background-color: #dbdbdb; 
-            width: 100%; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 60px 40px; 
-            box-sizing: border-box;
-        }
-        
-        .form-group { 
-            display: flex; 
-            align-items: flex-end; 
-            margin-bottom: 35px; 
-        }
-        
-        label { 
-            font-size: 12px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            white-space: nowrap; 
-        }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        input, textarea { 
-            background: transparent; 
-            border: none; 
-            border-bottom: 2px dotted #000; 
-            flex: 1; 
-            margin-left: 10px; 
-            padding: 5px;
-            outline: none;
-            font-family: inherit;
-        }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
 
-        textarea { height: 20px; resize: none; } /* En el diseño parece una sola línea de mensaje */
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
 
-        .btn-enviar { 
-            background-color: #bc006b; 
-            color: white; 
-            border: none; 
-            padding: 15px 50px; 
-            cursor: pointer; 
-            display: block; 
-            margin: 20px auto 0; 
-            font-size: 18px; 
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+.logo-img {
+  height: 60px;
+}
 
-        .btn-enviar:hover { background-color: #d10074; }
+nav a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
-        /* Footer */
-        footer { 
-            background-color: #000; 
-            color: white; 
-            text-align: center; 
-            padding: 40px 0; 
-            font-size: 12px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
+.btn-contacto-active {
+  background: var(--magenta);
+  color: white !important;
+  padding: 6px 15px;
+}
 
-        @media (max-width: 600px) {
-            header { padding: 10px 20px; flex-direction: column; gap: 15px; }
-            .form-group { flex-direction: column; align-items: flex-start; }
-            input, textarea { margin-left: 0; width: 100%; }
-        }
-    </style>
+/* CONTENIDO PRINCIPAL */
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.contact-header p {
+  color: #666;
+}
+
+/* FORMULARIO */
+.contact-wrapper {
+  background: #f9f9f9;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.btn-enviar {
+  background: var(--magenta);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.3s;
+}
+
+.btn-enviar:hover {
+  opacity: 0.9;
+}
+
+/* FOOTER */
+.footer-banner {
+  background: var(--magenta);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+.footer-banner img {
+  width: 80%;
+  max-width: 600px;
+}
+
+.copyright {
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  padding: 10px;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <a href="index.html"><img src="image_f1a2e9.png" alt="Logo Happiness & Co" class="logo-img"></a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="nuestraempresa.html">La Empresa</a></li>
-                <li><a href="contacto.html" class="btn-contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <h1>¿HABLAMOS?</h1>
-        <p class="subtitle">Escríbenos para comprar entradas o proponer nuevas colaboraciones</p>
-        
-        <div class="form-container">
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label>Insertar Nombre</label>
-                    <input type="text" name="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label>Insertar Email</label>
-                    <input type="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Mensaje</label>
-                    <textarea name="mensaje" required></textarea>
-                </div>
-                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
-            </form>
-        </div>
-    </main>
+<header>
+  <a href="index.html">
+    <img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img" alt="logo">
+  </a>
 
-    <footer>PROPIEDAD DE MARIAN MALLOU PRIEDE | 2026</footer>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="empresa.html">La Empresa</a>
+    <a href="contacto.html" class="btn-contacto-active">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="contact-header">
+    <h1>Ponte en contacto</h1>
+    <p>¿Tienes dudas sobre un evento o quieres colaborar con nosotros? Escríbenos.</p>
+  </section>
+
+  <section class="contact-wrapper">
+    <form id="formContacto" onsubmit="enviarMensaje(event)">
+      <div class="form-group">
+        <label>Nombre Completo</label>
+        <input type="text" placeholder="Tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" placeholder="email@ejemplo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Asunto</label>
+        <select required>
+          <option value="">Selecciona una opción</option>
+          <option value="info">Información General</option>
+          <option value="eventos">Duda sobre Eventos</option>
+          <option value="prensa">Prensa / Media</option>
+          <option value="otros">Otros</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="¿En qué podemos ayudarte?" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-banner">
+    <img src="Assets/img/happines-and-co-propuesta-06.jpg" alt="footer">
+  </div>
+
+  <div class="copyright">
+    © 2026 HAPPINESS&CO · Todos los derechos reservados
+  </div>
+</footer>
+
+<script>
+function enviarMensaje(e) {
+  e.preventDefault();
+  alert("¡Gracias por contactar con Happiness & Co! Te responderemos muy pronto. 📩");
+  document.getElementById('formContacto').reset();
+}
+</script>
+
 </body>
 </html>

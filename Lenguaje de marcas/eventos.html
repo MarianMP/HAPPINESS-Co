@@ -1,122 +1,108 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happiness & Co - Eventos</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
-        
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px 50px; 
-            border-bottom: 1px solid #eee; 
-        }
-        
-        .logo-img { height: 50px; width: auto; }
-        
-        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; margin: 0; padding: 0; }
-        nav a { text-decoration: none; color: #333; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: #d10074; }
-        
-        .btn-contacto { background-color: #d10074; color: white !important; padding: 8px 15px; border-radius: 2px; }
-        
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        
-        h2 { font-size: 22px; text-decoration: underline; text-transform: uppercase; margin-bottom: 30px; }
-        
-        /* Grid responsivo */
-        .event-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: space-between; 
-            gap: 20px; 
-            margin-bottom: 60px; 
-        }
-        
-        .card { 
-            flex: 1; 
-            min-width: 280px; /* Evita que se vean muy pequeñas en móvil */
-            height: 350px; 
-            position: relative; 
-            border-right: 15px solid; 
-            border-top: 15px solid; 
-            overflow: hidden; 
-        }
-        
-        .card img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .card-text { 
-            position: absolute; 
-            bottom: 20px; 
-            left: 15px; 
-            font-size: 11px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            background: rgba(255,255,255,0.9); 
-            padding: 5px 10px; 
-        }
-
-        /* Colores por categoría */
-        .musical { border-color: #d10074; } 
-        .teatral { border-color: #0099da; } 
-        .social { border-color: #ff8000; }
-        
-        footer { 
-            background-color: #000; 
-            color: white; 
-            text-align: center; 
-            padding: 40px 0; 
-            font-size: 12px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
-
-        /* Ajuste para móviles */
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; padding: 20px; }
-            .event-grid { justify-content: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co - Eventos</title>
+<style>
+:root { --magenta: #d10074; --azul: #0099da; --naranja: #ff8000; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; color: #333; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
+.logo-img { height: 60px; }
+nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+.switch-buttons { display: flex; gap: 15px; margin-bottom: 40px; }
+.switch-buttons button { padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; background: #eee; }
+.switch-buttons .active { background: var(--magenta); color: white; }
+h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid #333; display: inline-block; }
+.event-grid { display: flex; gap: 25px; margin-bottom: 60px; flex-wrap: wrap; }
+.card { width: 30%; min-width: 280px; height: 300px; position: relative; border-top: 12px solid; border-right: 12px solid; background: #ccc; }
+.card::before { content: ""; position: absolute; top: 40px; left: 40px; right: 40px; bottom: 80px; background: repeating-conic-gradient(#eee 0% 25%, #ddd 0% 50%) 50% / 20px 20px; }
+.card-btn { position: absolute; bottom: 15px; left: 15px; background: var(--magenta); color: white; border: none; padding: 6px 12px; font-size: 11px; cursor: pointer; }
+.musical { border-color: var(--magenta); }
+.teatral { border-color: var(--azul); }
+.social { border-color: var(--naranja); }
+.section { display: none; }
+.section.active { display: block; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; }
+.modal.active { display: flex; }
+.modal-content { background: white; padding: 30px; width: 400px; border-radius: 10px; animation: aparecer 0.3s ease; }
+@keyframes aparecer { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+form { display: flex; flex-direction: column; gap: 10px; }
+form input, form select { padding: 8px; border: 1px solid #ccc; }
+form button { background: var(--magenta); color: white; border: none; padding: 10px; cursor: pointer; }
+</style>
 </head>
 <body>
-    <header>
-        <a href="index.html"><img src="image_f1a2e9.png" alt="Logo Happiness & Co" class="logo-img"></a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="nuestraempresa.html">La Empresa</a></li>
-                <li><a href="contacto.html" class="btn-contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h2>Eventos Musicales</h2>
-        <div class="event-grid">
-            <div class="card musical"><img src="happines-and-co-upper-01.jpg" alt="Concierto musical"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card musical"><img src="happines-and-co-upper-01.jpg" alt="Concierto musical"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card musical"><img src="happines-and-co-upper-01.jpg" alt="Concierto musical"><div class="card-text">Reserva tu entrada</div></div>
-        </div>
-
-        <h2>Eventos Teatrales</h2>
-        <div class="event-grid">
-            <div class="card teatral"><img src="happines-and-co-upper-02.jpg" alt="Obra de teatro"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card teatral"><img src="happines-and-co-upper-02.jpg" alt="Obra de teatro"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card teatral"><img src="happines-and-co-upper-02.jpg" alt="Obra de teatro"><div class="card-text">Reserva tu entrada</div></div>
-        </div>
-
-        <h2>Eventos Sociales</h2>
-        <div class="event-grid">
-            <div class="card social"><img src="happines-and-co-upper-03.jpg" alt="Evento social"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card social"><img src="happines-and-co-upper-03.jpg" alt="Evento social"><div class="card-text">Reserva tu entrada</div></div>
-            <div class="card social"><img src="happines-and-co-upper-03.jpg" alt="Evento social"><div class="card-text">Reserva tu entrada</div></div>
-        </div>
-    </main>
-
-    <footer>PROPIEDAD DE MARIAN MALLOU PRIEDE | 2026</footer>
+<header>
+  <img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img">
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="empresa.html">Empresa</a>
+    <a href="contacto.html" class="btn-contacto">Contacto</a>
+  </nav>
+</header>
+<main class="container">
+<div class="switch-buttons">
+  <button class="active" onclick="showSection('proximos', this)">Próximos</button>
+  <button onclick="showSection('anteriores', this)">Anteriores</button>
+</div>
+<div id="proximos" class="section active">
+  <h2>Eventos musicales</h2>
+  <div class="event-grid">
+    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 1')">Reservar</button></div>
+    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 2')">Reservar</button></div>
+    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 3')">Reservar</button></div>
+  </div>
+  <h2>Eventos teatrales</h2>
+  <div class="event-grid">
+    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 1')">Reservar</button></div>
+    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 2')">Reservar</button></div>
+    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 3')">Reservar</button></div>
+  </div>
+  <h2>Eventos sociales</h2>
+  <div class="event-grid">
+    <div class="card social"><button class="card-btn" onclick="openModal('Social 1')">Reservar</button></div>
+    <div class="card social"><button class="card-btn" onclick="openModal('Social 2')">Reservar</button></div>
+    <div class="card social"><button class="card-btn" onclick="openModal('Social 3')">Reservar</button></div>
+  </div>
+</div>
+<div id="anteriores" class="section">
+  <h2>Eventos musicales</h2>
+  <div class="event-grid">
+    <div class="card musical"><button class="card-btn">Finalizado</button></div>
+  </div>
+</div>
+</main>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3>Inscripción al evento</h3>
+    <form onsubmit="enviarFormulario(event)">
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="text" id="eventoSeleccionado" readonly>
+      <input type="number" placeholder="Número de entradas" required>
+      <button type="submit">Confirmar inscripción</button>
+    </form>
+    <button onclick="closeModal()" style="margin-top:10px;">Cerrar</button>
+  </div>
+</div>
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.switch-buttons button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function openModal(evento) {
+  document.getElementById('modal').classList.add('active');
+  document.getElementById('eventoSeleccionado').value = evento;
+}
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+function enviarFormulario(e) { e.preventDefault(); alert("Inscripción realizada correctamente 🎉"); closeModal(); }
+</script>
 </body>
 </html>
