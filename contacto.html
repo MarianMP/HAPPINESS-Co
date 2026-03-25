@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co - Contacto</title>
+
+<style>
+:root {
+  --magenta: #d10074;
+  --azul: #0099da;
+  --naranja: #ff8000;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo-img {
+  height: 60px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-contacto-active {
+  background: var(--magenta);
+  color: white !important;
+  padding: 6px 15px;
+}
+
+/* CONTENIDO PRINCIPAL */
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.contact-header p {
+  color: #666;
+}
+
+/* FORMULARIO */
+.contact-wrapper {
+  background: #f9f9f9;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.btn-enviar {
+  background: var(--magenta);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.3s;
+}
+
+.btn-enviar:hover {
+  opacity: 0.9;
+}
+
+/* FOOTER */
+.footer-banner {
+  background: var(--magenta);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+.footer-banner img {
+  width: 80%;
+  max-width: 600px;
+}
+
+.copyright {
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">
+    <img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img" alt="logo">
+  </a>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="empresa.html">La Empresa</a>
+    <a href="contacto.html" class="btn-contacto-active">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="contact-header">
+    <h1>Ponte en contacto</h1>
+    <p>¿Tienes dudas sobre un evento o quieres colaborar con nosotros? Escríbenos.</p>
+  </section>
+
+  <section class="contact-wrapper">
+    <form id="formContacto" onsubmit="enviarMensaje(event)">
+      <div class="form-group">
+        <label>Nombre Completo</label>
+        <input type="text" placeholder="Tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" placeholder="email@ejemplo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Asunto</label>
+        <select required>
+          <option value="">Selecciona una opción</option>
+          <option value="info">Información General</option>
+          <option value="eventos">Duda sobre Eventos</option>
+          <option value="prensa">Prensa / Media</option>
+          <option value="otros">Otros</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="¿En qué podemos ayudarte?" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-banner">
+    <img src="Assets/img/happines-and-co-propuesta-06.jpg" alt="footer">
+  </div>
+
+  <div class="copyright">
+    © 2026 HAPPINESS&CO · Todos los derechos reservados
+  </div>
+</footer>
+
+<script>
+function enviarMensaje(e) {
+  e.preventDefault();
+  alert("¡Gracias por contactar con Happiness & Co! Te responderemos muy pronto. 📩");
+  document.getElementById('formContacto').reset();
+}
+</script>
+
+</body>
+</html>

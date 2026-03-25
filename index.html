@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co</title>
+<style>
+:root { --magenta: #d10074; --azul: #0099cc; --naranja: #ff8800; --gris-hero: #8e8e8e; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #fff; }
+.logo-img { height: 60px; }
+nav a { text-decoration: none; color: #333; margin: 0 15px; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
+.hero { background: var(--gris-hero); height: 420px; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
+.hero h1 { font-size: 38px; margin-bottom: 10px; }
+.hero h1 span { color: var(--magenta); }
+.hero p { margin-bottom: 20px; font-size: 14px; }
+.btn-explorar { background: var(--magenta); color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; }
+.rutas-container { padding: 50px 8%; text-align: center; background: #f2f2f2; }
+.rutas-container h2 { font-size: 20px; margin-bottom: 40px; border-bottom: 3px solid #333; display: inline-block; }
+.grid-rutas { display: flex; justify-content: space-around; flex-wrap: wrap; }
+.ruta-card { width: 250px; text-align: center; }
+.ruta-card img { width: 120px; margin-bottom: 10px; }
+.ruta-card h3 { margin-bottom: 5px; }
+.ruta-card p { font-size: 12px; }
+.footer-banner { background: var(--magenta); text-align: center; padding: 30px 0; }
+.footer-banner img { width: 80%; max-width: 600px; }
+.copyright { background: black; color: white; text-align: center; font-size: 11px; padding: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img"></a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="empresa.html">La Empresa</a>
+    <a href="contacto.html" class="btn-contacto">Contacto</a>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <h1>EL PULSO <span>Cultural</span></h1>
+    <p>Tu brújula personal para navegar la mejor selección de eventos, música y arte</p>
+    <a href="eventos.html" class="btn-explorar">EXPLORAR</a>
+  </div>
+</section>
+<section class="rutas-container">
+  <h2>ESCOGE TU NUEVA RUTA</h2>
+  <div class="grid-rutas">
+    <div class="ruta-card">
+      <a href="eventos.html"><img src="Assets/img/happines-and-co-upper-02.png"></a>
+      <h3>MÚSICA</h3>
+      <p>Festivales y directos que tienes que vivir</p>
+    </div>
+    <div class="ruta-card">
+      <a href="eventos.html"><img src="Assets/img/happines-and-co-upper-03.png"></a>
+      <h3>ESCENA</h3>
+      <p>El teatro y el arte que te dejarán sin palabras</p>
+    </div>
+    <div class="ruta-card">
+      <a href="eventos.html"><img src="Assets/img/happines-and-co-upper-04.png"></a>
+      <h3>SOCIAL</h3>
+      <p>Planes únicos para mentes que buscan algo más</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="footer-banner"><img src="Assets/img/happines-and-co-propuesta-06.jpg"></div>
+  <div class="copyright">© 2026 HAPPINESS&CO · Todos los derechos reservados</div>
+</footer>
+</body>
+</html>
