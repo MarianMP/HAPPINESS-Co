@@ -5,39 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happiness & Co - Eventos</title>
 <style>
-:root { --magenta: #d10074; --azul: #0099da; --naranja: #ff8000; }
+:root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; color: #333; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; }
 .logo-img { height: 60px; }
 nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 .btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
 .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-.switch-buttons { display: flex; gap: 15px; margin-bottom: 40px; }
-.switch-buttons button { padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; background: #eee; }
+.switch-buttons { display: flex; gap: 15px; margin-bottom: 40px; justify-content: center; }
+.switch-buttons button { padding: 12px 25px; border: none; cursor: pointer; font-weight: bold; background: #ddd; text-transform: uppercase; transition: 0.3s; }
 .switch-buttons .active { background: var(--magenta); color: white; }
-h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid #333; display: inline-block; }
+h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid #333; display: inline-block; padding-bottom: 3px; }
 .event-grid { display: flex; gap: 25px; margin-bottom: 60px; flex-wrap: wrap; }
-.card { width: 30%; min-width: 280px; height: 300px; position: relative; border-top: 12px solid; border-right: 12px solid; background: #ccc; }
+.card { width: 31%; min-width: 280px; height: 300px; position: relative; border-top: 12px solid; border-right: 12px solid; background: #f4f4f4; }
 .card::before { content: ""; position: absolute; top: 40px; left: 40px; right: 40px; bottom: 80px; background: repeating-conic-gradient(#eee 0% 25%, #ddd 0% 50%) 50% / 20px 20px; }
-.card-btn { position: absolute; bottom: 15px; left: 15px; background: var(--magenta); color: white; border: none; padding: 6px 12px; font-size: 11px; cursor: pointer; }
+.card-btn { position: absolute; bottom: 15px; left: 15px; color: white; border: none; padding: 7px 15px; font-size: 11px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
 .musical { border-color: var(--magenta); }
+.musical .card-btn { background: var(--magenta); }
 .teatral { border-color: var(--azul); }
+.teatral .card-btn { background: var(--azul); }
 .social { border-color: var(--naranja); }
+.social .card-btn { background: var(--naranja); }
+.extra { border-color: var(--gris); }
+.extra .card-btn { background: var(--gris); }
 .section { display: none; }
 .section.active { display: block; }
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 1000; }
 .modal.active { display: flex; }
-.modal-content { background: white; padding: 30px; width: 400px; border-radius: 10px; animation: aparecer 0.3s ease; }
-@keyframes aparecer { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-form { display: flex; flex-direction: column; gap: 10px; }
-form input, form select { padding: 8px; border: 1px solid #ccc; }
-form button { background: var(--magenta); color: white; border: none; padding: 10px; cursor: pointer; }
+.modal-content { background: white; padding: 30px; width: 400px; border-radius: 5px; position: relative; }
+form { display: flex; flex-direction: column; gap: 12px; }
+form input { padding: 10px; border: 1px solid #ccc; }
+form button { background: var(--magenta); color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; }
 </style>
 </head>
 <body>
 <header>
-  <img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img">
+  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img" alt="Logo"></a>
   <nav>
     <a href="index.html">Inicio</a>
     <a href="eventos.html">Eventos</a>
@@ -47,49 +51,70 @@ form button { background: var(--magenta); color: white; border: none; padding: 1
 </header>
 <main class="container">
 <div class="switch-buttons">
-  <button class="active" onclick="showSection('proximos', this)">Próximos</button>
-  <button onclick="showSection('anteriores', this)">Anteriores</button>
+  <button class="active" onclick="showSection('proximos', this)">Próximos Eventos</button>
+  <button onclick="showSection('anteriores', this)">Eventos Anteriores</button>
 </div>
+
 <div id="proximos" class="section active">
-  <h2>Eventos musicales</h2>
+  <h2>Música</h2>
   <div class="event-grid">
-    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 1')">Reservar</button></div>
-    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 2')">Reservar</button></div>
-    <div class="card musical"><button class="card-btn" onclick="openModal('Musical 3')">Reservar</button></div>
+    <div class="card musical"><button class="card-btn" onclick="openModal('Concierto Jazz')">Reservar</button></div>
+    <div class="card musical"><button class="card-btn" onclick="openModal('Festival Rock')">Reservar</button></div>
   </div>
-  <h2>Eventos teatrales</h2>
+  <h2>Escena</h2>
   <div class="event-grid">
-    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 1')">Reservar</button></div>
-    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 2')">Reservar</button></div>
-    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatral 3')">Reservar</button></div>
+    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatro Clásico')">Reservar</button></div>
   </div>
-  <h2>Eventos sociales</h2>
+  <h2>Social</h2>
   <div class="event-grid">
-    <div class="card social"><button class="card-btn" onclick="openModal('Social 1')">Reservar</button></div>
-    <div class="card social"><button class="card-btn" onclick="openModal('Social 2')">Reservar</button></div>
-    <div class="card social"><button class="card-btn" onclick="openModal('Social 3')">Reservar</button></div>
+    <div class="card social"><button class="card-btn" onclick="openModal('Exposición Fotografía')">Reservar</button></div>
+  </div>
+  <h2>Extras</h2>
+  <div class="event-grid">
+    <div class="card extra"><button class="card-btn" onclick="openModal('Taller Pintura')">Reservar</button></div>
   </div>
 </div>
+
 <div id="anteriores" class="section">
-  <h2>Eventos musicales</h2>
+  <h2>Música (Pasados)</h2>
   <div class="event-grid">
-    <div class="card musical"><button class="card-btn">Finalizado</button></div>
+    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
+  </div>
+  <h2>Escena (Pasados)</h2>
+  <div class="event-grid">
+    <div class="card teatral"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card teatral"><button class="card-btn" disabled>Finalizado</button></div>
+  </div>
+  <h2>Social (Pasados)</h2>
+  <div class="event-grid">
+    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
+  </div>
+  <h2>Extras (Pasados)</h2>
+  <div class="event-grid">
+    <div class="card extra"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card extra"><button class="card-btn" disabled>Finalizado</button></div>
   </div>
 </div>
 </main>
+
 <div id="modal" class="modal">
   <div class="modal-content">
-    <h3>Inscripción al evento</h3>
+    <h3>Inscripción</h3>
+    <p id="txtEvento" style="margin-bottom:15px; font-weight:bold; color:var(--magenta);"></p>
     <form onsubmit="enviarFormulario(event)">
       <input type="text" placeholder="Nombre completo" required>
       <input type="email" placeholder="Correo electrónico" required>
-      <input type="text" id="eventoSeleccionado" readonly>
-      <input type="number" placeholder="Número de entradas" required>
-      <button type="submit">Confirmar inscripción</button>
+      <input type="hidden" id="eventoSeleccionado">
+      <button type="submit">Confirmar Asistencia</button>
     </form>
-    <button onclick="closeModal()" style="margin-top:10px;">Cerrar</button>
+    <button onclick="closeModal()" style="margin-top:10px; width:100%; border:none; padding:8px; cursor:pointer; background:#eee;">Cerrar</button>
   </div>
 </div>
+
 <script>
 function showSection(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -100,9 +125,10 @@ function showSection(id, btn) {
 function openModal(evento) {
   document.getElementById('modal').classList.add('active');
   document.getElementById('eventoSeleccionado').value = evento;
+  document.getElementById('txtEvento').innerText = "Evento: " + evento;
 }
 function closeModal() { document.getElementById('modal').classList.remove('active'); }
-function enviarFormulario(e) { e.preventDefault(); alert("Inscripción realizada correctamente 🎉"); closeModal(); }
+function enviarFormulario(e) { e.preventDefault(); alert("¡Inscripción confirmada! Te esperamos."); closeModal(); }
 </script>
 </body>
 </html>
