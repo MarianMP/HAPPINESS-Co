@@ -2,18 +2,19 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Happiness & Co - Contacto</title>
+<title>Happiness & Co - Historial</title>
 <style>
-  :root { --magenta: #ba007c; }
+  :root { --magenta: #ba007c; --gris: #555555; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', sans-serif; }
   header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; }
   .logo-img { height: 60px; }
   nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
   .btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
-  .container { max-width: 600px; margin: 60px auto; padding: 20px; border: 1px solid #eee; }
-  input, textarea, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
-  .btn-enviar { background: var(--magenta); color: white; border: none; padding: 10px 20px; width: 100%; cursor: pointer; font-weight: bold; }
+  .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+  .history-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card-past { background: #f4f4f4; border-top: 10px solid #999; padding: 20px; filter: grayscale(1); opacity: 0.7; }
+  h2 { margin-bottom: 30px; }
 </style>
 </head>
 <body>
@@ -28,14 +29,12 @@
   </nav>
 </header>
 <main class="container">
-  <h2>Contacto</h2>
-  <form>
-    <input type="text" placeholder="Nombre completo" required>
-    <input type="email" placeholder="Email" required>
-    <select><option>Información General</option><option>Duda Evento</option></select>
-    <textarea placeholder="Mensaje" rows="5"></textarea>
-    <button class="btn-enviar">ENVIAR</button>
-  </form>
+  <h2>Historial de Eventos (Finalizados)</h2>
+  <div class="history-grid">
+    <div class="card-past"><h4>Concierto de Año Nuevo</h4><p>01 de Enero 2026</p></div>
+    <div class="card-past"><h4>Feria Gastronómica Invierno</h4><p>15 de Febrero 2026</p></div>
+    <div class="card-past"><h4>Certamen de Cortometrajes</h4><p>10 de Abril 2026</p></div>
+  </div>
 </main>
 </body>
 </html>

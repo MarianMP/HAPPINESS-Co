@@ -1,134 +1,140 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happiness & Co - Eventos</title>
+<title>Happiness & Co - Todos los Eventos</title>
 <style>
-:root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; }
-.logo-img { height: 60px; }
-nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-.switch-buttons { display: flex; gap: 15px; margin-bottom: 40px; justify-content: center; }
-.switch-buttons button { padding: 12px 25px; border: none; cursor: pointer; font-weight: bold; background: #ddd; text-transform: uppercase; transition: 0.3s; }
-.switch-buttons .active { background: var(--magenta); color: white; }
-h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid #333; display: inline-block; padding-bottom: 3px; }
-.event-grid { display: flex; gap: 25px; margin-bottom: 60px; flex-wrap: wrap; }
-.card { width: 31%; min-width: 280px; height: 300px; position: relative; border-top: 12px solid; border-right: 12px solid; background: #f4f4f4; }
-.card::before { content: ""; position: absolute; top: 40px; left: 40px; right: 40px; bottom: 80px; background: repeating-conic-gradient(#eee 0% 25%, #ddd 0% 50%) 50% / 20px 20px; }
-.card-btn { position: absolute; bottom: 15px; left: 15px; color: white; border: none; padding: 7px 15px; font-size: 11px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-.musical { border-color: var(--magenta); }
-.musical .card-btn { background: var(--magenta); }
-.teatral { border-color: var(--azul); }
-.teatral .card-btn { background: var(--azul); }
-.social { border-color: var(--naranja); }
-.social .card-btn { background: var(--naranja); }
-.extra { border-color: var(--gris); }
-.extra .card-btn { background: var(--gris); }
-.section { display: none; }
-.section.active { display: block; }
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 1000; }
-.modal.active { display: flex; }
-.modal-content { background: white; padding: 30px; width: 400px; border-radius: 5px; position: relative; }
-form { display: flex; flex-direction: column; gap: 12px; }
-form input { padding: 10px; border: 1px solid #ccc; }
-form button { background: var(--magenta); color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; }
+  :root { 
+    --magenta: #ba007c; 
+    --azul: #009bdb; 
+    --naranja: #ff7b00; 
+    --gris: #555555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; color: #333; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; }
+  .logo-img { height: 60px; }
+  nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; border-radius: 4px; }
+
+  .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+  /* SECCIÓN DE CATEGORÍAS (Como en el Index) */
+  .rutas-container { margin-bottom: 60px; }
+  .grid-rutas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .ruta-card { text-align: center; transition: 0.3s; text-decoration: none; color: inherit; }
+  .ruta-card:hover { transform: scale(1.05); }
+  .ruta-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+  .ruta-card h3 { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* CUADRÍCULA DE EVENTOS */
+  h2 { margin-bottom: 30px; text-transform: uppercase; border-left: 5px solid var(--magenta); padding-left: 15px; font-size: 20px; }
+  .event-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+  .card { width: 31%; height: 220px; background: #f9f9f9; position: relative; margin-bottom: 20px; border: 1px solid #eee; transition: 0.3s; }
+  .card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  
+  .btn-reserva { position: absolute; bottom: 15px; left: 15px; color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 10px; }
+  
+  /* Colores por Categoría */
+  .cat-musica { border-top: 8px solid var(--magenta); }
+  .cat-musica .btn-reserva { background: var(--magenta); }
+  
+  .cat-escena { border-top: 8px solid var(--azul); }
+  .cat-escena .btn-reserva { background: var(--azul); }
+  
+  .cat-social { border-top: 8px solid var(--naranja); }
+  .cat-social .btn-reserva { background: var(--naranja); }
+  
+  .cat-extras { border-top: 8px solid var(--gris); }
+  .cat-extras .btn-reserva { background: var(--gris); }
+
+  .card-info { padding: 20px; }
+  .card-info h4 { margin-bottom: 5px; font-size: 16px; }
+  .card-info p { font-size: 13px; color: #666; }
+  .card-info small { font-weight: bold; text-transform: uppercase; font-size: 10px; display: block; margin-top: 10px; }
 </style>
 </head>
 <body>
+
 <header>
-  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img" alt="Logo"></a>
+  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img"></a>
   <nav>
     <a href="index.html">Inicio</a>
     <a href="eventos.html">Eventos</a>
-    <a href="empresa.html">Empresa</a>
+    <a href="historial.html">Historial</a>
+    <a href="empresa.html">Sobre Nosotros</a>
     <a href="contacto.html" class="btn-contacto">Contacto</a>
   </nav>
 </header>
+
 <main class="container">
-<div class="switch-buttons">
-  <button class="active" onclick="showSection('proximos', this)">Próximos Eventos</button>
-  <button onclick="showSection('anteriores', this)">Eventos Anteriores</button>
-</div>
+  <section class="rutas-container">
+    <div class="grid-rutas">
+      <a href="musica.html" class="ruta-card"><img src="Assets/img/happines-and-co-upper-02.png"><h3>MÚSICA</h3></a>
+      <a href="escena.html" class="ruta-card"><img src="Assets/img/happines-and-co-upper-03.png"><h3>ESCENA</h3></a>
+      <a href="social.html" class="ruta-card"><img src="Assets/img/happines-and-co-upper-04.png"><h3>SOCIAL</h3></a>
+      <a href="extras.html" class="ruta-card"><img src="Assets/img/happines-and-co-upper-01.png"><h3>EXTRAS</h3></a>
+    </div>
+  </section>
 
-<div id="proximos" class="section active">
-  <h2>Música</h2>
+  <h2>Todos los Próximos Eventos</h2>
+  
   <div class="event-grid">
-    <div class="card musical"><button class="card-btn" onclick="openModal('Concierto Jazz')">Reservar</button></div>
-    <div class="card musical"><button class="card-btn" onclick="openModal('Festival Rock')">Reservar</button></div>
-  </div>
-  <h2>Escena</h2>
-  <div class="event-grid">
-    <div class="card teatral"><button class="card-btn" onclick="openModal('Teatro Clásico')">Reservar</button></div>
-  </div>
-  <h2>Social</h2>
-  <div class="event-grid">
-    <div class="card social"><button class="card-btn" onclick="openModal('Exposición Fotografía')">Reservar</button></div>
-  </div>
-  <h2>Extras</h2>
-  <div class="event-grid">
-    <div class="card extra"><button class="card-btn" onclick="openModal('Taller Pintura')">Reservar</button></div>
-  </div>
-</div>
+    <div class="card cat-musica">
+        <div class="card-info">
+          <h4>Jazz Nocturno</h4>
+          <p>15 de Mayo 2026</p>
+          <small style="color: var(--magenta);">Música</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
 
-<div id="anteriores" class="section">
-  <h2>Música (Pasados)</h2>
-  <div class="event-grid">
-    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card musical"><button class="card-btn" disabled>Finalizado</button></div>
+    <div class="card cat-escena">
+        <div class="card-info">
+          <h4>Teatro: La Celestina</h4>
+          <p>22 de Mayo 2026</p>
+          <small style="color: var(--azul);">Escena</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
+
+    <div class="card cat-social">
+        <div class="card-info">
+          <h4>Expo: Fotografía</h4>
+          <p>05 de Junio 2026</p>
+          <small style="color: var(--naranja);">Social</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
+
+    <div class="card cat-extras">
+        <div class="card-info">
+          <h4>Cata de Vinos</h4>
+          <p>10 de Junio 2026</p>
+          <small style="color: var(--gris);">Extras</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
+
+    <div class="card cat-musica">
+        <div class="card-info">
+          <h4>Festival Rock</h4>
+          <p>20 de Junio 2026</p>
+          <small style="color: var(--magenta);">Música</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
+
+    <div class="card cat-escena">
+        <div class="card-info">
+          <h4>Danza Moderna</h4>
+          <p>30 de Junio 2026</p>
+          <small style="color: var(--azul);">Escena</small>
+        </div>
+        <button class="btn-reserva">Reservar</button>
+    </div>
   </div>
-  <h2>Escena (Pasados)</h2>
-  <div class="event-grid">
-    <div class="card teatral"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card teatral"><button class="card-btn" disabled>Finalizado</button></div>
-  </div>
-  <h2>Social (Pasados)</h2>
-  <div class="event-grid">
-    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card social"><button class="card-btn" disabled>Finalizado</button></div>
-  </div>
-  <h2>Extras (Pasados)</h2>
-  <div class="event-grid">
-    <div class="card extra"><button class="card-btn" disabled>Finalizado</button></div>
-    <div class="card extra"><button class="card-btn" disabled>Finalizado</button></div>
-  </div>
-</div>
 </main>
 
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h3>Inscripción</h3>
-    <p id="txtEvento" style="margin-bottom:15px; font-weight:bold; color:var(--magenta);"></p>
-    <form onsubmit="enviarFormulario(event)">
-      <input type="text" placeholder="Nombre completo" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="hidden" id="eventoSeleccionado">
-      <button type="submit">Confirmar Asistencia</button>
-    </form>
-    <button onclick="closeModal()" style="margin-top:10px; width:100%; border:none; padding:8px; cursor:pointer; background:#eee;">Cerrar</button>
-  </div>
-</div>
-
-<script>
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.switch-buttons button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-function openModal(evento) {
-  document.getElementById('modal').classList.add('active');
-  document.getElementById('eventoSeleccionado').value = evento;
-  document.getElementById('txtEvento').innerText = "Evento: " + evento;
-}
-function closeModal() { document.getElementById('modal').classList.remove('active'); }
-function enviarFormulario(e) { e.preventDefault(); alert("¡Inscripción confirmada! Te esperamos."); closeModal(); }
-</script>
 </body>
 </html>
