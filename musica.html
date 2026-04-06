@@ -1,82 +1,45 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happiness & Co - Música</title>
+<title>Música - Happiness & Co</title>
 <style>
-:root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee;}
-.logo-img { height: 60px; }
-nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-
-h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid var(--magenta); display: inline-block; }
-
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
-.card { 
-  position: relative; height: 320px; background: #f4f4f4; overflow: hidden; 
-  border-top: 10px solid var(--magenta); transition: 0.3s;
-}
-.card::before { 
-  content: ""; position: absolute; inset: 40px; 
-  background: repeating-conic-gradient(#eee 0% 25%, #ddd 0% 50%) 50% / 20px 20px; 
-}
-.info-panel { 
-  position: absolute; bottom: -100%; left: 0; width: 100%; height: 65%; 
-  background: white; padding: 20px; transition: 0.4s ease; border-top: 1px solid #eee; z-index: 2;
-}
-.card:hover .info-panel { bottom: 0; }
-.info-panel h4 { color: var(--magenta); margin-bottom: 10px; text-transform: uppercase; font-size: 16px; }
-.info-panel p { font-size: 13px; color: #666; line-height: 1.4; }
-.card-btn { 
-  position: absolute; bottom: 15px; left: 15px; background: var(--magenta); 
-  color: white; border: none; padding: 8px 15px; font-size: 11px; cursor: pointer; z-index: 3; font-weight: bold;
-}
-
-.footer-banner { background: var(--magenta); text-align: center; padding: 30px 0; margin-top: 60px; }
-.footer-banner img { width: 80%; max-width: 600px; }
-.copyright { background: black; color: white; text-align: center; font-size: 11px; padding: 10px; }
+  :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 2px solid var(--magenta); }
+  nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+  .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; }
+  .filter-btns a { text-decoration: none; padding: 12px 20px; color: white; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+  .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .card { border: 1px solid #eee; padding: 25px; border-top: 8px solid var(--magenta); background: #fff; }
+  .btn-reserva { background: var(--magenta); color: white; border: none; padding: 10px; width: 100%; cursor: pointer; margin-top: 15px; font-weight: bold; }
 </style>
 </head>
 <body>
 <header>
-  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img"></a>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="historial.html">Historial</a>
-    <a href="empresa.html">Sobre Nosotros</a>
-    <a href="contacto.html" class="btn-contacto">Contacto</a>
-  </nav>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold;">&#10094; VOLVER</button>
+        <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
+    </div>
+    <nav><a href="index.html">Inicio</a><a href="eventos.html">Eventos</a><a href="historial.html">Historial</a></nav>
 </header>
-
 <main class="container">
-  <h2>Música y Directos</h2>
+  <div class="filter-btns">
+    <a href="eventos.html" style="background: #333;">TODOS</a>
+    <a href="musica.html" style="background: var(--magenta); outline: 2px solid #000;">MÚSICA</a>
+    <a href="escena.html" style="background: var(--azul);">ESCENA</a>
+    <a href="social.html" style="background: var(--naranja);">SOCIAL</a>
+    <a href="extras.html" style="background: var(--gris);">EXTRAS</a>
+  </div>
+  <h2>EVENTOS MUSICALES</h2>
   <div class="event-grid">
-    <div class="card">
-      <div class="info-panel">
-        <h4>Concierto de Jazz</h4>
-        <p>Una noche inolvidable con los mejores exponentes del género bajo las estrellas.</p>
-      </div>
-      <button class="card-btn">VER FICHA</button>
-    </div>
-    <div class="card">
-      <div class="info-panel">
-        <h4>Festival Rock</h4>
-        <p>La energía del rock en vivo con bandas locales e internacionales confirmadas.</p>
-      </div>
-      <button class="card-btn">VER FICHA</button>
-    </div>
+    <div class="card"><h4>Gijón Sound Festival</h4><p>Gijón - 16-19 Abr</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Rodrigo Cuevas</h4><p>Gijón - 23 Abr</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Vibra Mahou Fest</h4><p>Gijón - 16 May</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Boombastic Asturias</h4><p>Llanera - 16-18 Jul</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Aquasella Festival</h4><p>Arriondas - 13-16 Ago</p><button class="btn-reserva">RESERVAR</button></div>
   </div>
 </main>
-
-<footer>
-  <div class="footer-banner"><img src="Assets/img/happines-and-co-propuesta-06.png"></div>
-  <div class="copyright">© 2026 HAPPINESS & CO. TODOS LOS DERECHOS RESERVADOS.</div>
-</footer>
 </body>
 </html>

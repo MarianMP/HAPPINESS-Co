@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuentes | Happiness & Co</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+        :root { --magenta: #ba007c; --gris: #f8f9fa; --texto: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+        body { background-color: var(--gris); color: var(--texto); line-height: 1.6; }
+        header { position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-link { text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: 0.3s; padding: 5px 0; }
+        .container { max-width: 900px; margin: 40px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { border-left: 5px solid var(--magenta); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; font-size: 22px; }
+        h2 { color: var(--magenta); font-size: 17px; margin: 25px 0 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; text-transform: uppercase; }
+        ul { list-style: none; }
+        li { margin-bottom: 15px; padding: 10px; border-radius: 4px; border: 1px solid transparent; transition: 0.2s; }
+        li strong { display: block; color: #000; font-size: 14px; margin-bottom: 3px; }
+        li span { font-size: 13px; color: #666; display: block; margin-bottom: 5px; }
+        li a { color: var(--magenta); text-decoration: none; font-size: 13px; font-weight: bold; }
+        footer { text-align: center; padding: 30px; font-size: 12px; color: #999; }
+    </style>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c;">
+        <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
+        <nav style="display: flex; gap: 15px;">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="eventos.html" class="nav-link">Eventos</a>
+            <a href="fuentes.html" class="nav-link" style="color: var(--magenta);">Fuentes</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Fuentes y Atribuciones</h1>
+        <h2>1. Identidad y Gráficos</h2>
+        <ul>
+            <li><strong>Logotipos:</strong> <span>Asenine (Texto) y Ar Chistry (&).</span></li>
+            <li><strong>Imágenes:</strong> <a href="https://www.turismoasturias.es/" target="_blank">Turismo Asturias</a></li>
+        </ul>
+        <h2>2. Desarrollo Técnico</h2>
+        <ul>
+            <li><strong>Tipografía Web:</strong> <span>Montserrat (Google Fonts). Elegida por su similitud con Asenine.</span></li>
+        </ul>
+    </main>
+    <footer>&copy; 2026 Happiness & Co - Gijón, Asturias.</footer>
+</body>
+</html>

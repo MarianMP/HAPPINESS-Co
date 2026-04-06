@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happiness & Co - Empresa</title>
@@ -32,16 +33,26 @@ nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; 
 </style>
 </head>
 <body>
-<header>
-  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img"></a>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="historial.html">Historial</a>
-    <a href="empresa.html">Sobre Nosotros</a>
-    <a href="contacto.html" class="btn-contacto">Contacto</a>
-  </nav>
-</header>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
+                &#10094; VOLVER
+            </button>
+            <a href="index.html">
+                <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+            </a>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 15px;">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="eventos.html" class="nav-link">Eventos</a>
+            <a href="historial.html" class="nav-link">Historial</a>
+            <a href="empresa.html" class="nav-link">Sobre Nosotros</a>
+            <a href="fuentes.html" class="nav-link" style="color: var(--magenta); border-bottom: 2px solid var(--magenta);">Fuentes</a>
+            <a href="contacto.html" class="nav-link btn-contacto-header">Contacto</a>
+            <a href="inicioSesion.html" class="nav-link btn-cuenta">MI CUENTA</a>
+        </nav>
+    </header>
 <main class="container">
 <section class="esencia-section">
   <div class="image-container"><img src="Assets/img/covadonga.jpg" alt="empresa"></div>

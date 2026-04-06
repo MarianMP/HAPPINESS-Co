@@ -1,83 +1,73 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happiness & Co - Escena</title>
-<style>
-/* Estilos idénticos, solo cambia el color de referencia a var(--azul) */
-:root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee;}
-.logo-img { height: 60px; }
-nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-
-h2 { font-size: 18px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 2px solid var(--azul); display: inline-block; }
-
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
-.card { 
-  position: relative; height: 320px; background: #f4f4f4; overflow: hidden; 
-  border-top: 10px solid var(--azul); transition: 0.3s;
-}
-.card::before { 
-  content: ""; position: absolute; inset: 40px; 
-  background: repeating-conic-gradient(#eee 0% 25%, #ddd 0% 50%) 50% / 20px 20px; 
-}
-.info-panel { 
-  position: absolute; bottom: -100%; left: 0; width: 100%; height: 65%; 
-  background: white; padding: 20px; transition: 0.4s ease; border-top: 1px solid #eee; z-index: 2;
-}
-.card:hover .info-panel { bottom: 0; }
-.info-panel h4 { color: var(--azul); margin-bottom: 10px; text-transform: uppercase; font-size: 16px; }
-.info-panel p { font-size: 13px; color: #666; line-height: 1.4; }
-.card-btn { 
-  position: absolute; bottom: 15px; left: 15px; background: var(--azul); 
-  color: white; border: none; padding: 8px 15px; font-size: 11px; cursor: pointer; z-index: 3; font-weight: bold;
-}
-
-.footer-banner { background: var(--magenta); text-align: center; padding: 30px 0; margin-top: 60px; }
-.footer-banner img { width: 80%; max-width: 600px; }
-.copyright { background: black; color: white; text-align: center; font-size: 11px; padding: 10px; }
-</style>
+  <meta charset="UTF-8">
+  <title>Escena - Happiness & Co</title>
+  <style>
+    :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #fff; border-bottom: 2px solid var(--azul); position: sticky; top: 0; z-index: 1000; }
+    nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
+    .filter-btns a { text-decoration: none; padding: 15px 25px; color: white; border-radius: 4px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #eee; padding: 25px; border-top: 8px solid var(--azul); display: flex; flex-direction: column; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .card img { width: 100%; height: 150px; object-fit: cover; margin-bottom: 15px; border-radius: 4px; }
+    .card h4 { margin-bottom: 5px; font-size: 17px; }
+    .card p { font-size: 13px; color: #666; margin-bottom: 15px; }
+    .btn-reserva { background: #333; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; width: 100%; }
+    .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+    .modal-content { background: #fff; width: 90%; max-width: 400px; margin: 10% auto; padding: 35px; border-radius: 8px; }
+    input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+  </style>
 </head>
 <body>
 <header>
-  <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" class="logo-img"></a>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="historial.html">Historial</a>
-    <a href="empresa.html">Sobre Nosotros</a>
-    <a href="contacto.html" class="btn-contacto">Contacto</a>
-  </nav>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; border-radius: 4px;">&#10094; VOLVER</button>
+        <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="historial.html">Historial</a>
+        <a href="empresa.html">Sobre Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
 </header>
 
-<main class="container">
-  <h2>Escena y Teatro</h2>
+
+ <main class="container">
+  <div class="filter-btns">
+    <a href="eventos.html" style="background: #333;">TODOS</a>
+    <a href="musica.html" style="background: var(--magenta);">MÚSICA</a>
+    <a href="escena.html" style="background: var(--azul); outline: 2px solid #000;">ESCENA</a>
+    <a href="social.html" style="background: var(--naranja);">SOCIAL</a>
+    <a href="extras.html" style="background: var(--gris);">EXTRAS</a>
+  </div>
+  <h2>CARTELERA ESCENA</h2>
   <div class="event-grid">
-    <div class="card">
-      <div class="info-panel">
-        <h4>Obra de Teatro</h4>
-        <p>Una puesta en escena magistral que explora los límites del drama contemporáneo.</p>
-      </div>
-      <button class="card-btn">VER FICHA</button>
-    </div>
-    <div class="card">
-      <div class="info-panel">
-        <h4>Ciclo de Cine</h4>
-        <p>Selección exclusiva de cine de autor y clásicos restaurados en pantalla grande.</p>
-      </div>
-      <button class="card-btn">VER FICHA</button>
-    </div>
+    <div class="card"><h4>Festival Cine LGTBI</h4><p>Niemeyer, Avilés - Abr</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Temporada de Ópera</h4><p>Campoamor, Oviedo - May</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>American Buffalo</h4><p>Jovellanos, Gijón - Jun</p><button class="btn-reserva">RESERVAR</button></div>
+    <div class="card"><h4>Concierto OSPA</h4><p>Gijón - 03 Jun</p><button class="btn-reserva">RESERVAR</button></div>
   </div>
 </main>
 
-<footer>
-  <div class="footer-banner"><img src="Assets/img/happines-and-co-propuesta-06.png"></div>
-  <div class="copyright">© 2026 HAPPINESS & CO. TODOS LOS DERECHOS RESERVADOS.</div>
-</footer>
+<div id="reservaModal" class="modal">
+    <div class="modal-content">
+        <h3 id="eventTitle">Reserva</h3>
+        <input type="text" placeholder="Tu nombre">
+        <input type="email" placeholder="Tu email">
+        <button onclick="alert('Reserva registrada correctamente'); closeModal()" style="width:100%; padding:12px; background:var(--azul); color:white; border:none; cursor:pointer; font-weight:bold;">CONFIRMAR</button>
+        <p onclick="closeModal()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:12px; text-decoration:underline;">Cerrar</p>
+    </div>
+</div>
+
+<script>
+    function openModal(name) { document.getElementById('reservaModal').style.display='block'; document.getElementById('eventTitle').innerText = name; }
+    function closeModal() { document.getElementById('reservaModal').style.display='none'; }
+</script>
 </body>
 </html>
