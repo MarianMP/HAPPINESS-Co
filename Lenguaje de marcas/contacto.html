@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co - Contacto</title>
+<style>
+  :root { --magenta: #ba007c; --gris: #555555; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; }
+  
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; background: #fff; }
+  .logo-img { height: 60px; }
+  nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .btn-contacto-nav { background: var(--magenta); color: white !important; padding: 6px 15px; border-radius: 4px; }
 
+  .container { max-width: 600px; margin: 60px auto; padding: 40px; border: 1px solid #eee; border-radius: 8px; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  
+  h2 { color: var(--magenta); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+  p.intro { text-align: center; margin-bottom: 30px; color: #666; font-size: 14px; }
+
+  label { display: block; margin-bottom: 5px; font-size: 12px; font-weight: bold; color: var(--gris); text-transform: uppercase; }
+  input, textarea, select { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+  input:focus, textarea:focus { border-color: var(--magenta); outline: none; }
+
+  .btn-enviar { background: var(--magenta); color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: background 0.3s; border-radius: 4px; }
+  .btn-enviar:hover { background: #960064; }
+
+  /* Estilo para el mensaje de éxito */
+  #mensajeExito { display: none; text-align: center; padding: 20px; background: #e7f5e9; color: #2e7d32; border-radius: 4px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; font-family: 'Segoe UI', sans-serif;">
+  
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 12px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px;">
+      &#10094; VOLVER
+    </button>
+    
+    <a href="index.html">
+      <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 50px; display: block;">
+    </a>
+  </div>
+
+  <nav style="display: flex; align-items: center; gap: 15px;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+    <a href="eventos.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+    <a href="historial.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+    <a href="empresa.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+    <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; padding: 8px 16px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px;">Contacto</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Contacta con nosotros</h2>
+  <p class="intro">¿Tienes dudas sobre un evento o quieres colaborar? Escríbenos y te responderemos en menos de 24 horas.</p>
+  
+  <form id="contactForm">
+    <label for="nombre">Nombre Completo</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre Apellidos" required>
+
+    <label for="email">Correo Electrónico</label>
+    <input type="email" id="email" name="email" placeholder="nombre@gmail.com" required>
+
+    <label for="motivo">Motivo de la consulta</label>
+    <select id="motivo" name="motivo">
+      <option value="informacion">Información de Eventos</option>
+      <option value="reserva">Problemas con una Reserva</option>
+      <option value="prensa">Prensa / Marketing</option>
+      <option value="otros">Otros</option>
+    </select>
+
+    <label for="mensaje">Tu Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu consulta..." required></textarea>
+
+    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+  </form>
+
+  <div id="mensajeExito">
+    <strong>¡Mensaje enviado con éxito!</strong><br>
+    Gracias por contactar con Happiness & Co Asturias.
+  </div>
+</div>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que la página se recargue
+    
+    // Aquí normalmente iría el código para enviar los datos a un servidor
+    
+    // Ocultamos el formulario y mostramos el mensaje de éxito
+    this.style.display = 'none';
+    document.getElementById('mensajeExito').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

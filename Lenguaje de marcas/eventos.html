@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Happiness & Co - Todos los Eventos</title>
+<style>
+  :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 1000; }
+  nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+  .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
+  .filter-btns a { text-decoration: none; padding: 15px 25px; color: white; border-radius: 4px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+  
+  .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .card { border: 1px solid #eee; padding: 25px; border-top: 8px solid; display: flex; flex-direction: column; justify-content: space-between; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+  .card h4 { margin-bottom: 5px; font-size: 17px; }
+  .card p { font-size: 13px; color: #666; margin-bottom: 15px; }
+  .btn-reserva { background: #333; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; width: 100%; }
 
+  /* Modal */
+  .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+  .modal-content { background: #fff; width: 90%; max-width: 400px; margin: 10% auto; padding: 35px; border-radius: 8px; }
+  input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+</style>
+</head>
+<body>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; font-family: 'Segoe UI', sans-serif;">
+  
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 12px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px;">
+      &#10094; VOLVER
+    </button>
+    
+    <a href="index.html">
+      <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 50px; display: block;">
+    </a>
+  </div>
+
+  <nav style="display: flex; align-items: center; gap: 15px;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+    <a href="eventos.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+    <a href="historial.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+    <a href="empresa.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+    <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; padding: 8px 16px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px;">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="filter-btns">
+    <a href="eventos.html" style="background: #333; outline: 3px solid #000;">TODOS</a>
+    <a href="musica.html" style="background: var(--magenta);">MÚSICA</a>
+    <a href="escena.html" style="background: var(--azul);">ESCENA</a>
+    <a href="social.html" style="background: var(--naranja);">SOCIAL</a>
+    <a href="extras.html" style="background: var(--gris);">EXTRAS</a>
+  </div>
+
+  <div class="event-grid">
+    <div class="card" style="border-color: var(--magenta);"><h4>Rodrigo Cuevas</h4><p>Gijón - 15 Jun</p><button class="btn-reserva" onclick="openModal('Rodrigo Cuevas')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--magenta);"><h4>Gijón Sound</h4><p>Gijón - 20 Jun</p><button class="btn-reserva" onclick="openModal('Gijón Sound')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--magenta);"><h4>Ópera Tosca</h4><p>Oviedo - 18 Jun</p><button class="btn-reserva" onclick="openModal('Ópera Tosca')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--magenta);"><h4>Boombastic</h4><p>Llanera - 12 Jul</p><button class="btn-reserva" onclick="openModal('Boombastic')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--magenta);"><h4>Jazz Niemeyer</h4><p>Avilés - 05 Jul</p><button class="btn-reserva" onclick="openModal('Jazz Niemeyer')">RESERVAR</button></div>
+
+    <div class="card" style="border-color: var(--azul);"><h4>La Celestina</h4><p>Avilés - 22 May</p><button class="btn-reserva" onclick="openModal('La Celestina')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--azul);"><h4>Monólogos Jovellanos</h4><p>Gijón - 30 May</p><button class="btn-reserva" onclick="openModal('Monólogos Jovellanos')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--azul);"><h4>Danza en el Sella</h4><p>Mieres - 10 Jun</p><button class="btn-reserva" onclick="openModal('Danza en el Sella')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--azul);"><h4>Teatro Amateur</h4><p>Langreo - 15 Jun</p><button class="btn-reserva" onclick="openModal('Teatro Amateur')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--azul);"><h4>El Rey León (Gira)</h4><p>Oviedo - 20 Jul</p><button class="btn-reserva" onclick="openModal('El Rey León')">RESERVAR</button></div>
+
+    <div class="card" style="border-color: var(--naranja);"><h4>Pintura Bellas Artes</h4><p>Oviedo - 12 Jun</p><button class="btn-reserva" onclick="openModal('Pintura Bellas Artes')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--naranja);"><h4>Semana Negra</h4><p>Gijón - 04 Jul</p><button class="btn-reserva" onclick="openModal('Semana Negra')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--naranja);"><h4>Feria de Muestras</h4><p>Gijón - 01 Ago</p><button class="btn-reserva" onclick="openModal('Feria de Muestras')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--naranja);"><h4>Mercado San Juan</h4><p>Mieres - 24 Jun</p><button class="btn-reserva" onclick="openModal('Mercado San Juan')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--naranja);"><h4>Certamen Cabrales</h4><p>Cabrales - 30 Ago</p><button class="btn-reserva" onclick="openModal('Certamen Cabrales')">RESERVAR</button></div>
+
+    <div class="card" style="border-color: var(--gris);"><h4>Descenso del Sella</h4><p>Arriondas - 08 Ago</p><button class="btn-reserva" onclick="openModal('Descenso del Sella')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--gris);"><h4>Festival Sidra</h4><p>Nava - 11 Jul</p><button class="btn-reserva" onclick="openModal('Festival Sidra')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--gris);"><h4>Rally Princesa</h4><p>Oviedo - 10 Sep</p><button class="btn-reserva" onclick="openModal('Rally Princesa')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--gris);"><h4>Cata Sidra Hielo</h4><p>Villaviciosa - 05 May</p><button class="btn-reserva" onclick="openModal('Cata Sidra Hielo')">RESERVAR</button></div>
+    <div class="card" style="border-color: var(--gris);"><h4>Jornadas Maruca</h4><p>Luanco - 18 Jun</p><button class="btn-reserva" onclick="openModal('Jornadas Maruca')">RESERVAR</button></div>
+  </div>
+</main>
+
+<div id="reservaModal" class="modal">
+  <div class="modal-content">
+    <h3 id="eventTitle">Reserva</h3>
+    <input type="text" placeholder="Tu nombre">
+    <input type="email" placeholder="Tu email">
+    <button onclick="alert('Reserva registrada correctamente'); closeModal()" style="width:100%; padding:12px; background:var(--magenta); color:white; border:none; cursor:pointer; font-weight:bold;">CONFIRMAR</button>
+    <p onclick="closeModal()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:12px; text-decoration:underline;">Cerrar</p>
+  </div>
+</div>
+
+<script>
+  function openModal(name) { document.getElementById('reservaModal').style.display='block'; document.getElementById('eventTitle').innerText = name; }
+  function closeModal() { document.getElementById('reservaModal').style.display='none'; }
+</script>
+</body>
+</html>

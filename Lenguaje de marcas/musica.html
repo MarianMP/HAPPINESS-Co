@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Música - Happiness & Co</title>
+<style>
+  :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; border-bottom: 1px solid #eee; }
+  nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+  
+  /* Botones de Navegación */
+  .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; }
+  .filter-btns a { text-decoration: none; padding: 12px 20px; color: white; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+
+  /* Grid y Cards */
+  .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .card { border: 1px solid #eee; padding: 25px; border-top: 8px solid var(--magenta); background: #fff; }
+  .btn-reserva { background: var(--magenta); color: white; border: none; padding: 10px; width: 100%; cursor: pointer; margin-top: 15px; font-weight: bold; }
+  
+  /* Modal */
+  .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+  .modal-content { background: #fff; width: 350px; margin: 15% auto; padding: 30px; border-radius: 8px; text-align: center; }
+  input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+</style>
+</head>
+<body>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; font-family: 'Segoe UI', sans-serif;">
+  
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 12px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px;">
+      &#10094; VOLVER
+    </button>
+    
+    <a href="index.html">
+      <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 50px; display: block;">
+    </a>
+  </div>
+
+  <nav style="display: flex; align-items: center; gap: 15px;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+    <a href="eventos.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+    <a href="historial.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+    <a href="empresa.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+    <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; padding: 8px 16px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px;">Contacto</a>
+  </nav>
+</header>
+<main class="container">
+  <div class="filter-btns">
+    <a href="eventos.html" style="background: #333;">TODOS</a>
+    <a href="musica.html" style="background: var(--magenta); outline: 2px solid #000;">MÚSICA</a>
+    <a href="escena.html" style="background: var(--azul);">ESCENA</a>
+    <a href="social.html" style="background: var(--naranja);">SOCIAL</a>
+    <a href="extras.html" style="background: var(--gris);">EXTRAS</a>
+  </div>
+  <h2>EVENTOS MUSICALES</h2>
+  <div class="event-grid">
+    <div class="card"><h4>Rodrigo Cuevas</h4><p>Gijón - 15 Jun</p><button class="btn-reserva" onclick="openModal('Rodrigo Cuevas')">RESERVAR</button></div>
+    <div class="card"><h4>Gijón Sound</h4><p>Gijón - 20 Jun</p><button class="btn-reserva" onclick="openModal('Gijón Sound')">RESERVAR</button></div>
+    <div class="card"><h4>Ópera Tosca</h4><p>Oviedo - 18 Jun</p><button class="btn-reserva" onclick="openModal('Ópera Tosca')">RESERVAR</button></div>
+    <div class="card"><h4>Boombastic</h4><p>Llanera - 12 Jul</p><button class="btn-reserva" onclick="openModal('Boombastic')">RESERVAR</button></div>
+    <div class="card"><h4>Jazz Niemeyer</h4><p>Avilés - 05 Jul</p><button class="btn-reserva" onclick="openModal('Jazz Niemeyer')">RESERVAR</button></div>
+  </div>
+</main>
+
+<div id="reservaModal" class="modal">
+  <div class="modal-content">
+    <h3 id="eventTitle">Reserva</h3>
+    <input type="text" placeholder="Nombre"><input type="email" placeholder="Email">
+    <button onclick="alert('Reserva OK'); closeModal()" style="width:100%; padding:10px; background:var(--magenta); color:white; border:none; cursor:pointer;">CONFIRMAR</button>
+  </div>
+</div>
+
+<script>
+  function openModal(name) { document.getElementById('reservaModal').style.display='block'; document.getElementById('eventTitle').innerText=name; }
+  function closeModal() { document.getElementById('reservaModal').style.display='none'; }
+</script>
+</body>
+</html>

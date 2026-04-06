@@ -1,0 +1,28 @@
+:root { 
+  --magenta: #ba007c; 
+  --azul: #009bdb; 
+  --naranja: #ff7b00; 
+  --gris: #555555; 
+  --gris-hero: #8e8e8e; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.6; }
+
+/* Header Común */
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #fff; border-bottom: 1px solid #eee; }
+.logo-img { height: 60px; }
+nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+.btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; }
+
+/* Botón Volver */
+.back-link { display: inline-block; text-decoration: none; color: #888; font-size: 12px; font-weight: bold; margin-bottom: 20px; transition: 0.3s; }
+.back-link:hover { color: var(--magenta); }
+
+/* Contenedores */
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+/* Footer */
+.footer-banner { background: var(--magenta); text-align: center; padding: 25px 0; }
+.footer-banner img { width: 60%; max-width: 500px; }
+.copyright { background: #000; color: #fff; text-align: center; padding: 15px; font-size: 11px; }

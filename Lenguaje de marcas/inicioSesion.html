@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - Happiness & Co</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #fdf0f7; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <a href="index.html" style="position: absolute; top: 20px; left: 20px; text-decoration: none; color: #ba007c; font-weight: bold; font-size: 14px; background: white; padding: 10px 20px; border-radius: 50px; shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        &#10094; Volver al Inicio
+    </a>
+
+    <div style="background: white; width: 100%; max-width: 450px; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(186, 0, 124, 0.1); text-align: center;">
+        
+        <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo" style="height: 70px; margin-bottom: 20px;">
+
+        <div id="register-box">
+            <h2 style="color: #333; margin: 0 0 10px 0; font-size: 24px;">Crear tu cuenta</h2>
+            <p style="color: #777; font-size: 14px; margin-bottom: 30px;">Únete a Happiness & Co para gestionar tus eventos.</p>
+
+            <form onsubmit="showDashboard(); return false;" style="text-align: left;">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #ba007c; margin-bottom: 5px;">NOMBRE</label>
+                    <input type="text" placeholder="Ej. Juan Pérez" required style="width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-sizing: border-box; background: #fafafa;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #ba007c; margin-bottom: 5px;">EMAIL</label>
+                    <input type="email" placeholder="tu@email.com" required style="width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-sizing: border-box; background: #fafafa;">
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #ba007c; margin-bottom: 5px;">CONTRASEÑA</label>
+                    <input type="password" placeholder="••••••••" required style="width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-sizing: border-box; background: #fafafa;">
+                </div>
+                <button type="submit" style="width: 100%; background: #ba007c; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s;">
+                    REGISTRARSE
+                </button>
+            </form>
+            <p style="margin-top: 25px; font-size: 14px; color: #666;">
+                ¿Ya tienes cuenta? <a href="javascript:void(0)" onclick="toggleForm()" style="color: #ba007c; font-weight: bold; text-decoration: none;">Inicia sesión</a>
+            </p>
+        </div>
+
+        <div id="login-box" style="display: none;">
+            <h2 style="color: #333; margin: 0 0 10px 0; font-size: 24px;">¡Hola de nuevo!</h2>
+            <p style="color: #777; font-size: 14px; margin-bottom: 30px;">Introduce tus datos para entrar.</p>
+
+            <form onsubmit="showDashboard(); return false;" style="text-align: left;">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #ba007c; margin-bottom: 5px;">EMAIL</label>
+                    <input type="email" required style="width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-sizing: border-box; background: #fafafa;">
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #ba007c; margin-bottom: 5px;">CONTRASEÑA</label>
+                    <input type="password" required style="width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-sizing: border-box; background: #fafafa;">
+                </div>
+                <button type="submit" style="width: 100%; background: #333; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                    ENTRAR
+                </button>
+            </form>
+            <p style="margin-top: 25px; font-size: 14px; color: #666;">
+                ¿Nuevo aquí? <a href="javascript:void(0)" onclick="toggleForm()" style="color: #ba007c; font-weight: bold; text-decoration: none;">Crea una cuenta</a>
+            </p>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+            <h2 style="color: #ba007c; margin-bottom: 20px;">Tus Reservas</h2>
+            
+            <div style="text-align: left; background: #fdf0f7; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid #ba007c;">
+                <span style="font-size: 12px; color: #ba007c; font-weight: bold;">MÚSICA</span>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong style="font-size: 14px;">Rodrigo Cuevas</strong>
+                    <span id="t1" style="font-weight: bold; color: #333;">--</span>
+                </div>
+            </div>
+
+            <div style="text-align: left; background: #eef9ff; padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #009bdb;">
+                <span style="font-size: 12px; color: #009bdb; font-weight: bold;">ESCENA</span>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong style="font-size: 14px;">La Celestina</strong>
+                    <span id="t2" style="font-weight: bold; color: #333;">--</span>
+                </div>
+            </div>
+
+            <button onclick="location.reload()" style="background: none; border: 1px solid #ccc; color: #999; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 12px;">Cerrar Sesión</button>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleForm() {
+            const reg = document.getElementById('register-box');
+            const log = document.getElementById('login-box');
+            reg.style.display = reg.style.display === 'none' ? 'block' : 'none';
+            log.style.display = log.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('register-box').style.display = 'none';
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            startTimers();
+        }
+
+        function startTimers() {
+            const events = [
+                { id: "t1", date: "June 15, 2026 21:00:00" },
+                { id: "t2", date: "May 22, 2026 20:00:00" }
+            ];
+            setInterval(() => {
+                const now = new Date().getTime();
+                events.forEach(e => {
+                    const diff = new Date(e.date).getTime() - now;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById(e.id).innerHTML = days + " días";
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

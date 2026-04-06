@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiness & Co - Inicio</title>
+<style>
+  :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; --gris-hero: #8e8e8e; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.6; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+  .logo-img { height: 60px; }
+  nav a { text-decoration: none; color: #333; margin: 0 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+  .btn-contacto { background: var(--magenta); color: white !important; padding: 6px 15px; border-radius: 4px; }
+  .hero { background: var(--gris-hero); height: 300px; display: flex; justify-content: center; align-items: center; text-align: center; color: white; margin-bottom: 40px; }
+  .rutas-container { max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+  .grid-rutas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .ruta-card { text-align: center; transition: 0.3s; }
+  .ruta-card:hover { transform: scale(1.05); }
+  .ruta-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+  .main-layout { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+  .events-list h2 { border-bottom: 3px solid var(--magenta); display: inline-block; margin-bottom: 30px; text-transform: uppercase; }
+  .event-item { display: flex; gap: 20px; margin-bottom: 30px; }
+  .event-item img { width: 150px; height: 100px; object-fit: cover; border-radius: 4px; }
+  .event-link { font-weight: bold; text-decoration: none; font-size: 13px; text-transform: uppercase; }
+  .sidebar { background: #f9f9f9; padding: 20px; border-radius: 8px; height: fit-content; }
+  footer { background: #000; color: #fff; text-align: center; padding: 20px; margin-top: 60px; }
+</style>
+</head>
+<body>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; font-family: 'Segoe UI', sans-serif;">
+  
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 12px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px;">
+      &#10094; VOLVER
+    </button>
+    
+    <a href="index.html">
+      <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 50px; display: block;">
+    </a>
+  </div>
 
+  <nav style="display: flex; align-items: center; gap: 15px;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+    <a href="eventos.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+    <a href="historial.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+    <a href="empresa.html" style="text-decoration: none; color: #333; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+    <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; padding: 8px 16px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px;">Contacto</a>
+    <a href="iniciosesion.html" style="...tus estilos...">MI CUENTA</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>HAPPINESS&Co Asturias</h1>
+    <p>Toda la cultura del Principado en un solo lugar</p>
+  </div>
+</section>
+
+<section class="rutas-container">
+  <div class="grid-rutas">
+    <div class="ruta-card"><a href="musica.html"><img src="Assets/img/happines-and-co-upper-02.png"></a><h3>MÚSICA</h3></div>
+    <div class="ruta-card"><a href="escena.html"><img src="Assets/img/happines-and-co-upper-03.png"></a><h3>ESCENA</h3></div>
+    <div class="ruta-card"><a href="social.html"><img src="Assets/img/happines-and-co-upper-04.png"></a><h3>SOCIAL</h3></div>
+    <div class="ruta-card"><a href="extras.html"><img src="Assets/img/happines-and-co-upper-01.png"></a><h3>EXTRAS</h3></div>
+  </div>
+</section>
+
+<div class="main-layout">
+  <section class="events-list">
+    <h2>PRÓXIMOS DESTACADOS</h2>
+
+    <article class="event-item">
+      <img src="Assets/img/happines-and-co-upper-02.png">
+      <div>
+        <small>20 JUNIO 2026</small>
+        <h4>Gijón Sound Festival</h4>
+        <p>El festival urbano que llena de música los rincones más emblemáticos de Gijón regresa con una cartelera internacional.</p>
+        <a href="musica.html" class="event-link" style="color: var(--magenta);">Ver todos en Música</a>
+      </div>
+    </article>
+    
+    <article class="event-item">
+      <img src="Assets/img/happines-and-co-upper-02.png">
+      <div>
+        <small>15 JUNIO 2026</small>
+        <h4>Rodrigo Cuevas - Gijón</h4>
+        <p>El Teatro de la Laboral acoge "Manual de Romería", el show más premiado del año.</p>
+        <a href="musica.html" class="event-link" style="color: var(--magenta);">Ver todos en Música</a>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <img src="Assets/img/happines-and-co-upper-03.png">
+      <div>
+        <small>22 MAYO 2026</small>
+        <h4>"La Celestina" - Avilés</h4>
+        <p>Puesta en escena innovadora en el emblemático Teatro Palacio Valdés.</p>
+        <a href="escena.html" class="event-link" style="color: var(--azul);">Ver todos en Escena</a>
+      </div>
+    </article>
+  </section>
+
+  <aside class="sidebar">
+    <h3>LO MÁS VISTO</h3>
+    <div style="margin-bottom:15px"><strong>Descenso del Sella</strong><p>Sección Extras</p></div>
+    <div style="margin-bottom:15px"><strong>Semana Negra Gijón</strong><p>Sección Social</p></div>
+    <div style="margin-bottom:15px"><strong><a href="musica.html" style="text-decoration:none; color:inherit;">Ópera de Oviedo</a></strong><p>Sección Música</p></div>
+  </aside>
+</div>
+
+<footer><p>© 2026 Happiness & Co. - Asturias</p></footer>
+</body>
+</html>
