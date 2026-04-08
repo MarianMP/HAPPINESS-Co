@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happiness & Co - Agenda Asturias 2026</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    
+    body { background-color: #fcfcfc; color: #333; }
+
+    /* CABECERA */
+    header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 2px solid var(--magenta); background: #fff; position: sticky; top: 0; z-index: 1000; }
+    .header-left { display: flex; align-items: center; gap: 20px; }
+    .btn-volver { background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; border-radius: 4px; }
+    nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+
+    .container { max-width: 1300px; margin: 40px auto; padding: 0 20px; }
+    
+    .section-title { text-align: center; margin-bottom: 30px; }
+    .section-title h2 { text-transform: uppercase; border-bottom: 3px solid var(--magenta); display: inline-block; padding-bottom: 5px; }
+
+    /* FILTROS */
+    .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
+    .filter-btns button { border: none; padding: 12px 20px; color: white; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+
+    /* LAYOUT 2 COLUMNAS */
+    .main-layout { display: grid; grid-template-columns: 3fr 1fr; gap: 40px; }
+
+    /* GRID DE EVENTOS */
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #eee; border-top: 6px solid; background: #fff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .card-content { padding: 15px; }
+    .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px; }
+    .card h4 { font-size: 17px; margin-bottom: 5px; color: #222; min-height: 40px; }
+    .card p.meta { font-size: 12px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+    
+    .details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s ease; background: #f9f9f9; padding: 0 15px; font-size: 13px; color: #555; line-height: 1.4; }
+    .card:hover .details { max-height: 300px; padding: 15px; border-top: 1px solid #eee; }
+    .btn-reserva { background: #333; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; width: 100%; margin-top: auto; }
+
+    /* SIDEBAR */
+    .sidebar { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #eee; height: fit-content; }
+    .sidebar h3 { font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
+    .sidebar-item { margin-bottom: 20px; }
+    .sidebar-item strong { display: block; color: var(--magenta); font-size: 14px; }
+    .sidebar-item p { font-size: 12px; color: #999; }
+
+    /* FOOTER */
+    footer { background: #111; color: #777; text-align: center; padding: 50px 20px; margin-top: 80px; }
+    .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; }
+    .social-links a { color: #777; font-size: 20px; transition: 0.3s; }
+    .social-links a:hover { color: var(--magenta); transform: translateY(-3px); }
+    .footer-divider { width: 40px; height: 2px; background: var(--magenta); margin: 20px auto; }
+
+    /* MODAL */
+    .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
+    .modal-content { background: #fff; width: 90%; max-width: 400px; padding: 30px; border-radius: 12px; }
+    input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+
+    @media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
+    
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
+            &#10094; VOLVER
+        </button>
+        <a href="index.html">
+            <img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+        </a>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+        
+        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+        
+        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+        
+        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+        
+        <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
+        
+        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
+        
+        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="section-title">
+        <h2>Próximos Eventos 2026</h2>
+    </div>
+
+    <div class="filter-btns">
+        <button onclick="filterCat('all')" style="background: #333;">TODOS</button>
+        <button onclick="filterCat('musica')" style="background: var(--magenta);">MÚSICA</button>
+        <button onclick="filterCat('escena')" style="background: var(--azul);">ESCENA</button>
+        
+        <button onclick="filterCat('social')" style="background: var(--naranja);">SOCIAL</button>
+        <button onclick="filterCat('gris')" style="background: var(--gris);">OTROS</button>
+    </div>
+
+    <div class="main-layout">
+        <section class="event-grid">
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/gijon-sound.jfif"><h4>Gijón Sound Festival</h4><p class="meta" style="color:var(--magenta)">Gijón - 16-19 Abr</p></div>
+                <div class="details">Festival urbano que llena de música independiente los teatros y plazas de Gijón.</div>
+                <button class="btn-reserva" onclick="openModal('Gijón Sound')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/rodrigo.jfif"><h4>Rodrigo Cuevas</h4><p class="meta" style="color:var(--magenta)">Gijón - 23 Abr</p></div>
+                <div class="details">El agitador folclórico presenta su gira "La Romería" en un espectáculo único.</div>
+                <button class="btn-reserva" onclick="openModal('Rodrigo Cuevas')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="escena" style="border-color: var(--azul);">
+                <div class="card-content"><img src="Assets/img/cine-niemeyer.jfif"><h4>Festival Cine LGTBI</h4><p class="meta" style="color:var(--azul)">Avilés - 09-19 Abr</p></div>
+                <div class="details">Proyecciones internacionales en el Centro Niemeyer de Avilés.</div>
+                <button class="btn-reserva" onclick="openModal('Cine LGTBI')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/vibra.jfif"><h4>Vibra Mahou Fest</h4><p class="meta" style="color:var(--magenta)">Gijón - 16 May</p></div>
+                <div class="details">La gran cita del indie nacional en el Recinto Ferial Luis Adaro.</div>
+                <button class="btn-reserva" onclick="openModal('Vibra Mahou')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="escena" style="border-color: var(--azul);">
+                <div class="card-content"><img src="Assets/img/teatro-campoamor.jpg"><h4>Temporada de Ópera</h4><p class="meta" style="color:var(--azul)">Oviedo - Mayo</p></div>
+                <div class="details">Producciones líricas de primer nivel en el histórico Teatro Campoamor.</div>
+                <button class="btn-reserva" onclick="openModal('Ópera')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="social" style="border-color: var(--naranja);">
+                <div class="card-content"><img src="Assets/img/NEGRA.jfif"><h4>Semana Negra</h4><p class="meta" style="color:var(--naranja)">Gijón - 03-12 Jul</p></div>
+                <div class="details">Encuentro literario, cultural y festivo a orillas del Arbeyal.</div>
+                <button class="btn-reserva" onclick="openModal('Semana Negra')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/BOMBASTIC.jfif"><h4>Boombastic Asturias</h4><p class="meta" style="color:var(--magenta)">Llanera - 16-18 Jul</p></div>
+                <div class="details">"The Last Dance". El mayor festival de música urbana en La Morgal.</div>
+                <button class="btn-reserva" onclick="openModal('Boombastic')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="social" style="border-color: var(--naranja);">
+                <div class="card-content"><img src="Assets/img/yeye.jfif"><h4>Euro Yeyé Weekend</h4><p class="meta" style="color:var(--naranja)">Gijón - 23-26 Jul</p></div>
+                <div class="details">Referente europeo de la cultura mod y sesentera.</div>
+                <button class="btn-reserva" onclick="openModal('Euro Yeyé')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="social" style="border-color: var(--naranja);">
+                <div class="card-content"><img src="Assets/img/FERIADEMUESTRAS.JPEG"><h4>FIDMA (100ª edición)</h4><p class="meta" style="color:var(--naranja)">Gijón - 01-16 Ago</p></div>
+                <div class="details">Edición centenaria de la Feria Internacional de Muestras de Asturias.</div>
+                <button class="btn-reserva" onclick="openModal('FIDMA')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="gris" style="border-color: var(--gris);">
+                <div class="card-content"><img src="Assets/img/SELLA.jfif"><h4>Descenso del Sella</h4><p class="meta" style="color:var(--gris)">Arriondas - 08 Ago</p></div>
+                <div class="details">Fiesta de las Piraguas entre Arriondas y Ribadesella.</div>
+                <button class="btn-reserva" onclick="openModal('El Sella')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/aquasella.jfif"><h4>Aquasella Festival</h4><p class="meta" style="color:var(--magenta)">Arriondas - 13-16 Ago</p></div>
+                <div class="details">El festival de música electrónica más veterano.</div>
+                <button class="btn-reserva" onclick="openModal('Aquasella')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/prestoso.jfif"><h4>Prestoso Fest</h4><p class="meta" style="color:var(--magenta)">Cangas Narcea - Agosto</p></div>
+                <div class="details">Música indie en el corazón del Parque Natural.</div>
+                <button class="btn-reserva" onclick="openModal('Prestoso')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="gris" style="border-color: var(--gris);">
+                <div class="card-content"><img src="Assets/img/RALLY.jfif"><h4>Rally Princesa Asturias</h4><p class="meta" style="color:var(--gris)">Oviedo - Septiembre</p></div>
+                <div class="details">Prueba legendaria del Supercampeonato de España.</div>
+                <button class="btn-reserva" onclick="openModal('Rally')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="social" style="border-color: var(--naranja);">
+                <div class="card-content"><img src="Assets/img/america.jfif"><h4>Día de América</h4><p class="meta" style="color:var(--naranja)">Oviedo - 19 Sep</p></div>
+                <div class="details">Homenaje folclórico a los emigrantes asturianos.</div>
+                <button class="btn-reserva" onclick="openModal('América')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="escena" style="border-color: var(--azul);">
+                <div class="card-content"><img src="Assets/img/teatro-jovellanos.jpg"><h4>American Buffalo</h4><p class="meta" style="color:var(--azul)">Gijón - 05 Jun</p></div>
+                <div class="details">Teatro contemporáneo en el Teatro Jovellanos.</div>
+                <button class="btn-reserva" onclick="openModal('Teatro')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="social" style="border-color: var(--naranja);">
+                <div class="card-content"><img src="Assets/img/nava.jfif"><h4>Festival de la Sidra</h4><p class="meta" style="color:var(--naranja)">Nava - Julio</p></div>
+                <div class="details">Concurso internacional de escanciadores en Nava.</div>
+                <button class="btn-reserva" onclick="openModal('Sidra')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="gris" style="border-color: var(--gris);">
+                <div class="card-content"><img src="Assets/img/desarme.jfif"><h4>El Desarme</h4><p class="meta" style="color:var(--gris)">Oviedo - 19 Oct</p></div>
+                <div class="details">Fiesta gastronómica histórica con menú de garbanzos.</div>
+                <button class="btn-reserva" onclick="openModal('Desarme')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
+                <div class="card-content"><img src="Assets/img/jazz.jfif"><h4>Jazz en el Niemeyer</h4><p class="meta" style="color:var(--magenta)">Avilés - Mayo</p></div>
+                <div class="details">Ciclo de grandes solistas de jazz en la cúpula.</div>
+                <button class="btn-reserva" onclick="openModal('Jazz')">RESERVAR</button>
+            </div>
+            <div class="card" data-cat="escena" style="border-color: var(--azul);">
+                <div class="card-content"><img src="Assets/img/ospa.jfif"><h4>Concierto OSPA</h4><p class="meta" style="color:var(--azul)">Gijón - 03 Jun</p></div>
+                <div class="details">Orquesta Sinfónica del Principado de Asturias.</div>
+                <button class="btn-reserva" onclick="openModal('OSPA')">RESERVAR</button>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h3>Lo más buscado</h3>
+            <div class="sidebar-item"><strong>Descenso del Sella</strong><p>Aventura y tradición</p></div>
+            <div class="sidebar-item"><strong>Semana Negra</strong><p>Cultura junto al mar</p></div>
+            <div class="sidebar-item"><strong>Ópera de Oviedo</strong><p>Elegancia en el Campoamor</p></div>
+            <div style="text-align: center; margin-top: 40px; opacity: 0.3;">
+                <img src="Assets/img/happines-and-co-propuesta-02.png" style="width: 120px;">
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer>
+    <div class="social-links">
+        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p>© 2026 Happiness & Co. - Asturias Agenda Cultural</p>
+    <p style="font-size: 10px; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px;">Siempre hay algo que celebrar</p>
+</footer>
+
+<div id="reservaModal" class="modal">
+    <div class="modal-content">
+        <h3 id="eventTitle">Reserva</h3>
+        <input type="text" placeholder="Tu nombre"><input type="email" placeholder="Tu email">
+        <button onclick="alert('Solicitud enviada. Contactaremos contigo pronto.'); closeModal()" style="width:100%; padding:12px; background:var(--magenta); color:white; border:none; cursor:pointer; font-weight:bold; border-radius:4px;">CONFIRMAR RESERVA</button>
+        <p onclick="closeModal()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:12px; text-decoration:underline;">Volver atrás</p>
+    </div>
+</div>
+
+<script>
+    function openModal(name) { 
+        document.getElementById('reservaModal').style.display='flex'; 
+        document.getElementById('eventTitle').innerText = name; 
+    }
+    function closeModal() { document.getElementById('reservaModal').style.display='none'; }
+    window.onclick = function(e) { if(e.target == document.getElementById('reservaModal')) closeModal(); }
+
+    function filterCat(category) {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            if(category === 'all' || card.getAttribute('data-cat') === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

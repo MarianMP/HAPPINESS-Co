@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Happiness & Co - Historial de Eventos</title>
+  <style>
+    :root { --magenta: #ba007c; --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    
+    header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif; }
+    nav a { text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+    
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    h2 { margin-bottom: 30px; border-left: 5px solid var(--magenta); padding-left: 15px; text-transform: uppercase; font-size: 22px; }
+
+    /* Grid de Historial */
+    .history-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    
+    /* Tu formato original de tarjeta */
+    .card-past { 
+      border: 1px solid #ddd; 
+      background: #f9f9f9; 
+      filter: grayscale(1); 
+      opacity: 0.7; 
+      border-top: 5px solid #999;
+      transition: 0.3s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-past:hover { opacity: 1; filter: grayscale(0); }
+
+    /* Galería con Flechas */
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      background: #333;
+    }
+    .gallery-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .gallery-container img.active { display: block; }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 8px 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 10;
+      transition: 0.2s;
+    }
+    .nav-arrow:hover { background: var(--magenta); }
+    .prev { left: 0; border-radius: 0 4px 4px 0; }
+    .next { right: 0; border-radius: 4px 0 0 4px; }
+
+    .card-body { padding: 15px; }
+
+    .tag { 
+      font-size: 9px; 
+      font-weight: bold; 
+      text-transform: uppercase; 
+      padding: 3px 8px; 
+      border-radius: 3px; 
+      color: white; 
+      display: inline-block; 
+      margin-bottom: 8px; 
+    }
+    
+    .card-past h4 { font-size: 15px; margin-bottom: 5px; color: #333; }
+    .card-past p { font-size: 12px; color: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; border-radius: 4px; text-transform: uppercase;">&#10094; VOLVER</button>
+        <a href="index.html"><img src="Assets/img/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="historial.html" style="color:var(--magenta)">Historial</a>
+        <a href="empresa.html">Sobre Nosotros</a>
+        <a href="fuentes.html">Fuentes</a>
+        <a href="contacto.html" style="background: #ba007c; color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
+    </nav>
+</header>
+
+<main class="container">
+  <h2>Historial Completo de Eventos Finalizados</h2>
+  
+  <div class="history-grid">
+    
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/aitana.png" class="active">
+        <img src="Assets/img/tour.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--magenta)">Música</span>
+        <h4>Aitana - Alpha Tour</h4>
+        <p>Gijón - Agosto 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/vetustamorla.jfif" class="active">
+        <img src="Assets/img/morla.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--magenta)">Música</span>
+        <h4>Vetusta Morla</h4>
+        <p>Oviedo - Septiembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/melendi.jfif" class="active">
+        <img src="Assets/img/melendi2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--magenta)">Música</span>
+        <h4>Melendi - 20 Años</h4>
+        <p>Avilés - Octubre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/año.jfif" class="active">
+        <img src="Assets/img/año2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--magenta)">Música</span>
+        <h4>Concierto Año Nuevo</h4>
+        <p>Oviedo - Enero 2026</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/miserables.jfif" class="active">
+        <img src="Assets/img/Miserables2.jpg">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--azul)">Escena</span>
+        <h4>Los Miserables</h4>
+        <p>Oviedo - Noviembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/hamlet.jpg" class="active">
+        <img src="Assets/img/hamlet2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--azul)">Escena</span>
+        <h4>Hamlet</h4>
+        <p>Avilés - Diciembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/circosol.jfif" class="active">
+        <img src="Assets/img/circosol2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--azul)">Escena</span>
+        <h4>Corteo (Cirque du Soleil)</h4>
+        <p>Gijón - Enero 2026</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/festivalcine.jfif" class="active">
+        <img src="Assets/img/festivalcine2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--azul)">Escena</span>
+        <h4>Festival de Cine Gijón</h4>
+        <p>Gijón - Noviembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/dali.jfif" class="active">
+        <img src="Assets/img/dali2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--naranja)">Social</span>
+        <h4>Exposición: Dalí</h4>
+        <p>Oviedo - Marzo 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/ferialibro.png" class="active">
+        <img src="Assets/img/ferialibro2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--naranja)">Social</span>
+        <h4>Feria del Libro</h4>
+        <p>Gijón - Mayo 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/navidad.jfif" class="active">
+        <img src="Assets/img/navidad2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--naranja)">Social</span>
+        <h4>Mercado Navideño</h4>
+        <p>Gijón - Diciembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/comic.jpg" class="active">
+        <img src="Assets/img/comic2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--naranja)">Social</span>
+        <h4>Comic Con Asturias</h4>
+        <p>Avilés - Septiembre 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/r.jpg" class="active">
+        <img src="Assets/img/r2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--gris)">Extras</span>
+        <h4>Rally Picos de Europa</h4>
+        <p>Cangas - Mayo 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/trail.jfif" class="active">
+        <img src="Assets/img/trail2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--gris)">Extras</span>
+        <h4>Trail Nocturno Gijón</h4>
+        <p>Gijón - Febrero 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/bollo.jfif" class="active">
+        <img src="Assets/img/bollo2">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--gris)">Extras</span>
+        <h4>Fiesta del Bollu</h4>
+        <p>Avilés - Abril 2025</p>
+      </div>
+    </div>
+
+    <div class="card-past">
+      <div class="gallery-container">
+        <button class="nav-arrow prev" onclick="moveGallery(this, -1)">&#10094;</button>
+        <img src="Assets/img/queso.jfif" class="active">
+        <img src="Assets/img/queso2.jfif">
+        <button class="nav-arrow next" onclick="moveGallery(this, 1)">&#10095;</button>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:var(--gris)">Extras</span>
+        <h4>Cata de Quesos</h4>
+        <p>Cabrales - Agosto 2025</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  function moveGallery(btn, direction) {
+    const container = btn.parentElement;
+    const images = container.querySelectorAll('img');
+    let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+    
+    images[currentIndex].classList.remove('active');
+    currentIndex += direction;
+    
+    if (currentIndex >= images.length) currentIndex = 0;
+    if (currentIndex < 0) currentIndex = images.length - 1;
+    
+    images[currentIndex].classList.add('active');
+  }
+</script>
+
+</body>
+</html>
