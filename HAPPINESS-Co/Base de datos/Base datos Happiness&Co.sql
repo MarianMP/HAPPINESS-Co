@@ -1,121 +1,122 @@
-/* PREPARAR ESQUEMA (Estilo cpr1.sql) */
-DROP SCHEMA IF EXISTS GESTION_EVENTOS;
-CREATE SCHEMA GESTION_EVENTOS;
-USE GESTION_EVENTOS;
+/* 1. CREAR ESQUEMA Y USARLO */
+DROP SCHEMA IF EXISTS happiness_co;
+CREATE SCHEMA happiness_co;
+USE happiness_co;
 
-/* CREACIÓN DE TABLAS CON CONSTRAINTS */
-CREATE TABLE Usuarios (
-    id INT AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_usuarios PRIMARY KEY (id),
-    CONSTRAINT uk_email UNIQUE (email)
+/* 2. CREACIÓN DE TABLAS */
+
+create table Usuarios (
+    id int auto_increment ,
+    nombre varchar(100) not null,
+    email varchar(100) not null,
+    password varchar(100) not null,
+    constraint pk_usuarios primary key(id),
+    constraint uq_email unique (email)
 );
 
-CREATE TABLE Eventos (
-    id INT AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    titulo VARCHAR(150) NOT NULL,
-    ubicacion VARCHAR(150),
-    descripcion TEXT,
-    CONSTRAINT pk_eventos PRIMARY KEY (id)
+create table Eventos (
+    id int auto_increment ,
+    fecha date not null,
+    titulo varchar(120) not null,
+    ubicacion varchar(100),
+    descripcion text,
+    constraint pk_eventos primary key(id)
 );
 
-CREATE TABLE Galerias (
-    id INT AUTO_INCREMENT,
-    titulo VARCHAR(100),
-    id_evento INT,
-    CONSTRAINT pk_galerias PRIMARY KEY (id),
-    CONSTRAINT fk_galeria_evento FOREIGN KEY (id_evento) REFERENCES Eventos (id) ON DELETE CASCADE
+create table Galerias (
+    id int auto_increment ,
+    titulo varchar(150),
+    id_evento int,
+    constraint pk_galerias primary key (id),
+    constraint fk_galeria_evento foreign key (id_evento) references Eventos(id) on delete cascade
 );
 
-CREATE TABLE Imagenes_Galerias (
-    id INT AUTO_INCREMENT,
-    titulo VARCHAR(100),
-    imagen VARCHAR(255),
-    id_galeria INT,
-    CONSTRAINT pk_imagenes PRIMARY KEY (id),
-    CONSTRAINT fk_imagen_galeria FOREIGN KEY (id_galeria) REFERENCES Galerias (id) ON DELETE CASCADE
+create table Imagenes_Galerias (
+    id int auto_increment,
+    titulo varchar(150),
+    imagen varchar(255),
+    id_galeria int,
+    constraint pk_imagenes primary key (id),
+    constraint fk_imagenes_galeria foreign key (id_galeria) references Galerias(id) on delete cascade
 );
 
-CREATE TABLE Favoritos (
-    id_usuario INT,
-    id_evento INT,
-    CONSTRAINT pk_favoritos PRIMARY KEY (id_usuario, id_evento),
-    CONSTRAINT fk_fav_usuario FOREIGN KEY (id_usuario) REFERENCES Usuarios (id),
-    CONSTRAINT fk_fav_evento FOREIGN KEY (id_evento) REFERENCES Eventos (id)
+create table Favoritos (
+    id_usuario int,
+    id_evento int,
+    constraint pk_favoritos primary key (id_usuario, id_evento),
+    constraint fk_fav_usuario foreign key (id_usuario) references Usuarios(id) on delete cascade,
+    constraint fk_fav_evento foreign key (id_evento) references Eventos(id) on delete cascade
 );
-/* INSERTAR USUARIOS */
-INSERT INTO Usuarios (nombre, email, password) VALUES 
-('Ana García', 'ana@mail.com', '1234'),
-('Luis Torres', 'luis@mail.com', 'abcd'),
-('Elena Sanz', 'elena@mail.com', 'qwer');
 
-/* INSERTAR EVENTOS (3 Pasados y 3 Futuros - Hoy es 28-02-2026) */
-INSERT INTO Eventos (id, fecha, titulo, ubicacion, descripcion) VALUES 
-(1, '2026-01-10', 'Concierto de Jazz', 'Teatro Jovellanos', 'Música bajo las estrellas'),
-(2, '2026-01-20', 'Taller Gastronómico', 'Aula Cocina', 'Técnicas culinarias con chefs'),
-(3, '2026-02-05', 'Exposición de Pintura', 'Galería Local', 'Arte plástico local'),
-(4, '2026-05-22', 'Teatro: La Celestina', 'Escenario Principal', 'Obra de Fernando de Rojas'),
-(5, '2026-06-05', 'Expo: Fotografía', 'Sala Social', 'Miradas Urbanas'),
-(6, '2026-06-20', 'Festival Rock', 'Recinto Ferial', 'Bandas en directo');
+/* VER LAS TABLAS */
+select * from usuarios;
+select * from eventos;
+select * from galerias;
+select * from imagenes_galerias;
+select * from favoritos;
 
-/* INSERTAR GALERÍAS */
-INSERT INTO Galerias (id, titulo, id_evento) VALUES 
-(1, 'Galeria Jazz', 1), (2, 'Galeria Cocina', 2), (3, 'Galeria Arte', 3);
+/* 3. INSERTAR DATOS */
 
-/* INSERTAR IMÁGENES (Usando tus rutas reales) */
-INSERT INTO Imagenes_Galerias (titulo, imagen, id_galeria) VALUES 
-('Jazz Pic 1', 'Assets/img/happines-and-co-upper-02.png', 1),
-('Jazz Pic 2', 'Assets/img/happines-and-co-propuesta-02.png', 1),
-('Jazz Pic 3', 'Assets/img/covadonga.jpg', 1),
-('Chef 1', 'Assets/img/happines-and-co-propuesta-06.jpg', 2),
-('Chef 2', 'Assets/img/happines-and-co-upper-03.png', 2),
-('Chef 3', 'Assets/img/happines-and-co-upper-04.png', 2),
-('Arte 1', 'Assets/img/happines-and-co-upper-04.png', 3),
-('Arte 2', 'Assets/img/happines-and-co-upper-02.png', 3),
-('Arte 3', 'Assets/img/happines-and-co-propuesta-02.png', 3);
+-- Usuarios 
+insert into Usuarios (nombre, email, password) values
+('Asier Garcia', 'asier@garcia.es', '1234'),
+('Lucas Alvarez', 'lucassalvarez@.com', '9876'),
+('Lucia Sanchez', 'luciasanchez@gmail.com', '0000');
 
-/* INSERTAR FAVORITOS (2 pasados y 1 futuro por usuario) */
-INSERT INTO Favoritos VALUES (1, 1), (1, 2), (1, 4), 
-                             (2, 2), (2, 3), (2, 5), 
-                             (3, 1), (3, 3), (3, 6);
-                             
-/* VISTA 1: Galerías anteriores a hoy (28-02-2026) */
-CREATE VIEW v_galerias_pasadas AS
-SELECT g.* FROM Galerias g
-JOIN Eventos e ON g.id_evento = e.id
-WHERE e.fecha < '2026-02-28';
+-- Eventos 
+insert into Eventos (id, fecha, titulo, ubicacion, descripcion) values
+(1, '2026-01-01', 'Concierto Año Nuevo', 'Oviedo', 'Tradicional gala lírica'), 
+(2, '2026-01-12', 'Cirque du Soleil', 'Gijón', 'Espectáculo itinerante'), 
+(3, '2026-01-24', 'Festival de Cine', 'Gijón', 'Edición especial invierno'), 
+(4, '2026-06-05', 'American Buffalo', 'Gijón', 'Teatro en el Jovellanos'),
+(5, '2026-06-15', 'Temporada de Ópera', 'Oviedo', 'Producción Teatro Campoamor'), 
+(6, '2026-06-25', 'Gijón Sound Festival', 'Gijón', 'Música independiente');  
 
-/* VISTA 2: Favoritos del Usuario 1 */
-CREATE VIEW v_favoritos_ana AS
-SELECT e.* FROM Eventos e
-JOIN Favoritos f ON e.id = f.id_evento
-WHERE f.id_usuario = 1;
+-- Galerías 
+insert into Galerias (id, titulo, id_evento) values 
+(10, 'Fotos Gala Año Nuevo', 1),
+(20, 'Fotos Circo del Sol', 2),
+(30, 'Fotos Alfombra Roja Gijón', 3);
 
-/* VISTA 3: Imágenes de la galería del 12-01-2026 */
-/* Nota: Como en tus datos el evento más cercano es el 12-01, usamos el ID 2 */
-CREATE VIEW v_fotos_evento_enero AS
-SELECT i.* FROM Imagenes_Galerias i
-JOIN Galerias g ON i.id_galeria = g.id
-WHERE g.id_evento = 2;
+-- Imágenes de las galerías 
+insert into Imagenes_Galerias (titulo, imagen, id_galeria) values 
+('Orquesta', 'año.jfif', 10), ('Público', 'año2.jfif', 10), ('Director', 'oviedo_gala.jpg', 10),
+('Acróbatas', 'circosol.jfif', 20), ('Escenario', 'circosol2.jfif', 20), ('Carpas', 'circo_vuelo.png', 20),
+('Premiados', 'festivalcine.jfif', 30), ('Gala', 'festivalcine2.jfif', 30), ('Teatro', 'cine_gijon.jpg', 30);
 
-/* VISTA 4: Favoritos futuros del Usuario 2 */
-CREATE VIEW v_proximos_luis AS
-SELECT e.* FROM Eventos e
-JOIN Favoritos f ON e.id = f.id_evento
-WHERE f.id_usuario = 2 AND e.fecha > '2026-02-28';
+-- Favoritos 
+insert into Favoritos values (1, 1), (1, 2), (1, 4); 
+insert into Favoritos values (2, 2), (2, 3), (2, 5); 
+insert into Favoritos values (3, 1), (3, 4), (3, 6);
 
+/* 4. creacion de vistas */
 
--- Ver todas las galerías de eventos pasados
-SELECT * FROM v_galerias_pasadas;
+-- vista 1: galerías anteriores al 28-02-2026
+create view v_galerias_historial as
+select g.* from galerias g
+join eventos e on g.id_evento = e.id
+where e.fecha < '2026-02-28';
 
--- Ver los eventos favoritos de Ana (Usuario 1)
-SELECT * FROM v_favoritos_ana;
+-- vista 2: favoritos del usuario 1
+create view v_favoritos_usuario_1 as
+select e.titulo, e.fecha, e.ubicacion from eventos e
+join favoritos f on e.id = f.id_evento
+where f.id_usuario = 1;
 
--- Ver las fotos del evento de enero (Taller Gastronómico)
-SELECT * FROM v_fotos_evento_enero;
+-- vista 3: imágenes de la galería del evento del 12-01-2026 (id_evento 2)
+create view v_imagenes_circo_sol as
+select i.titulo, i.imagen from imagenes_galerias i
+join galerias g on i.id_galeria = g.id
+where g.id_evento = 2;
 
--- Ver los próximos eventos que le interesan a Luis
-SELECT * FROM v_proximos_luis;
+-- vista 4: favoritos del usuario 2 posteriores al 28-02-2026
+create view v_favoritos_futuros_usuario_2 as
+select e.titulo, e.fecha from eventos e
+join favoritos f on e.id = f.id_evento
+where f.id_usuario = 2 and e.fecha > '2026-02-28';
+
+/* consultas */
+select * from v_galerias_historial;
+select * from v_favoritos_usuario_1;
+select * from v_imagenes_circo_sol;
+select * from v_favoritos_futuros_usuario_2;
