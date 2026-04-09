@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuentes | Happiness & Co</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+        :root { 
+            --magenta: #ba007c; 
+            --gris-claro: #f8f9fa; 
+            --texto: #333; 
+            --azul: #0099da;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+        body { background-color: var(--gris-claro); color: var(--texto); line-height: 1.6; }
+        
+        /* HEADER ESTILO SOBRE NOSOTROS */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 5%; 
+            background: #ffffff; 
+            border-bottom: 2px solid var(--magenta); 
+            position: sticky; 
+            top:0; 
+            z-index:1000; 
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container { 
+            max-width: 900px; 
+            margin: 40px auto; 
+            padding: 40px; 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            min-height: 60vh;
+        }
+
+        h1 { border-left: 5px solid var(--magenta); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; font-size: 22px; letter-spacing: 1px; }
+        
+        h2 { color: var(--magenta); font-size: 17px; margin: 25px 0 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; text-transform: uppercase; }
+        
+        ul { list-style: none; padding-left: 5px; }
+        
+        li { margin-bottom: 20px; padding: 10px; transition: 0.2s; border-left: 2px solid #eee; }
+        li:hover { border-left: 2px solid var(--magenta); background: #fdfdfd; }
+        
+        li strong { display: block; color: #000; font-size: 14px; margin-bottom: 3px; text-transform: uppercase; }
+        li span { font-size: 13px; color: #666; display: block; margin-bottom: 5px; }
+        
+        li a { 
+            color: var(--azul); 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: bold; 
+            transition: 0.3s;
+        }
+        li a:hover { color: var(--magenta); text-decoration: underline; }
+
+        /* FOOTER OSCURO UNIFICADO */
+        footer { background: #111; color: #777; text-align: center; padding: 50px 20px; margin-top: 50px; }
+        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; }
+        .social-links a { color: #777; font-size: 20px; transition: 0.3s; text-decoration: none; }
+        .social-links a:hover { color: #fff; transform: translateY(-3px); }
+        .footer-divider { width: 40px; height: 1px; background: #444; margin: 20px auto; }
+        .copyright { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
+            &#10094; VOLVER
+        </button>
+        <a href="index.html">
+            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+        </a>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+        <a href="fuentes.html" style="text-decoration: none; color: var(--magenta); border-bottom: 2px solid var(--magenta); margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
+        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
+        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Fuentes y Atribuciones</h1>
+
+    <h2>1. Identidad Visual</h2>
+    <ul>
+        <li>
+            <strong>Logotipos y Tipografías:</strong> 
+            <span>Uso de las fuentes Asenine (para el cuerpo del logo) y Ar Chistry (para el símbolo &).</span>
+        </li>
+        <li>
+            <strong>Tipografía Web Principal:</strong> 
+            <span>Montserrat </span>
+        </li>
+    </ul>
+
+    <h2>2. Contenidos e Imágenes</h2>
+    <ul>
+        <li>
+            <strong>Información Turística y Eventos:</strong> 
+            <span>Textos y datos extraídos del portal oficial de turismo de la región.</span>
+            <a href="https://www.turismoasturias.es/" target="_blank">Visitar Turismo Asturias</a>
+        </li>
+        <li>
+            <strong>Agenda Cultural y Teatros:</strong> 
+            <span>Programación obtenida de los sitios oficiales de los principales teatros de Asturias.</span>
+            <a href="https://www.teatrojovellanos.com/" target="_blank">Teatro Jovellanos (Gijón)</a> | 
+            <a href="https://www.centroniemeyer.es/" target="_blank">Centro Niemeyer (Avilés)</a>
+        </li>
+        <li>
+            <strong>Banco de Imágenes:</strong> 
+            <span>Fotografías de stock para diseño de interfaz de usuario.</span>
+            <a href="https://www.unsplash.com" target="_blank">Unsplash</a> | 
+            <a href="https://www.pexels.com" target="_blank">Pexels</a>
+        </li>
+    </ul>
+
+    <h2>3. Recursos de Desarrollo</h2>
+    <ul>
+        <li>
+            <strong>Iconografía:</strong> 
+            <span>Iconos vectoriales de redes sociales y navegación.</span>
+            <a href="https://fontawesome.com/" target="_blank">Font Awesome 6.5.1</a>
+        </li>
+    </ul>
+</main>
+
+<footer>
+    <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="copyright">© 2026 HAPPINESS&CO · GIJÓN, ASTURIAS · TODOS LOS DERECHOS RESERVADOS</div>
+</footer>
+
+</body>
+</html>

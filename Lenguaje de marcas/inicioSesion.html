@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <meta charset="UTF-8">
+    <title id="page-title">Acceso | Happiness & Co</title>
+    <style>
+        :root { --magenta: #ba007c; --gris: #f8f9fa; --texto: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        /* Estilos para que el header no flote sobre el contenido si no quieres, 
+           o sea sticky si lo prefieres */
+        header { 
+            position: relative; 
+            z-index: 1001; 
+        }
+
+        /* Ajuste de altura para que el split-screen ocupe el resto de la pantalla */
+        #split-screen { 
+            display: flex; 
+            height: calc(100vh - 82px); /* 100vh menos la altura aproximada del header */
+            width: 100%; 
+            transition: 0.5s; 
+        }
+
+        /* LADO IZQUIERDO */
+        .left-side {
+            flex: 1; background-color: var(--magenta); color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 60px; text-align: center;
+        }
+        .left-side h1 { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
+
+        /* LADO DERECHO */
+        .right-side {
+            flex: 1.2; background-color: white; display: flex; flex-direction: column;
+            justify-content: center; padding: 0 10%; position: relative;
+        }
+
+        .form-container { animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .full-width { grid-column: span 2; }
+
+        .form-group label { display: block; font-size: 11px; font-weight: bold; color: var(--magenta); text-transform: uppercase; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; background: var(--gris); outline: none; }
+
+        .btn-fill {
+            background: var(--magenta); color: white; border: none; padding: 15px;
+            width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer;
+            text-transform: uppercase; transition: 0.3s; margin-top: 10px;
+        }
+        .btn-fill:hover { background: #9e006a; box-shadow: 0 5px 15px rgba(186,0,124,0.2); }
+
+        /* PANEL DE GALERÍA (INICIALMENTE VACÍO) */
+        #gallery-panel { display: none; padding: 50px; background: #fdfdfd; min-height: 100vh; }
+        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        
+        .card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .card-img { height: 180px; background-size: cover; background-position: center; }
+        .card-body { padding: 20px; text-align: center; }
+        .countdown { font-size: 22px; font-weight: bold; color: var(--magenta); margin-top: 10px; font-family: monospace; }
+    </style>
+</head>
+<body onload="checkSession()">
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
+    
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
+            &#10094; VOLVER
+        </button>
+        <a href="index.html">
+            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+        </a>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
+        
+        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
+        
+        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
+        
+        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
+        
+        <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
+        
+        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
+        
+        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
+    </nav>
+</header>
+
+    <div id="split-screen">
+        <div class="left-side">
+            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" style="height: 60px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+            <p id="left-text">Regístrate para activar tu agenda de eventos.</p>
+        </div>
+
+        <div class="right-side">
+            <div id="register-container" class="form-container">
+                <h2 style="margin-bottom: 20px;">Crear Cuenta</h2>
+                <form onsubmit="handleAuth(event, 'register')">
+                    <div class="form-grid">
+                        <div class="form-group"><label>Nombre</label><input type="text" id="regName" required></div>
+                        <div class="form-group"><label>Apellidos</label><input type="text" id="regSurname" required></div>
+                        <div class="form-group"><label>Teléfono</label><input type="tel" required></div>
+                        <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
+                        <div class="form-group full-width"><label>Contraseña</label><input type="password" required></div>
+                    </div>
+                    <button type="submit" class="btn-fill">Registrarse y Activar</button>
+                </form>
+                <p style="margin-top:20px; text-align:center; font-size:14px;">¿Ya tienes cuenta? <span onclick="toggleAuth()" style="color:var(--magenta); cursor:pointer; font-weight:bold;">Inicia Sesión</span></p>
+            </div>
+
+            <div id="login-container" class="form-container" style="display:none;">
+                <h2 style="margin-bottom: 20px;">Iniciar Sesión</h2>
+                <form onsubmit="handleAuth(event, 'login')">
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label>Email</label>
+                        <input type="email" id="logEmail" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label>Contraseña</label>
+                        <input type="password" required>
+                    </div>
+                    <button type="submit" class="btn-fill">Entrar a mi Agenda</button>
+                </form>
+                <p style="margin-top:20px; text-align:center; font-size:14px;">¿No tienes cuenta? <span onclick="toggleAuth()" style="color:var(--magenta); cursor:pointer; font-weight:bold;">Regístrate aquí</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery-panel">
+        <header style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h1>Hola, <span id="userDisp" style="color: var(--magenta);"></span></h1>
+            <button onclick="logout()" style="padding: 10px 20px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc;">Cerrar Sesión</button>
+        </header>
+
+        <div id="event-container" class="event-grid">
+            </div>
+    </div>
+
+    <script>
+        const eventosData = [
+            { titulo: "Rodrigo Cuevas", lugar: "Gijón", img: "Assets/img/happines-and-co-upper-02.png", fecha: "June 15, 2026 21:00:00" },
+            { titulo: "La Celestina", lugar: "Avilés", img: "Assets/img/happines-and-co-upper-03.png", fecha: "May 22, 2026 20:00:00" }
+        ];
+
+        function toggleAuth() {
+            const reg = document.getElementById('register-container');
+            const log = document.getElementById('login-container');
+            const txt = document.getElementById('left-text');
+            
+            if(reg.style.display === 'none') {
+                reg.style.display = 'block';
+                log.style.display = 'none';
+                txt.innerText = "Regístrate para activar tu agenda de eventos.";
+            } else {
+                reg.style.display = 'none';
+                log.style.display = 'block';
+                txt.innerText = "¡Qué bueno verte de nuevo! Accede a tu contenido.";
+            }
+        }
+
+        function handleAuth(e, type) {
+            e.preventDefault();
+            let name;
+            if(type === 'register') {
+                name = document.getElementById('regName').value + " " + document.getElementById('regSurname').value;
+            } else {
+                name = document.getElementById('logEmail').value.split('@')[0];
+            }
+            sessionStorage.setItem("userSession", name);
+            activateGallery(name);
+        }
+
+        function checkSession() {
+            const user = sessionStorage.getItem("userSession");
+            if(user) activateGallery(user);
+        }
+
+        function activateGallery(name) {
+            document.getElementById('split-screen').style.display = 'none';
+            document.getElementById('gallery-panel').style.display = 'block';
+            document.getElementById('userDisp').innerText = name;
+
+            const container = document.getElementById('event-container');
+            container.innerHTML = ""; 
+
+            eventosData.forEach((ev, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-img" style="background-image: url('${ev.img}')"></div>
+                    <div class="card-body">
+                        <h3>${ev.titulo}</h3>
+                        <p style="color:#666; font-size:12px;">${ev.lugar}</p>
+                        <div class="countdown" id="timer-${i}">--d --h --m --s</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            startClocks();
+        }
+
+        function startClocks() {
+            setInterval(() => {
+                const now = new Date().getTime();
+                eventosData.forEach((ev, i) => {
+                    const diff = new Date(ev.fecha).getTime() - now;
+                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((diff % (1000 * 60)) / 1000);
+                    const el = document.getElementById(`timer-${i}`);
+                    if(el) el.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+                });
+            }, 1000);
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            location.reload();
+        }
+    </script>
+</body>
+</html>
