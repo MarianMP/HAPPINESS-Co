@@ -15,6 +15,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #fcfcfc; color: #333; }
 
+        /* HEADER ORIGINAL RECUPERADO */
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 2px solid var(--magenta); background: #fff; position: sticky; top: 0; z-index: 1000; }
         .header-left { display: flex; align-items: center; gap: 20px; }
         nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
@@ -45,16 +46,20 @@
             text-transform: uppercase; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
         }
 
-        /* MODAL DE COMPRA UNIFICADO */
+        /* MODAL DE COMPRA SIN TEMPORIZADOR */
         .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; overflow-y: auto; padding: 10px; }
-        .modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 12px; overflow: hidden; position: relative; }
-        .checkout-body { padding: 25px; max-height: 80vh; overflow-y: auto; }
+        .modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 12px; overflow: hidden; position: relative; border-top: 5px solid var(--magenta); }
+        .checkout-body { padding: 25px; max-height: 85vh; overflow-y: auto; }
         .section-block { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
         .section-block h3 { font-size: 14px; text-transform: uppercase; color: var(--magenta); margin-bottom: 10px; }
         
         .ticket-row { display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; padding: 10px; border-radius: 6px; margin-bottom: 8px; }
         input[type="text"], input[type="email"], select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; }
         
+        /* ESTILO PAGO BIZUM/TARJETA */
+        .pay-method { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 4px; font-size: 11px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .pay-method.active { border-color: var(--magenta); background: #fff0f9; font-weight: bold; }
+
         .modal-footer { padding: 20px; background: #fdfdfd; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
 
         .sidebar { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #eee; height: fit-content; }
@@ -68,16 +73,24 @@
 </head>
 <body>
 
-<header>
-    <div class="header-left">
-        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; border-radius: 4px;">&#10094; VOLVER</button>
-        <a href="index.html"><img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" style="height: 45px;"></a>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
+            &#10094; VOLVER
+        </button>
+        <a href="index.html">
+            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+        </a>
     </div>
-    <nav>
+
+    <nav style="display: flex; align-items: center; gap: 10px;">
         <a href="index.html">Inicio</a>
         <a href="eventos.html">Eventos</a>
         <a href="historial.html">Historial</a>
-        <a href="contacto.html" style="background: #ba007c; color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
+        <a href="empresa.html">Sobre Nosotros</a>
+        <a href="fuentes.html">Fuentes</a>
+        <a href="contacto.html" style="background: var(--magenta); color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
+        <a href="inicioSesion.html" style="border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
     </nav>
 </header>
 
@@ -99,69 +112,49 @@
                 <div class="details">Festival urbano que llena de música independiente los teatros y plazas de Gijón.</div>
                 <button class="btn-reserva" onclick="openCheckout('Gijón Sound', 45, 85)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
-            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-                <div class="card-content"><img src="Assets/img/EVENTOS/Rodrigo Cuevas/rodrigo.jfif"><h4>Rodrigo Cuevas</h4><p class="meta" style="color:var(--magenta)">Gijón - 23 Abr</p></div>
-                <div class="details">El agitador folclórico presenta su gira "La Romería" en un espectáculo único.</div>
-                <button class="btn-reserva" onclick="openCheckout('Rodrigo Cuevas', 32, 55)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-            </div>
-            <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-                <div class="card-content"><img src="Assets/img/vibra.jfif"><h4>Vibra Mahou Fest</h4><p class="meta" style="color:var(--magenta)">Gijón - 16 May</p></div>
-                <div class="details">La gran cita del indie nacional en el Recinto Ferial Luis Adaro.</div>
-                <button class="btn-reserva" onclick="openCheckout('Vibra Mahou', 35, 65)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-            </div>
+                       
             <div class="card" data-cat="musica" style="border-color: var(--magenta);">
                 <div class="card-content"><img src="Assets/img/EVENTOS/boombastic/BOMBASTIC.jfif"><h4>Boombastic Asturias</h4><p class="meta" style="color:var(--magenta)">Llanera - 16-18 Jul</p></div>
                 <div class="details">"The Last Dance". El mayor festival de música urbana en La Morgal.</div>
                 <button class="btn-reserva" onclick="openCheckout('Boombastic', 95, 160)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
             <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-                <div class="card-content"><img src="Assets/img/aquasella.jfif"><h4>Aquasella Festival</h4><p class="meta" style="color:var(--magenta)">Arriondas - 13-16 Ago</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/aquasella/aquasella.jfif"><h4>Aquasella Festival</h4><p class="meta" style="color:var(--magenta)">Arriondas - 13-16 Ago</p></div>
                 <div class="details">El festival de música electrónica más veterano.</div>
                 <button class="btn-reserva" onclick="openCheckout('Aquasella', 80, 140)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
-
             <div class="card" data-cat="escena" style="border-color: var(--azul);">
-                <div class="card-content"><img src="Assets/img/cine-niemeyer.jfif"><h4>Festival Cine LGTBI</h4><p class="meta" style="color:var(--azul)">Avilés - 09-19 Abr</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/festival cine/LGTBI.jfif"><h4>Festival Cine LGTBI</h4><p class="meta" style="color:var(--azul)">Avilés - 09-19 Abr</p></div>
                 <div class="details">Proyecciones internacionales en el Centro Niemeyer de Avilés.</div>
                 <button class="btn-reserva" onclick="openCheckout('Cine LGTBI', 6, 15)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
             <div class="card" data-cat="escena" style="border-color: var(--azul);">
-                <div class="card-content"><img src="Assets/img/teatro-campoamor.jpg"><h4>Temporada de Ópera</h4><p class="meta" style="color:var(--azul)">Oviedo - Mayo</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/opera/campoamor.jfif"><h4>Temporada de Ópera</h4><p class="meta" style="color:var(--azul)">Oviedo - Mayo</p></div>
                 <div class="details">Producciones líricas de primer nivel en el histórico Teatro Campoamor.</div>
                 <button class="btn-reserva" onclick="openCheckout('Ópera', 40, 120)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
             <div class="card" data-cat="escena" style="border-color: var(--azul);">
-                <div class="card-content"><img src="Assets/img/teatro-jovellanos.jpg"><h4>American Buffalo</h4><p class="meta" style="color:var(--azul)">Gijón - 05 Jun</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/american buffalo/descarga.jfif"><h4>American Buffalo</h4><p class="meta" style="color:var(--azul)">Gijón - 05 Jun</p></div>
                 <div class="details">Teatro contemporáneo en el Teatro Jovellanos.</div>
                 <button class="btn-reserva" onclick="openCheckout('Teatro', 20, 35)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
-            <div class="card" data-cat="escena" style="border-color: var(--azul);">
-                <div class="card-content"><img src="Assets/img/ospa.jfif"><h4>Concierto OSPA</h4><p class="meta" style="color:var(--azul)">Gijón - 03 Jun</p></div>
-                <div class="details">Orquesta Sinfónica del Principado de Asturias.</div>
-                <button class="btn-reserva" onclick="openCheckout('OSPA', 15, 25)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-            </div>
-
+            
             <div class="card" data-cat="social" style="border-color: var(--naranja);">
                 <div class="card-content"><img src="Assets/img/EVENTOS/semana negra/NEGRA.jfif"><h4>Semana Negra</h4><p class="meta" style="color:var(--naranja)">Gijón - 03-12 Jul</p></div>
                 <div class="details">Encuentro literario, cultural y festivo a orillas del Arbeyal.</div>
                 <button class="btn-reserva" onclick="openCheckout('Semana Negra', 0, 20)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
-            <div class="card" data-cat="social" style="border-color: var(--naranja);">
-                <div class="card-content"><img src="Assets/img/yeye.jfif"><h4>Euro Yeyé Weekend</h4><p class="meta" style="color:var(--naranja)">Gijón - 23-26 Jul</p></div>
-                <div class="details">Referente europeo de la cultura mod y sesentera.</div>
-                <button class="btn-reserva" onclick="openCheckout('Euro Yeyé', 50, 90)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-            </div>
+           
             <div class="card" data-cat="social" style="border-color: var(--naranja);">
                 <div class="card-content"><img src="Assets/img/EVENTOS/fidma/FERIADEMUESTRAS.JPEG"><h4>FIDMA (100ª ed.)</h4><p class="meta" style="color:var(--naranja)">Gijón - 01-16 Ago</p></div>
                 <div class="details">Edición centenaria de la Feria Internacional de Muestras.</div>
                 <button class="btn-reserva" onclick="openCheckout('FIDMA', 4, 12)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
             <div class="card" data-cat="social" style="border-color: var(--naranja);">
-                <div class="card-content"><img src="Assets/img/nava.jfif"><h4>Festival de la Sidra</h4><p class="meta" style="color:var(--naranja)">Nava - Julio</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/festival sidra/sidra.jfif"><h4>Festival de la Sidra</h4><p class="meta" style="color:var(--naranja)">Nava - Julio</p></div>
                 <div class="details">Concurso internacional de escanciadores en Nava.</div>
                 <button class="btn-reserva" onclick="openCheckout('Sidra Nava', 5, 15)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
-
             <div class="card" data-cat="gris" style="border-color: var(--gris);">
                 <div class="card-content"><img src="Assets/img/EVENTOS/descenso del sella/SELLA.jfif"><h4>Descenso del Sella</h4><p class="meta" style="color:var(--gris)">Arriondas - 08 Ago</p></div>
                 <div class="details">Fiesta de las Piraguas entre Arriondas y Ribadesella.</div>
@@ -173,7 +166,7 @@
                 <button class="btn-reserva" onclick="openCheckout('Rally', 0, 50)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
             <div class="card" data-cat="gris" style="border-color: var(--gris);">
-                <div class="card-content"><img src="Assets/img/desarme.jfif"><h4>El Desarme</h4><p class="meta" style="color:var(--gris)">Oviedo - 19 Oct</p></div>
+                <div class="card-content"><img src="Assets/img/EVENTOS/el desarme/garbanzos.jfif"><h4>El Desarme</h4><p class="meta" style="color:var(--gris)">Oviedo - 19 Oct</p></div>
                 <div class="details">Fiesta gastronómica histórica con menú de garbanzos.</div>
                 <button class="btn-reserva" onclick="openCheckout('Desarme', 25, 35)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
             </div>
@@ -190,10 +183,6 @@
 
 <div id="checkoutModal" class="modal">
     <div class="modal-content">
-        <div style="background: #ffeded; color: #d32f2f; padding: 10px; text-align: center; font-size: 11px; font-weight: bold;">
-            <i class="fa-solid fa-clock"></i> LA SESIÓN EXPIRA EN: <span id="timer">10:00</span>
-        </div>
-        
         <div class="checkout-body">
             <h2 id="modalEventName" style="margin-bottom:20px; font-size:20px;">NOMBRE EVENTO</h2>
             
@@ -217,17 +206,19 @@
 
             <div class="section-block">
                 <h3>3. PAGO SEGURO</h3>
-                <div style="display:flex; gap:5px; margin-bottom:10px;">
-                    <div style="flex:1; border:1px solid var(--magenta); background:#fff0f9; padding:8px; border-radius:4px; font-size:11px; text-align:center;">TARJETA</div>
-                    <div style="flex:1; border:1px solid #ddd; padding:8px; border-radius:4px; font-size:11px; text-align:center;">BIZUM</div>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <div id="payT" class="pay-method active" onclick="setPay('T')"><i class="fa-solid fa-credit-card"></i> TARJETA</div>
+                    <div id="payB" class="pay-method" onclick="setPay('B')"><i class="fa-solid fa-mobile-screen-button"></i> BIZUM</div>
                 </div>
-                <input type="text" placeholder="Nº de tarjeta: 0000 0000 0000 0000">
+                <div id="payInputContainer">
+                    <input type="text" id="payInput" placeholder="Nº de tarjeta: 0000 0000 0000 0000">
+                </div>
             </div>
         </div>
 
         <div class="modal-footer">
             <div><p style="font-size:10px; color:#999;">TOTAL</p><h2 id="grandTotal">0,00€</h2></div>
-            <button class="btn-reserva" style="width:auto; padding:12px 30px; border-radius:30px;" onclick="alert('¡Compra realizada con éxito! Revisa tu email.'); location.reload();">FINALIZAR COMPRA</button>
+            <button class="btn-reserva" style="width:auto; padding:12px 30px; border-radius:30px;" onclick="alert('¡Compra realizada con éxito!'); location.reload();">FINALIZAR COMPRA</button>
         </div>
         <p onclick="closeCheckout()" style="text-align:center; padding:15px; cursor:pointer; color:#bbb; font-size:11px;">CANCELAR</p>
     </div>
@@ -243,7 +234,6 @@
         document.getElementById('p2_val').innerText = price2 + "€";
         p1 = price1; p2 = price2;
         calculate();
-        startTimer(600);
     }
 
     function calculate() {
@@ -251,18 +241,13 @@
         document.getElementById('grandTotal').innerText = total.toFixed(2) + "€";
     }
 
-    function closeCheckout() { document.getElementById('checkoutModal').style.display='none'; }
-
-    function startTimer(duration) {
-        let timer = duration, minutes, seconds;
-        let display = document.getElementById('timer');
-        setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-            if (--timer < 0) { closeCheckout(); }
-        }, 1000);
+    function setPay(type) {
+        document.getElementById('payT').className = (type === 'T') ? 'pay-method active' : 'pay-method';
+        document.getElementById('payB').className = (type === 'B') ? 'pay-method active' : 'pay-method';
+        document.getElementById('payInput').placeholder = (type === 'T') ? 'Nº de tarjeta: 0000 0000 0000 0000' : 'Introduce tu número de teléfono';
     }
+
+    function closeCheckout() { document.getElementById('checkoutModal').style.display='none'; }
 
     function filterCat(c) {
         document.querySelectorAll('.card').forEach(card => {

@@ -8,22 +8,18 @@
         :root { --magenta: #ba007c; --gris: #f8f9fa; --texto: #333; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        /* Estilos para que el header no flote sobre el contenido si no quieres, 
-           o sea sticky si lo prefieres */
         header { 
             position: relative; 
             z-index: 1001; 
         }
 
-        /* Ajuste de altura para que el split-screen ocupe el resto de la pantalla */
         #split-screen { 
             display: flex; 
-            height: calc(100vh - 82px); /* 100vh menos la altura aproximada del header */
+            height: calc(100vh - 82px); 
             width: 100%; 
             transition: 0.5s; 
         }
 
-        /* LADO IZQUIERDO */
         .left-side {
             flex: 1; background-color: var(--magenta); color: white;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -31,7 +27,6 @@
         }
         .left-side h1 { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
 
-        /* LADO DERECHO */
         .right-side {
             flex: 1.2; background-color: white; display: flex; flex-direction: column;
             justify-content: center; padding: 0 10%; position: relative;
@@ -53,7 +48,6 @@
         }
         .btn-fill:hover { background: #9e006a; box-shadow: 0 5px 15px rgba(186,0,124,0.2); }
 
-        /* PANEL DE GALERÍA (INICIALMENTE VACÍO) */
         #gallery-panel { display: none; padding: 50px; background: #fdfdfd; min-height: 100vh; }
         .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
         
@@ -61,12 +55,14 @@
         .card-img { height: 180px; background-size: cover; background-position: center; }
         .card-body { padding: 20px; text-align: center; }
         .countdown { font-size: 22px; font-weight: bold; color: var(--magenta); margin-top: 10px; font-family: monospace; }
+        
+        /* Estilo para el mensaje de "Sin eventos" */
+        .no-events-msg { grid-column: 1 / -1; text-align: center; padding: 40px; color: #888; font-style: italic; }
     </style>
 </head>
 <body onload="checkSession()">
 
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
-    
     <div style="display: flex; align-items: center; gap: 20px;">
         <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
             &#10094; VOLVER
@@ -78,17 +74,11 @@
 
     <nav style="display: flex; align-items: center; gap: 10px;">
         <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
-        
         <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
-        
         <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
-        
         <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
-        
         <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
-        
         <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
-        
         <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
     </nav>
 </header>
@@ -144,10 +134,8 @@
     </div>
 
     <script>
-        const eventosData = [
-            { titulo: "Rodrigo Cuevas", lugar: "Gijón", img: "Assets/img/happines-and-co-upper-02.png", fecha: "June 15, 2026 21:00:00" },
-            { titulo: "La Celestina", lugar: "Avilés", img: "Assets/img/happines-and-co-upper-03.png", fecha: "May 22, 2026 20:00:00" }
-        ];
+        // HEMOS VACIADO ESTA LISTA PARA QUE NO SALGA NINGÚN EVENTO
+        const eventosData = [];
 
         function toggleAuth() {
             const reg = document.getElementById('register-container');
@@ -190,6 +178,11 @@
             const container = document.getElementById('event-container');
             container.innerHTML = ""; 
 
+            // Si no hay eventos, mostramos un mensaje amigable
+            if (eventosData.length === 0) {
+                container.innerHTML = "<div class='no-events-msg'><h3>No tienes eventos en tu agenda todavía.</h3><p>Explora nuestra web para añadir nuevos planes.</p></div>";
+            }
+
             eventosData.forEach((ev, i) => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -207,6 +200,7 @@
         }
 
         function startClocks() {
+            if (eventosData.length === 0) return;
             setInterval(() => {
                 const now = new Date().getTime();
                 eventosData.forEach((ev, i) => {

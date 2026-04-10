@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happiness & Co - Sobre Nosotros</title>
     <style>
-        :root { --magenta: #ba007c; --azul: #0099da; --naranja: #ff8000; }
+        /* COLORES CORPORATIVOS SEGÚN ESPECIFICACIONES */
+        :root { 
+            --magenta: #ba007c; /* Color principal y música */
+            --azul: #009bdb;    /* Cine, teatro... */
+            --naranja: #ff7b00; /* Exposiciones */
+            --gris: #555555;    /* Resto de eventos */
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; background-color: #fcfcfc; }
         
@@ -21,7 +27,9 @@
         /* Título de Sección */
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h1 { font-size: 32px; text-transform: uppercase; color: #222; letter-spacing: 1px; }
-        .section-header span { color: var(--magenta); }
+        /* TIPOGRAFÍA LOGO */
+        .section-header h1 { font-family: 'Asenine', Arial, sans-serif; } 
+        .section-header span { color: var(--magenta); font-family: 'Ar Chistry', serif; }
 
         /* Contenido Intercalado */
         .content-row { display: flex; gap: 50px; align-items: center; margin-bottom: 60px; }
@@ -36,7 +44,17 @@
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
         .member-card { background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 8px; transition: 0.3s; border-top: 5px solid var(--azul); }
         .member-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .member-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #eee; }
+        
+        /* IMÁGENES RECTANGULARES 2:3 CON BORDE ROSA */
+        .member-img { 
+            width: 100%; 
+            aspect-ratio: 2 / 3; 
+            object-fit: cover; 
+            margin-bottom: 15px; 
+            border: 4px solid var(--magenta); 
+            border-radius: 4px;
+        }
+
         .member-card h4 { font-size: 18px; margin-bottom: 5px; }
         .member-card .cargo { color: var(--magenta); font-weight: bold; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; display: block; }
         .member-card p { font-size: 13px; color: #666; }
@@ -45,7 +63,7 @@
         .full-banner { width: 100%; line-height: 0; margin-top: 80px; }
         .full-banner img { width: 100%; height: auto; display: block; }
 
-        /* FOOTER ORIGINAL ESTILO OSCURO */
+        /* FOOTER ORIGINAL */
         footer { background: #111; color: #777; text-align: center; padding: 50px 20px; }
         .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; }
         .social-links a { color: #777; font-size: 20px; transition: 0.3s; text-decoration: none; }
@@ -59,7 +77,6 @@
 <body>
 
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
-    
     <div style="display: flex; align-items: center; gap: 20px;">
         <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
             &#10094; VOLVER
@@ -71,48 +88,42 @@
 
     <nav style="display: flex; align-items: center; gap: 10px;">
         <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
-        
         <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
-        
         <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
-        
         <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
-        
         <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
-        
         <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
-        
         <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
     </nav>
 </header>
 
     <main class="container">
         <div class="section-header">
-            <h1>HAPPINESS&CO - <span>Sobre Nosotros</span></h1>
+            <h1>HAPPINESS <span>&</span> CO</h1>
             <p>Conoce la historia y el equipo detrás de la agenda cultural de Asturias.</p>
         </div>
 
         <section class="content-row">
-            <div class="image-box"><img src="Assets/img/empresa-01.jpg" alt="Oficina"></div>
+            <div class="image-box"><img src="Assets/img/EMPRESA/ESENCIA.jfif" alt="Equipo Happiness&Co"></div>
             <div class="text-box">
-                <h2>Nuestra Misión</h2>
-                <p>En Happiness&Co creemos que la cultura no debería ser difícil de encontrar. Nacimos para centralizar el ocio de nuestra región, filtrando el ruido para que cada usuario encuentre exactamente lo que busca: desde un concierto íntimo hasta la gran ópera de Oviedo.</p>
+                <h2>Nuestra Esencia</h2>
+                <p>HAPPINESS&Co es una empresa joven y dinámica que se dedicada, en cuerpo y alma, al mundo del ocio. Perdidos entre la inmensa marea de actividades culturales que existen cada día en nuestra ciudad, nos dimos cuenta de que hacía falta buscar un poco de orden y estructura en este inmenso océano de posibilidades.</p>
             </div>
         </section>
 
         <section class="content-row reverse">
-            <div class="image-box"><img src="Assets/img/empresa-02.jpg" alt="Cultura"></div>
+            <div class="image-box"><img src="Assets/img/EMPRESA/SOLUCION.jfif" alt="Cultura en la ciudad"></div>
             <div class="text-box">
-                <h2>Crecimiento Joven</h2>
-                <p>Somos un equipo dinámico que entiende las nuevas formas de consumo cultural. No solo listamos eventos; creamos una experiencia donde la sostenibilidad y el apoyo al artista local son los pilares fundamentales de nuestra gestión diaria.</p>
+                <h2>Nuestra Solución</h2>
+                <p>Así surgió HAPPINESS&Co: una agenda cultural que intenta recopilar y organizar todos los eventos culturales, de cualquier tipo, que tienen lugar en nuestra localidad e inmediaciones.</p>
             </div>
         </section>
 
         <section class="content-row">
-            <div class="image-box"><img src="Assets/img/empresa-03.jpg" alt="Tecnología"></div>
+            <div class="image-box"><img src="Assets/img/EMPRESA/VARIEDAD.jfif" alt="Variedad de eventos"></div>
             <div class="text-box">
-                <h2>Innovación y Futuro</h2>
-                <p>Miramos al 2026 con el objetivo de integrar IA y sistemas personalizados para que tu agenda cultural se adapte a ti. Queremos que Happiness&Co sea tu compañero inseparable de planes, asegurando que nunca te pierdas nada importante.</p>
+                <h2>Variedad sin límites</h2>
+                <p>Música, teatro, exposiciones… Todo tiene cabida en nuestra agenda.   ¡Bienvenidos a HAPPINESS&Co!</p>
             </div>
         </section>
 
@@ -122,29 +133,29 @@
             
             <div class="team-grid">
                 <div class="member-card">
-                    <img src="Assets/img/staff-01.jpg" alt="CEO" class="member-img">
-                    <h4>Laura García</h4>
-                    <span class="cargo">Directora Ejecutiva</span>
-                    <p>Especialista en Gestión Cultural con más de 10 años de experiencia organizando festivales internacionales en el norte de España.</p>
+                    <img src="Assets/img/EMPLEADOS/ASIER.png" alt="Asier García" class="member-img">
+                    <h4>Asier García</h4>
+                    <span class="cargo">Director Ejecutivo</span>
+                    <p>Especialista en gestión de eventos con 3 años de experiencia. Fundador con visión estratégica en ocio urbano.</p>
                 </div>
                 <div class="member-card">
-                    <img src="Assets/img/staff-02.jpg" alt="CTO" class="member-img">
-                    <h4>Carlos Menéndez</h4>
+                    <img src="Assets/img/EMPLEADOS/ANTONIO.png" alt="Antonio Menéndez" class="member-img">
+                    <h4>Antonio Menéndez</h4>
                     <span class="cargo">Director Tecnológico</span>
-                    <p>Ingeniero de software apasionado por la analítica de datos aplicada al comportamiento del usuario en entornos de ocio digital.</p>
+                    <p>Ingeniero de software enfocado en la usabilidad y la organización de datos masivos para el usuario final.</p>
                 </div>
                 <div class="member-card">
-                    <img src="Assets/img/staff-03.jpg" alt="Comms" class="member-img">
-                    <h4>Ana Ruiz</h4>
+                    <img src="Assets/img/EMPLEADOS/LUCIA.png" alt="Lucia Ruiz" class="member-img">
+                    <h4>Lucia Ruiz</h4>
                     <span class="cargo">Responsable de Comunicación</span>
-                    <p>Periodista experta en redes sociales y relaciones públicas, encargada de conectar nuestra agenda con la comunidad asturiana.</p>
+                    <p>Periodista cultural encargada de filtrar y redactar cada evento con precisión para nuestra comunidad.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <div class="full-banner">
-        <img src="Assets/img/happines-and-co-propuesta-06.jpg" alt="Banner Happiness & Co">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-06.jpg" alt="Banner Happiness & Co">
     </div>
 
     <footer>
