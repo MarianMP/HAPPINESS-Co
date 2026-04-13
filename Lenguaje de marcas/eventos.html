@@ -5,324 +5,345 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happiness & Co - Agenda Asturias 2026</title>
     
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: '#ba007c',
+                        'magenta-dark': '#8e005f',
+                        azul: '#009bdb',
+                        naranja: '#ff7b00',
+                        gris: '#555555',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root { 
-            --magenta: #ba007c; --magenta-dark: #8e005f;
-            --azul: #009bdb; --naranja: #ff7b00; --gris: #555555; 
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #fcfcfc; color: #333; }
-
-        /* HEADER ORIGINAL RECUPERADO */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 2px solid var(--magenta); background: #fff; position: sticky; top: 0; z-index: 1000; }
-        .header-left { display: flex; align-items: center; gap: 20px; }
-        nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-
-        .container { max-width: 1300px; margin: 40px auto; padding: 0 20px; }
-        .section-title { text-align: center; margin-bottom: 30px; }
-        .section-title h2 { text-transform: uppercase; border-bottom: 3px solid var(--magenta); display: inline-block; padding-bottom: 5px; }
-
-        .filter-btns { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
-        .filter-btns button { border: none; padding: 12px 20px; color: white; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
-
-        .main-layout { display: grid; grid-template-columns: 3fr 1fr; gap: 40px; }
-
-        .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .card { border: 1px solid #eee; border-top: 6px solid; background: #fff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card-content { padding: 15px; flex-grow: 1; }
-        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px; }
-        .card h4 { font-size: 17px; margin-bottom: 5px; color: #222; min-height: 40px; }
-        .card p.meta { font-size: 12px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
-        
-        .details { max-height: 0; overflow: hidden; transition: 0.5s ease; background: #f9f9f9; padding: 0 15px; font-size: 13px; color: #555; line-height: 1.4; }
-        .card:hover .details { max-height: 300px; padding: 15px; border-top: 1px solid #eee; }
-
-        .btn-reserva { 
-            background: linear-gradient(135deg, var(--magenta) 0%, var(--magenta-dark) 100%); 
-            color: white; border: none; padding: 14px; cursor: pointer; font-weight: 700; width: 100%; 
-            text-transform: uppercase; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
-        }
-
-        /* MODAL DE COMPRA SIN TEMPORIZADOR */
-        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; overflow-y: auto; padding: 10px; }
-        .modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 12px; overflow: hidden; position: relative; border-top: 5px solid var(--magenta); }
-        .checkout-body { padding: 25px; max-height: 85vh; overflow-y: auto; }
-        .section-block { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
-        .section-block h3 { font-size: 14px; text-transform: uppercase; color: var(--magenta); margin-bottom: 10px; }
-        
-        .ticket-row { display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; padding: 10px; border-radius: 6px; margin-bottom: 8px; }
-        input[type="text"], input[type="email"], select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; }
-        
-        /* ESTILO PAGO BIZUM/TARJETA */
-        .pay-method { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 4px; font-size: 11px; text-align: center; cursor: pointer; transition: 0.2s; }
-        .pay-method.active { border-color: var(--magenta); background: #fff0f9; font-weight: bold; }
-
-        .modal-footer { padding: 20px; background: #fdfdfd; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-
-        .sidebar { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #eee; height: fit-content; }
-        .sidebar h3 { font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
-        .sidebar-item { margin-bottom: 20px; }
-        .sidebar-item strong { display: block; color: var(--magenta); font-size: 14px; }
-        .sidebar-item p { font-size: 12px; color: #999; }
-
-        @media (max-width: 1000px) { .main-layout { grid-template-columns: 1fr; } }
+        /* Estilo para el efecto de expansión de detalles que Tailwind no maneja por defecto con transición suave de altura */
+        .details-box { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; }
+        .event-card:hover .details-box { max-height: 200px; padding: 1rem; border-top: 1px solid #eee; }
     </style>
 </head>
-<body>
+<body class="bg-[#fcfcfc] text-gray-800 font-sans">
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
-            &#10094; VOLVER
-        </button>
-        <a href="index.html">
-            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
-        </a>
-    </div>
-
-    <nav style="display: flex; align-items: center; gap: 10px;">
-        <a href="index.html">Inicio</a>
-        <a href="eventos.html">Eventos</a>
-        <a href="historial.html">Historial</a>
-        <a href="empresa.html">Sobre Nosotros</a>
-        <a href="fuentes.html">Fuentes</a>
-        <a href="contacto.html" style="background: var(--magenta); color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
-        <a href="inicioSesion.html" style="border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
-    </nav>
-</header>
-
-<main class="container">
-    <div class="section-title"><h2>Próximos Eventos 2026</h2></div>
-
-    <div class="filter-btns">
-        <button onclick="filterCat('all')" style="background: #333;">TODOS</button>
-        <button onclick="filterCat('musica')" style="background: var(--magenta);">MÚSICA</button>
-        <button onclick="filterCat('escena')" style="background: var(--azul);">ESCENA</button>
-        <button onclick="filterCat('social')" style="background: var(--naranja);">SOCIAL</button>
-        <button onclick="filterCat('gris')" style="background: var(--gris);">OTROS</button>
-    </div>
-
-    <div class="main-layout">
-        <section class="event-grid">
-    <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/Gijon Sound Festival/gijon-sound.jfif">
-            <h4>Gijón Sound Festival</h4>
-            <p class="meta" style="color:var(--magenta)">Gijón - 16-19 Abr</p>
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-[1000]">
+        <div class="flex items-center gap-5">
+            <a href="index.html">
+                <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" class="h-11">
+            </a>
         </div>
-        <div class="details">Festival urbano que llena de música independiente los teatros y plazas de Gijón.</div>
-        <a href="musica-GijonSound.html" class="btn-reserva" style="background:none; color:var(--magenta); border:1px solid var(--magenta); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Gijón Sound', 45, 85)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
+        <nav class="hidden md:flex items-center gap-3 text-[11px] font-bold uppercase tracking-wider">
+            <a href="index.html" class="hover:text-magenta transition">Inicio</a>
+            <a href="eventos.html" class="text-magenta transition">Eventos</a>
+            <a href="historial.html" class="hover:text-magenta transition">Historial</a>
+            <a href="sobre nosotros.html" class="hover:text-magenta transition">Sobre Nosotros</a>
+            <a href="fuentes.html" class="hover:text-magenta transition">Fuentes</a>
+            <a href="contacto.html" class="bg-magenta text-white px-4 py-2 rounded shadow-sm hover:opacity-90 transition ml-2">Contacto</a>
+            <a href="cuenta.html" class="border border-gray-300 px-3 py-2 rounded hover:bg-gray-50 transition ml-2">MI CUENTA</a>
+        </nav>
+    </header>
 
-    <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/boombastic/BOMBASTIC.jfif">
-            <h4>Boombastic Asturias</h4>
-            <p class="meta" style="color:var(--magenta)">Llanera - 16-18 Jul</p>
+    <main class="max-w-[1300px] mx-auto my-10 px-5">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold uppercase border-b-4 border-magenta inline-block pb-2">Próximos Eventos 2026</h2>
         </div>
-        <div class="details">"The Last Dance". El mayor festival de música urbana en La Morgal.</div>
-        <a href="musica-Boombastic.html" class="btn-reserva" style="background:none; color:var(--magenta); border:1px solid var(--magenta); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Boombastic', 95, 160)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
 
-    <div class="card" data-cat="musica" style="border-color: var(--magenta);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/aquasella/aquasella.jfif">
-            <h4>Aquasella Festival</h4>
-            <p class="meta" style="color:var(--magenta)">Arriondas - 13-16 Ago</p>
+        <div class="flex flex-wrap gap-3 mb-10 justify-center">
+            <button onclick="filterCat('all')" class="bg-gray-800 text-white px-5 py-2 rounded text-xs font-bold uppercase hover:opacity-80 transition">Todos</button>
+            <button onclick="filterCat('musica')" class="bg-magenta text-white px-5 py-2 rounded text-xs font-bold uppercase hover:opacity-80 transition">Música</button>
+            <button onclick="filterCat('escena')" class="bg-azul text-white px-5 py-2 rounded text-xs font-bold uppercase hover:opacity-80 transition">Escena</button>
+            <button onclick="filterCat('social')" class="bg-naranja text-white px-5 py-2 rounded text-xs font-bold uppercase hover:opacity-80 transition">Social</button>
+            <button onclick="filterCat('gris')" class="bg-gris text-white px-5 py-2 rounded text-xs font-bold uppercase hover:opacity-80 transition">Otros</button>
         </div>
-        <div class="details">El festival de música electrónica más veterano.</div>
-        <a href="musica-Acuasella.html" class="btn-reserva" style="background:none; color:var(--magenta); border:1px solid var(--magenta); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Aquasella', 80, 140)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
 
-    <div class="card" data-cat="escena" style="border-color: var(--azul);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/festival cine/LGTBI.jfif">
-            <h4>Festival Cine LGTBI</h4>
-            <p class="meta" style="color:var(--azul)">Avilés - 09-19 Abr</p>
-        </div>
-        <div class="details">Proyecciones internacionales en el Centro Niemeyer de Avilés.</div>
-        <a href="escena-LGTBI.html" class="btn-reserva" style="background:none; color:var(--azul); border:1px solid var(--azul); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Cine LGTBI', 6, 15)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="escena" style="border-color: var(--azul);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/opera/campoamor.jfif">
-            <h4>Temporada de Ópera</h4>
-            <p class="meta" style="color:var(--azul)">Oviedo - Mayo</p>
-        </div>
-        <div class="details">Producciones líricas de primer nivel en el Teatro Campoamor.</div>
-        <a href="escena-opera.html" class="btn-reserva" style="background:none; color:var(--azul); border:1px solid var(--azul); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Ópera', 40, 120)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="escena" style="border-color: var(--azul);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/american buffalo/descarga.jfif">
-            <h4>American Buffalo</h4>
-            <p class="meta" style="color:var(--azul)">Gijón - 05 Jun</p>
-        </div>
-        <div class="details">Teatro contemporáneo en el Teatro Jovellanos.</div>
-        <a href="escena-teatro.html" class="btn-reserva" style="background:none; color:var(--azul); border:1px solid var(--azul); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Teatro', 20, 35)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-    
-    <div class="card" data-cat="social" style="border-color: var(--naranja);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/semana negra/NEGRA.jfif">
-            <h4>Semana Negra</h4>
-            <p class="meta" style="color:var(--naranja)">Gijón - 03-12 Jul</p>
-        </div>
-        <div class="details">Encuentro literario, cultural y festivo a orillas del Arbeyal.</div>
-        <a href="social-semananegra.html" class="btn-reserva" style="background:none; color:var(--naranja); border:1px solid var(--naranja); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Semana Negra', 0, 20)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-   
-    <div class="card" data-cat="social" style="border-color: var(--naranja);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/fidma/FERIADEMUESTRAS.JPEG">
-            <h4>FIDMA (100ª ed.)</h4>
-            <p class="meta" style="color:var(--naranja)">Gijón - 01-16 Ago</p>
-        </div>
-        <div class="details">Edición centenaria de la Feria Internacional de Muestras.</div>
-        <a href="social-FIDMA.html" class="btn-reserva" style="background:none; color:var(--naranja); border:1px solid var(--naranja); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('FIDMA', 4, 12)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="social" style="border-color: var(--naranja);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/festival sidra/sidra.jfif">
-            <h4>Festival de la Sidra</h4>
-            <p class="meta" style="color:var(--naranja)">Nava - Julio</p>
-        </div>
-        <div class="details">Concurso internacional de escanciadores en Nava.</div>
-        <a href="social-sidra.html" class="btn-reserva" style="background:none; color:var(--naranja); border:1px solid var(--naranja); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Sidra Nava', 5, 15)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="gris" style="border-color: var(--gris);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/descenso del sella/SELLA.jfif">
-            <h4>Descenso del Sella</h4>
-            <p class="meta" style="color:var(--gris)">Arriondas - 08 Ago</p>
-        </div>
-        <div class="details">Fiesta de las Piraguas entre Arriondas y Ribadesella.</div>
-        <a href="musica-Sella.html" class="btn-reserva" style="background:none; color:var(--gris); border:1px solid var(--gris); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('El Sella', 25, 45)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="gris" style="border-color: var(--gris);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/rally/RALLY.jfif">
-            <h4>Rally Princesa</h4>
-            <p class="meta" style="color:var(--gris)">Oviedo - Sept</p>
-        </div>
-        <div class="details">Prueba legendaria del Supercampeonato de España.</div>
-        <a href="rally-princesa.html" class="btn-reserva" style="background:none; color:var(--gris); border:1px solid var(--gris); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Rally', 0, 50)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-
-    <div class="card" data-cat="gris" style="border-color: var(--gris);">
-        <div class="card-content">
-            <img src="Assets/img/EVENTOS/el desarme/garbanzos.jfif">
-            <h4>El Desarme</h4>
-            <p class="meta" style="color:var(--gris)">Oviedo - 19 Oct</p>
-        </div>
-        <div class="details">Fiesta gastronómica histórica con menú de garbanzos.</div>
-        <a href="social-desarme.html" class="btn-reserva" style="background:none; color:var(--gris); border:1px solid var(--gris); margin-bottom:5px; text-decoration:none; display:flex; align-items:center; justify-content:center;">SABER MÁS</a>
-        <button class="btn-reserva" onclick="openCheckout('Desarme', 25, 35)"><i class="fa-solid fa-ticket"></i> RESERVAR</button>
-    </div>
-</section>
-
-        <aside class="sidebar">
-            <h3>Lo más buscado</h3>
-            <div class="sidebar-item"><strong>Descenso del Sella</strong><p>Aventura en el río</p></div>
-            <div class="sidebar-item"><strong>Boombastic</strong><p>Música urbana</p></div>
-            <div class="sidebar-item"><strong>Semana Negra</strong><p>Cultura en Gijón</p></div>
-        </aside>
-    </div>
-</main>
-
-<div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <div class="checkout-body">
-            <h2 id="modalEventName" style="margin-bottom:20px; font-size:20px;">NOMBRE EVENTO</h2>
-            
-            <div class="section-block">
-                <h3>1. ENTRADAS</h3>
-                <div class="ticket-row">
-                    <div><b>General</b><br><small id="p1_val">0€</small></div>
-                    <select id="q1" onchange="calculate()"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            <section id="eventGrid" class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-magenta rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="musica">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/Gijon Sound Festival/gijon-sound.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Gijón Sound Festival</h4>
+                        <p class="text-xs font-bold uppercase text-magenta">Gijón - 16-19 Abr</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Festival urbano que llena de música independiente los teatros y plazas de Gijón.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="musica-GijonSound.html" class="block text-center border border-magenta text-magenta py-2 text-xs font-bold rounded hover:bg-magenta hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Gijón Sound', 45, 85)" class="w-full bg-gradient-to-br from-magenta to-magenta-dark text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
                 </div>
-                <div class="ticket-row">
-                    <div><b>VIP / Premium</b><br><small id="p2_val">0€</small></div>
-                    <select id="q2" onchange="calculate()"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-magenta rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="musica">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/boombastic/BOMBASTIC.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Boombastic Asturias</h4>
+                        <p class="text-xs font-bold uppercase text-magenta">Llanera - 16-18 Jul</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">"The Last Dance". El mayor festival de música urbana en La Morgal.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="musica-Boombastic.html" class="block text-center border border-magenta text-magenta py-2 text-xs font-bold rounded hover:bg-magenta hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Boombastic', 95, 160)" class="w-full bg-gradient-to-br from-magenta to-magenta-dark text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-magenta rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="musica">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/aquasella/aquasella.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Aquasella Festival</h4>
+                        <p class="text-xs font-bold uppercase text-magenta">Arriondas - 13-16 Ago</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">El festival de música electrónica más veterano.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="musica-Acuasella.html" class="block text-center border border-magenta text-magenta py-2 text-xs font-bold rounded hover:bg-magenta hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Aquasella', 80, 140)" class="w-full bg-gradient-to-br from-magenta to-magenta-dark text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-azul rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="escena">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/festival cine/LGTBI.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Festival Cine LGTBI</h4>
+                        <p class="text-xs font-bold uppercase text-azul">Avilés - 09-19 Abr</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Proyecciones internacionales en el Centro Niemeyer de Avilés.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="escena-LGTBI.html" class="block text-center border border-azul text-azul py-2 text-xs font-bold rounded hover:bg-azul hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Cine LGTBI', 6, 15)" class="w-full bg-gradient-to-br from-azul to-blue-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-azul rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="escena">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/opera/campoamor.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Temporada de Ópera</h4>
+                        <p class="text-xs font-bold uppercase text-azul">Oviedo - Mayo</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Producciones líricas de primer nivel en el Teatro Campoamor.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="escena-opera.html" class="block text-center border border-azul text-azul py-2 text-xs font-bold rounded hover:bg-azul hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Ópera', 40, 120)" class="w-full bg-gradient-to-br from-azul to-blue-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-azul rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="escena">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/american buffalo/descarga.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">American Buffalo</h4>
+                        <p class="text-xs font-bold uppercase text-azul">Gijón - 05 Jun</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Teatro contemporáneo en el Teatro Jovellanos.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="escena-teatro.html" class="block text-center border border-azul text-azul py-2 text-xs font-bold rounded hover:bg-azul hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Teatro', 20, 35)" class="w-full bg-gradient-to-br from-azul to-blue-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-naranja rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="social">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/semana negra/NEGRA.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Semana Negra</h4>
+                        <p class="text-xs font-bold uppercase text-naranja">Gijón - 03-12 Jul</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Encuentro literario, cultural y festivo a orillas del Arbeyal.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="social-semananegra.html" class="block text-center border border-naranja text-naranja py-2 text-xs font-bold rounded hover:bg-naranja hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Semana Negra', 0, 20)" class="w-full bg-gradient-to-br from-naranja to-orange-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-naranja rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="social">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/fidma/FERIADEMUESTRAS.JPEG" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">FIDMA (100ª ed.)</h4>
+                        <p class="text-xs font-bold uppercase text-naranja">Gijón - 01-16 Ago</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Edición centenaria de la Feria Internacional de Muestras.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="social-FIDMA.html" class="block text-center border border-naranja text-naranja py-2 text-xs font-bold rounded hover:bg-naranja hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('FIDMA', 4, 12)" class="w-full bg-gradient-to-br from-naranja to-orange-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-naranja rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="social">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/festival sidra/sidra.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Festival de la Sidra</h4>
+                        <p class="text-xs font-bold uppercase text-naranja">Nava - Julio</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Concurso internacional de escanciadores en Nava.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="social-sidra.html" class="block text-center border border-naranja text-naranja py-2 text-xs font-bold rounded hover:bg-naranja hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Sidra Nava', 5, 15)" class="w-full bg-gradient-to-br from-naranja to-orange-700 text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-gris rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="gris">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/descenso del sella/SELLA.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Descenso del Sella</h4>
+                        <p class="text-xs font-bold uppercase text-gris">Arriondas - 08 Ago</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Fiesta de las Piraguas entre Arriondas y Ribadesella.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="extras-sella.html" class="block text-center border border-gris text-gris py-2 text-xs font-bold rounded hover:bg-gris hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('El Sella', 25, 45)" class="w-full bg-gris text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-gris rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="gris">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/rally/RALLY.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">Rally Princesa</h4>
+                        <p class="text-xs font-bold uppercase text-gris">Oviedo - Sept</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Prueba legendaria del Supercampeonato de España.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="extras-rally.html" class="block text-center border border-gris text-gris py-2 text-xs font-bold rounded hover:bg-gris hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Rally', 0, 50)" class="w-full bg-gris text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+                <div class="event-card flex flex-col bg-white border border-gray-100 border-t-[6px] border-t-gris rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-cat="gris">
+                    <div class="p-4 flex-grow">
+                        <img src="Assets/img/EVENTOS/el desarme/garbanzos.jfif" class="w-full h-36 object-cover rounded mb-3">
+                        <h4 class="text-lg font-bold text-gray-800 min-h-[50px]">El Desarme</h4>
+                        <p class="text-xs font-bold uppercase text-gris">Oviedo - 19 Oct</p>
+                    </div>
+                    <div class="details-box bg-gray-50 text-sm text-gray-600 px-4">Fiesta gastronómica histórica con menú de garbanzos.</div>
+                    <div class="p-4 pt-0 space-y-2">
+                        <a href="extras-desarme.html" class="block text-center border border-gris text-gris py-2 text-xs font-bold rounded hover:bg-gris hover:text-white transition uppercase">Saber más</a>
+                        <button onclick="openCheckout('Desarme', 25, 35)" class="w-full bg-gris text-white py-3 text-xs font-bold rounded uppercase flex items-center justify-center gap-2 hover:opacity-90"><i class="fa-solid fa-ticket"></i> Reservar</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <aside class="sidebar bg-white p-6 rounded-xl border border-gray-100 h-fit">
+                <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
+                <div class="space-y-5">
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm">Descenso del Sella</strong>
+                        <p class="text-xs text-gray-400">Aventura en el río</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm">Boombastic</strong>
+                        <p class="text-xs text-gray-400">Música urbana</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm">Semana Negra</strong>
+                        <p class="text-xs text-gray-400">Cultura en Gijón</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center z-[2000] p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-[550px] rounded-xl overflow-hidden relative border-t-[5px] border-t-magenta">
+            <div class="p-6 max-h-[85vh] overflow-y-auto">
+                <h2 id="modalEventName" class="text-xl font-bold mb-5 text-gray-800 uppercase">NOMBRE EVENTO</h2>
+                
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-magenta uppercase mb-3">1. ENTRADAS</h3>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg mb-2">
+                        <div>
+                            <p class="font-bold text-sm">General</p>
+                            <small id="p1_val" class="text-gray-500">0€</small>
+                        </div>
+                        <select id="q1" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none">
+                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                        <div>
+                            <p class="font-bold text-sm">VIP / Premium</p>
+                            <small id="p2_val" class="text-gray-500">0€</small>
+                        </div>
+                        <select id="q2" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none">
+                            <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-magenta uppercase mb-3">2. TUS DATOS</h3>
+                    <input type="text" placeholder="Nombre completo" class="w-full border border-gray-300 rounded p-2 text-sm mb-2 focus:border-magenta outline-none">
+                    <input type="email" placeholder="Email (donde recibirás el ticket)" class="w-full border border-gray-300 rounded p-2 text-sm focus:border-magenta outline-none">
+                </div>
+
+                <div class="mb-2">
+                    <h3 class="text-xs font-bold text-magenta uppercase mb-3">3. PAGO SEGURO</h3>
+                    <div class="flex gap-2 mb-3">
+                        <button id="payT" onclick="setPay('T')" class="flex-1 border border-magenta bg-magenta/5 font-bold text-magenta py-2 rounded text-[10px] flex flex-col items-center gap-1 transition">
+                            <i class="fa-solid fa-credit-card"></i> TARJETA
+                        </button>
+                        <button id="payB" onclick="setPay('B')" class="flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1 transition">
+                            <i class="fa-solid fa-mobile-screen-button"></i> BIZUM
+                        </button>
+                    </div>
+                    <input type="text" id="payInput" placeholder="Nº de tarjeta: 0000 0000 0000 0000" class="w-full border border-gray-300 rounded p-2 text-sm outline-none">
                 </div>
             </div>
 
-            <div class="section-block">
-                <h3>2. TUS DATOS</h3>
-                <input type="text" placeholder="Nombre completo">
-                <input type="email" placeholder="Email (donde recibirás el ticket)">
-            </div>
-
-            <div class="section-block">
-                <h3>3. PAGO SEGURO</h3>
-                <div style="display:flex; gap:10px; margin-bottom:10px;">
-                    <div id="payT" class="pay-method active" onclick="setPay('T')"><i class="fa-solid fa-credit-card"></i> TARJETA</div>
-                    <div id="payB" class="pay-method" onclick="setPay('B')"><i class="fa-solid fa-mobile-screen-button"></i> BIZUM</div>
+            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="text-[10px] text-gray-400 uppercase font-bold">Total</p>
+                    <h2 id="grandTotal" class="text-2xl font-bold text-gray-800">0,00€</h2>
                 </div>
-                <div id="payInputContainer">
-                    <input type="text" id="payInput" placeholder="Nº de tarjeta: 0000 0000 0000 0000">
-                </div>
+                <button onclick="alert('¡Compra realizada con éxito!'); location.reload();" class="bg-magenta text-white px-8 py-3 rounded-full text-xs font-bold uppercase hover:opacity-90 shadow-lg transition">Finalizar Compra</button>
             </div>
+            <p onclick="closeCheckout()" class="text-center py-4 cursor-pointer text-gray-400 text-[10px] uppercase font-bold hover:text-gray-600">Cancelar</p>
         </div>
-
-        <div class="modal-footer">
-            <div><p style="font-size:10px; color:#999;">TOTAL</p><h2 id="grandTotal">0,00€</h2></div>
-            <button class="btn-reserva" style="width:auto; padding:12px 30px; border-radius:30px;" onclick="alert('¡Compra realizada con éxito!'); location.reload();">FINALIZAR COMPRA</button>
-        </div>
-        <p onclick="closeCheckout()" style="text-align:center; padding:15px; cursor:pointer; color:#bbb; font-size:11px;">CANCELAR</p>
     </div>
-</div>
 
-<script>
-    let p1 = 0; let p2 = 0;
+    <script>
+        let p1 = 0; let p2 = 0;
 
-    function openCheckout(name, price1, price2) {
-        document.getElementById('checkoutModal').style.display='flex';
-        document.getElementById('modalEventName').innerText = name;
-        document.getElementById('p1_val').innerText = price1 + "€";
-        document.getElementById('p2_val').innerText = price2 + "€";
-        p1 = price1; p2 = price2;
-        calculate();
-    }
+        function openCheckout(name, price1, price2) {
+            document.getElementById('checkoutModal').classList.remove('hidden');
+            document.getElementById('checkoutModal').classList.add('flex');
+            document.getElementById('modalEventName').innerText = name;
+            document.getElementById('p1_val').innerText = price1 + "€";
+            document.getElementById('p2_val').innerText = price2 + "€";
+            p1 = price1; p2 = price2;
+            calculate();
+        }
 
-    function calculate() {
-        let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
-        document.getElementById('grandTotal').innerText = total.toFixed(2) + "€";
-    }
+        function calculate() {
+            let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
+            document.getElementById('grandTotal').innerText = total.toFixed(2) + "€";
+        }
 
-    function setPay(type) {
-        document.getElementById('payT').className = (type === 'T') ? 'pay-method active' : 'pay-method';
-        document.getElementById('payB').className = (type === 'B') ? 'pay-method active' : 'pay-method';
-        document.getElementById('payInput').placeholder = (type === 'T') ? 'Nº de tarjeta: 0000 0000 0000 0000' : 'Introduce tu número de teléfono';
-    }
+        function setPay(type) {
+            const btnT = document.getElementById('payT');
+            const btnB = document.getElementById('payB');
+            const input = document.getElementById('payInput');
 
-    function closeCheckout() { document.getElementById('checkoutModal').style.display='none'; }
+            if(type === 'T') {
+                btnT.className = "flex-1 border border-magenta bg-magenta/5 font-bold text-magenta py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnB.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Nº de tarjeta: 0000 0000 0000 0000';
+            } else {
+                btnB.className = "flex-1 border border-magenta bg-magenta/5 font-bold text-magenta py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnT.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Introduce tu número de teléfono móvil';
+            }
+        }
 
-    function filterCat(c) {
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.display = (c === 'all' || card.dataset.cat === c) ? 'flex' : 'none';
-        });
-    }
-</script>
+        function closeCheckout() { 
+            document.getElementById('checkoutModal').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('flex');
+        }
 
+        function filterCat(c) {
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.display = (c === 'all' || card.dataset.cat === c) ? 'flex' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>

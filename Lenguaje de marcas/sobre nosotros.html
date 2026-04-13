@@ -1,171 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happiness & Co - Sobre Nosotros</title>
+    
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: '#ba007c',
+                        azul: '#009bdb',
+                        naranja: '#ff7b00',
+                        gris: '#555555',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* COLORES CORPORATIVOS SEGÚN ESPECIFICACIONES */
-        :root { 
-            --magenta: #ba007c; /* Color principal y música */
-            --azul: #009bdb;    /* Cine, teatro... */
-            --naranja: #ff7b00; /* Exposiciones */
-            --gris: #555555;    /* Resto de eventos */
+        /* Tipografías especiales del logo según tu código original */
+        .logo-font { font-family: 'Asenine', Arial, sans-serif; }
+        .ampersand-font { font-family: 'Ar Chistry', serif; }
+        
+        /* Efecto para las fotos de equipo 2:3 */
+        .member-img {
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; background-color: #fcfcfc; }
-        
-        /* Navegación */
-        .nav-link { text-decoration: none; color: #333; margin-left: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .btn-contacto-header { background: var(--magenta); color: white !important; padding: 8px 15px; border-radius: 4px; }
-        .btn-cuenta { border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px; }
-
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        
-        /* Título de Sección */
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h1 { font-size: 32px; text-transform: uppercase; color: #222; letter-spacing: 1px; }
-        /* TIPOGRAFÍA LOGO */
-        .section-header h1 { font-family: 'Asenine', Arial, sans-serif; } 
-        .section-header span { color: var(--magenta); font-family: 'Ar Chistry', serif; }
-
-        /* Contenido Intercalado */
-        .content-row { display: flex; gap: 50px; align-items: center; margin-bottom: 60px; }
-        .content-row.reverse { flex-direction: row-reverse; }
-        .image-box { flex: 1; }
-        .image-box img { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .text-box { flex: 1; }
-        .text-box h2 { margin-bottom: 15px; color: var(--magenta); text-transform: uppercase; font-size: 20px; }
-
-        /* Personal / Equipo */
-        .team-section { margin-top: 80px; text-align: center; margin-bottom: 80px; }
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .member-card { background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 8px; transition: 0.3s; border-top: 5px solid var(--azul); }
-        .member-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        
-        /* IMÁGENES RECTANGULARES 2:3 CON BORDE ROSA */
-        .member-img { 
-            width: 100%; 
-            aspect-ratio: 2 / 3; 
-            object-fit: cover; 
-            margin-bottom: 15px; 
-            border: 4px solid var(--magenta); 
-            border-radius: 4px;
-        }
-
-        .member-card h4 { font-size: 18px; margin-bottom: 5px; }
-        .member-card .cargo { color: var(--magenta); font-weight: bold; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .member-card p { font-size: 13px; color: #666; }
-
-        /* BANNER FULL WIDTH */
-        .full-banner { width: 100%; line-height: 0; margin-top: 80px; }
-        .full-banner img { width: 100%; height: auto; display: block; }
-
-        /* FOOTER ORIGINAL */
-        footer { background: #111; color: #777; text-align: center; padding: 50px 20px; }
-        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; }
-        .social-links a { color: #777; font-size: 20px; transition: 0.3s; text-decoration: none; }
-        .social-links a:hover { color: #fff; transform: translateY(-3px); }
-        .footer-divider { width: 40px; height: 1px; background: #444; margin: 20px auto; }
-        .copyright { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; }
-
-        @media (max-width: 768px) { .content-row, .content-row.reverse { flex-direction: column; } }
     </style>
 </head>
-<body>
+<body class="bg-[#fcfcfc] text-gray-800 font-sans leading-relaxed">
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
-            &#10094; VOLVER
-        </button>
-        <a href="index.html">
-            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
-        </a>
-    </div>
-
-    <nav style="display: flex; align-items: center; gap: 10px;">
-        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
-        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
-        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
-        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
-        <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
-        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
-        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
-    </nav>
-</header>
-
-    <main class="container">
-        <div class="section-header">
-            <h1>HAPPINESS <span>&</span> CO</h1>
-            <p>Conoce la historia y el equipo detrás de la agenda cultural de Asturias.</p>
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-[1000]">
+        <div class="flex items-center gap-5">
+            <a href="index.html">
+                <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" class="h-11">
+            </a>
         </div>
+        <nav class="hidden md:flex items-center gap-4 text-[11px] font-semibold uppercase tracking-wider">
+            <a href="index.html" class="hover:text-magenta transition">Inicio</a>
+            <a href="eventos.html" class="hover:text-magenta transition">Eventos</a>
+            <a href="historial.html" class="hover:text-magenta transition">Historial</a>
+            <a href="sobre nosotros.html" class="text-magenta transition font-bold">Sobre Nosotros</a>
+            <a href="fuentes.html" class="hover:text-magenta transition">Fuentes</a>
+            <a href="contacto.html" class="bg-magenta text-white px-4 py-2 rounded shadow-sm hover:opacity-90 transition ml-2">Contacto</a>
+            <a href="cuenta.html" class="border border-gray-300 px-3 py-2 rounded hover:bg-gray-50 transition ml-2">MI CUENTA</a>
+        </nav>
+    </header>
 
-        <section class="content-row">
-            <div class="image-box"><img src="Assets/img/EMPRESA/ESENCIA.jfif" alt="Equipo Happiness&Co"></div>
-            <div class="text-box">
-                <h2>Nuestra Esencia</h2>
-                <p>HAPPINESS&Co es una empresa joven y dinámica que se dedicada, en cuerpo y alma, al mundo del ocio. Perdidos entre la inmensa marea de actividades culturales que existen cada día en nuestra ciudad, nos dimos cuenta de que hacía falta buscar un poco de orden y estructura en este inmenso océano de posibilidades.</p>
+    <main class="max-w-[1100px] mx-auto px-5">
+        
+        <section class="text-center py-16">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 uppercase logo-font">
+                HAPPINESS <span class="text-magenta ampersand-font italic text-5xl">&</span> CO
+            </h1>
+            <p class="text-gray-500 mt-4 text-lg font-light">Conoce la historia y el equipo detrás de la agenda cultural de Asturias.</p>
+            <div class="w-20 h-1 bg-magenta mx-auto mt-6"></div>
+        </section>
+
+        <section class="flex flex-col md:flex-row items-center gap-12 mb-24">
+            <div class="w-full md:w-1/2">
+                <img src="Assets/img/EMPRESA/ESENCIA.jfif" alt="Esencia" class="w-full rounded-xl shadow-lg">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-magenta text-2xl font-bold uppercase tracking-wide mb-4">Nuestra Esencia</h2>
+                <p class="text-gray-600">
+                    HAPPINESS&Co es una empresa joven y dinámica que se dedicada, en cuerpo y alma, al mundo del ocio. Perdidos entre la inmensa marea de actividades culturales que existen cada día en nuestra ciudad, nos dimos cuenta de que hacía falta buscar un poco de orden y estructura en este inmenso océano de posibilidades.
+                </p>
             </div>
         </section>
 
-        <section class="content-row reverse">
-            <div class="image-box"><img src="Assets/img/EMPRESA/SOLUCION.jfif" alt="Cultura en la ciudad"></div>
-            <div class="text-box">
-                <h2>Nuestra Solución</h2>
-                <p>Así surgió HAPPINESS&Co: una agenda cultural que intenta recopilar y organizar todos los eventos culturales, de cualquier tipo, que tienen lugar en nuestra localidad e inmediaciones.</p>
+        <section class="flex flex-col md:flex-row-reverse items-center gap-12 mb-24">
+            <div class="w-full md:w-1/2">
+                <img src="Assets/img/EMPRESA/SOLUCION.jfif" alt="Solución" class="w-full rounded-xl shadow-lg">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-magenta text-2xl font-bold uppercase tracking-wide mb-4">Nuestra Solución</h2>
+                <p class="text-gray-600">
+                    Así surgió HAPPINESS&Co: una agenda cultural que intenta recopilar y organizar todos los eventos culturales, de cualquier tipo, que tienen lugar en nuestra localidad e inmediaciones.
+                </p>
             </div>
         </section>
 
-        <section class="content-row">
-            <div class="image-box"><img src="Assets/img/EMPRESA/VARIEDAD.jfif" alt="Variedad de eventos"></div>
-            <div class="text-box">
-                <h2>Variedad sin límites</h2>
-                <p>Música, teatro, exposiciones… Todo tiene cabida en nuestra agenda.   ¡Bienvenidos a HAPPINESS&Co!</p>
+        <section class="flex flex-col md:flex-row items-center gap-12 mb-24">
+            <div class="w-full md:w-1/2">
+                <img src="Assets/img/EMPRESA/VARIEDAD.jfif" alt="Variedad" class="w-full rounded-xl shadow-lg">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-magenta text-2xl font-bold uppercase tracking-wide mb-4">Variedad sin límites</h2>
+                <p class="text-gray-600">
+                    Música, teatro, exposiciones… Todo tiene cabida en nuestra agenda. <br><br>
+                    <span class="font-bold text-gray-800 italic uppercase">¡Bienvenidos a HAPPINESS&Co!</span>
+                </p>
             </div>
         </section>
 
-        <section class="team-section">
-            <h2 style="text-transform: uppercase; letter-spacing: 2px;">Nuestro Equipo</h2>
-            <div style="width: 60px; height: 3px; background: var(--magenta); margin: 15px auto 40px;"></div>
-            
-            <div class="team-grid">
-                <div class="member-card">
-                    <img src="Assets/img/EMPLEADOS/ASIER.png" alt="Asier García" class="member-img">
-                    <h4>Asier García</h4>
-                    <span class="cargo">Director Ejecutivo</span>
-                    <p>Especialista en gestión de eventos con 3 años de experiencia. Fundador con visión estratégica en ocio urbano.</p>
-                </div>
-                <div class="member-card">
-                    <img src="Assets/img/EMPLEADOS/ANTONIO.png" alt="Antonio Menéndez" class="member-img">
-                    <h4>Antonio Menéndez</h4>
-                    <span class="cargo">Director Tecnológico</span>
-                    <p>Ingeniero de software enfocado en la usabilidad y la organización de datos masivos para el usuario final.</p>
-                </div>
-                <div class="member-card">
-                    <img src="Assets/img/EMPLEADOS/LUCIA.png" alt="Lucia Ruiz" class="member-img">
-                    <h4>Lucia Ruiz</h4>
-                    <span class="cargo">Responsable de Comunicación</span>
-                    <p>Periodista cultural encargada de filtrar y redactar cada evento con precisión para nuestra comunidad.</p>
-                </div>
+        <section class="py-12 mb-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold uppercase tracking-[3px]">Nuestro Equipo</h2>
+                <div class="w-16 h-1 bg-magenta mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <article class="bg-white p-6 rounded-lg border-t-8 border-azul shadow-sm hover:shadow-md transition-shadow">
+                    <img src="Assets/img/EMPLEADOS/ASIER.png" alt="Asier García" class="member-img w-full border-4 border-magenta rounded-sm mb-6">
+                    <h4 class="text-xl font-bold text-gray-900">Asier García</h4>
+                    <span class="text-magenta text-xs font-bold uppercase block mt-1 mb-3">Director Ejecutivo</span>
+                    <p class="text-gray-500 text-sm italic">Especialista en gestión de eventos con 3 años de experiencia. Fundador con visión estratégica en ocio urbano.</p>
+                </article>
+
+                <article class="bg-white p-6 rounded-lg border-t-8 border-azul shadow-sm hover:shadow-md transition-shadow">
+                    <img src="Assets/img/EMPLEADOS/ANTONIO.png" alt="Antonio Menéndez" class="member-img w-full border-4 border-magenta rounded-sm mb-6">
+                    <h4 class="text-xl font-bold text-gray-900">Antonio Menéndez</h4>
+                    <span class="text-magenta text-xs font-bold uppercase block mt-1 mb-3">Director Tecnológico</span>
+                    <p class="text-gray-500 text-sm italic">Ingeniero de software enfocado en la usabilidad y la organización de datos masivos para el usuario final.</p>
+                </article>
+
+                <article class="bg-white p-6 rounded-lg border-t-8 border-azul shadow-sm hover:shadow-md transition-shadow">
+                    <img src="Assets/img/EMPLEADOS/LUCIA.png" alt="Lucia Ruiz" class="member-img w-full border-4 border-magenta rounded-sm mb-6">
+                    <h4 class="text-xl font-bold text-gray-900">Lucia Ruiz</h4>
+                    <span class="text-magenta text-xs font-bold uppercase block mt-1 mb-3">Responsable de Comunicación</span>
+                    <p class="text-gray-500 text-sm italic">Periodista cultural encargada de filtrar y redactar cada evento con precisión para nuestra comunidad.</p>
+                </article>
             </div>
         </section>
     </main>
 
-    <div class="full-banner">
-        <img src="Assets/img/LOGOS/happines-and-co-propuesta-06.jpg" alt="Banner Happiness & Co">
+    <div class="w-full overflow-hidden">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-06.jpg" alt="Banner" class="w-full h-auto object-cover">
     </div>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    <footer class="bg-[#111] text-gray-500 text-center py-16 px-5">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="https://facebook.com" target="_blank" class="text-2xl hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" class="text-2xl hover:text-magenta transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" class="text-2xl hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-        <div class="footer-divider"></div>
-        <div class="copyright">© 2026 HAPPINESS&CO · TODOS LOS DERECHOS RESERVADOS</div>
+        <div class="w-10 h-[1px] bg-gray-700 mx-auto mb-6"></div>
+        <p class="text-[11px] font-bold uppercase tracking-widest text-gray-600 italic">© 2026 HAPPINESS&CO · TODOS LOS DERECHOS RESERVADOS</p>
     </footer>
 
 </body>

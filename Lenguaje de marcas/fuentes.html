@@ -1,157 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuentes | Happiness & Co</title>
+    
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: '#ba007c',
+                        azul: '#0099da',
+                        grisClaro: '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-
-        :root { 
-            --magenta: #ba007c; 
-            --gris-claro: #f8f9fa; 
-            --texto: #333; 
-            --azul: #0099da;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-
-        body { background-color: var(--gris-claro); color: var(--texto); line-height: 1.6; }
-        
-        /* HEADER ESTILO SOBRE NOSOTROS */
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 5%; 
-            background: #ffffff; 
-            border-bottom: 2px solid var(--magenta); 
-            position: sticky; 
-            top:0; 
-            z-index:1000; 
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .container { 
-            max-width: 900px; 
-            margin: 40px auto; 
-            padding: 40px; 
-            background: white; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            min-height: 60vh;
-        }
-
-        h1 { border-left: 5px solid var(--magenta); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; font-size: 22px; letter-spacing: 1px; }
-        
-        h2 { color: var(--magenta); font-size: 17px; margin: 25px 0 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; text-transform: uppercase; }
-        
-        ul { list-style: none; padding-left: 5px; }
-        
-        li { margin-bottom: 20px; padding: 10px; transition: 0.2s; border-left: 2px solid #eee; }
-        li:hover { border-left: 2px solid var(--magenta); background: #fdfdfd; }
-        
-        li strong { display: block; color: #000; font-size: 14px; margin-bottom: 3px; text-transform: uppercase; }
-        li span { font-size: 13px; color: #666; display: block; margin-bottom: 5px; }
-        
-        li a { 
-            color: var(--azul); 
-            text-decoration: none; 
-            font-size: 13px; 
-            font-weight: bold; 
-            transition: 0.3s;
-        }
-        li a:hover { color: var(--magenta); text-decoration: underline; }
-
-        /* FOOTER OSCURO UNIFICADO */
-        footer { background: #111; color: #777; text-align: center; padding: 50px 20px; margin-top: 50px; }
-        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; }
-        .social-links a { color: #777; font-size: 20px; transition: 0.3s; text-decoration: none; }
-        .social-links a:hover { color: #fff; transform: translateY(-3px); }
-        .footer-divider { width: 40px; height: 1px; background: #444; margin: 20px auto; }
-        .copyright { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; }
+        .nav-link { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .source-item { border-left: 4px solid #ba007c; background: white; margin-bottom: 1rem; transition: transform 0.2s; }
+        .source-item:hover { transform: translateX(10px); }
     </style>
 </head>
-<body>
+<body class="bg-[#fcfcfc] text-gray-800 font-sans leading-relaxed">
 
-<header>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
-            &#10094; VOLVER
-        </button>
-        <a href="index.html">
-            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
-        </a>
-    </div>
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-[1000]">
+        <div class="flex items-center gap-5">
+            <a href="index.html">
+                <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" class="h-11">
+            </a>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 text-[11px] font-semibold uppercase tracking-wider">
+            <a href="index.html" class="hover:text-magenta transition">Inicio</a>
+            <a href="eventos.html" class="hover:text-magenta transition">Eventos</a>
+            <a href="historial.html" class="hover:text-magenta transition">Historial</a>
+            <a href="sobre nosotros.html" class="hover:text-magenta transition">Sobre Nosotros</a>
+            <a href="fuentes.html" class="text-magenta transition font-bold">Fuentes</a>
+            <a href="contacto.html" class="bg-magenta text-white px-4 py-2 rounded shadow-sm hover:opacity-90 transition ml-2">Contacto</a>
+            <a href="cuenta.html" class="border border-gray-300 px-3 py-2 rounded hover:bg-gray-50 transition ml-2">MI CUENTA</a>
+        </nav>
+    </header>
 
-    <nav style="display: flex; align-items: center; gap: 10px;">
-        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
-        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
-        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
-        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
-        <a href="fuentes.html" style="text-decoration: none; color: var(--magenta); border-bottom: 2px solid var(--magenta); margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
-        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
-        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
-    </nav>
-</header>
+    <main class="max-w-[900px] mx-auto py-16 px-5">
+        <section class="mb-12">
+            <h1 class="text-3xl font-bold uppercase tracking-tighter mb-2">Fuentes de Información</h1>
+            <p class="text-gray-500 text-sm italic">Transparencia en el origen de nuestros datos y recursos tecnológicos.</p>
+            <div class="w-16 h-1 bg-magenta mt-4"></div>
+        </section>
 
-<main class="container">
-    <h1>Fuentes y Atribuciones</h1>
+        <section class="grid gap-6">
+            <ul class="list-none p-0">
+                <li class="source-item p-4 shadow-sm">
+                    <strong class="block text-black text-sm uppercase mb-1">Datos de Eventos:</strong>
+                    <span class="text-gray-500 text-[13px] mb-2 block">Calendarios oficiales y oficinas de turismo locales.</span>
+                    <div class="flex gap-4">
+                        <a href="https://www.gijon.es/es/eventos" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Gijón Impulsa &rarr;</a>
+                        <a href="https://www.oviedo.es/agenda" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Ayto. Oviedo &rarr;</a>
+                    </div>
+                </li>
 
-    <h2>1. Identidad Visual</h2>
-    <ul>
-        <li>
-            <strong>Logotipos y Tipografías:</strong> 
-            <span>Uso de las fuentes Asenine (para el cuerpo del logo) y Ar Chistry (para el símbolo &).</span>
-        </li>
-        <li>
-            <strong>Tipografía Web Principal:</strong> 
-            <span>Montserrat </span>
-        </li>
-    </ul>
+                <li class="source-item p-4 shadow-sm">
+                    <strong class="block text-black text-sm uppercase mb-1">Imágenes y Multimedia:</strong>
+                    <span class="text-gray-500 text-[13px] mb-2 block">Recursos gráficos de alta calidad y prensa de festivales.</span>
+                    <div class="flex gap-4">
+                        <a href="https://unsplash.com" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Unsplash &rarr;</a>
+                        <a href="https://www.turismoasturias.es" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Turismo Asturias &rarr;</a>
+                    </div>
+                </li>
 
-    <h2>2. Contenidos e Imágenes</h2>
-    <ul>
-        <li>
-            <strong>Información Turística y Eventos:</strong> 
-            <span>Textos y datos extraídos del portal oficial de turismo de la región.</span>
-            <a href="https://www.turismoasturias.es/" target="_blank">Visitar Turismo Asturias</a>
-        </li>
-        <li>
-            <strong>Agenda Cultural y Teatros:</strong> 
-            <span>Programación obtenida de los sitios oficiales de los principales teatros de Asturias.</span>
-            <a href="https://www.teatrojovellanos.com/" target="_blank">Teatro Jovellanos (Gijón)</a> | 
-            <a href="https://www.centroniemeyer.es/" target="_blank">Centro Niemeyer (Avilés)</a>
-        </li>
-        <li>
-            <strong>Banco de Imágenes:</strong> 
-            <span>Fotografías de stock para diseño de interfaz de usuario.</span>
-            <a href="https://www.unsplash.com" target="_blank">Unsplash</a> | 
-            <a href="https://www.pexels.com" target="_blank">Pexels</a>
-        </li>
-    </ul>
+                <li class="source-item p-4 shadow-sm">
+                    <strong class="block text-black text-sm uppercase mb-1">Tipografías:</strong>
+                    <span class="text-gray-500 text-[13px] mb-2 block">Fuentes utilizadas para la identidad visual y legibilidad.</span>
+                    <a href="https://fonts.google.com/specimen/Montserrat" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Google Fonts (Montserrat) &rarr;</a>
+                </li>
 
-    <h2>3. Recursos de Desarrollo</h2>
-    <ul>
-        <li>
-            <strong>Iconografía:</strong> 
-            <span>Iconos vectoriales de redes sociales y navegación.</span>
-            <a href="https://fontawesome.com/" target="_blank">Font Awesome 6.5.1</a>
-        </li>
-    </ul>
-</main>
+                <li class="source-item p-4 shadow-sm">
+                    <strong class="block text-black text-sm uppercase mb-1">Tecnología:</strong>
+                    <span class="text-gray-500 text-[13px] mb-2 block">Frameworks y herramientas de desarrollo front-end.</span>
+                    <a href="https://tailwindcss.com" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Tailwind CSS Framework &rarr;</a>
+                </li>
 
-<footer>
-    <div class="social-links">
-        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="copyright">© 2026 HAPPINESS&CO · GIJÓN, ASTURIAS · TODOS LOS DERECHOS RESERVADOS</div>
-</footer>
+                <li class="source-item p-4 shadow-sm">
+                    <strong class="block text-black text-sm uppercase mb-1">Iconografía:</strong>
+                    <span class="text-gray-500 text-[13px] mb-2 block">Iconos vectoriales de redes sociales y navegación.</span>
+                    <a href="https://fontawesome.com/" target="_blank" class="text-azul font-bold text-[13px] hover:text-magenta transition">Font Awesome 6.5.1 &rarr;</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-[#111] text-gray-500 text-center py-12 px-5 mt-12">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="https://facebook.com" target="_blank" class="text-xl hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" class="text-xl hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" class="text-xl hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="w-10 h-px bg-gray-700 mx-auto mb-6"></div>
+        <div class="text-[11px] uppercase tracking-[2px] text-gray-600 font-bold italic">
+            © 2026 HAPPINESS&CO · TODOS LOS DERECHOS RESERVADOS
+        </div>
+    </footer>
 
 </body>
 </html>

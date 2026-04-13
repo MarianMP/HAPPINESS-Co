@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Acceso | Happiness & Co</title>
+    
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co - Agenda Cultural" href="rss.xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root { --magenta: #ba007c; --gris: #f8f9fa; --texto: #333; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        header { 
-            position: relative; 
-            z-index: 1001; 
-        }
+        header { position: sticky; top: 0; z-index: 1001; }
 
+        /* SPLIT SCREEN RESPONSIVE */
         #split-screen { 
             display: flex; 
-            height: calc(100vh - 82px); 
+            min-height: calc(100vh - 82px); 
             width: 100%; 
             transition: 0.5s; 
+        }
+
+        /* En móviles se apilan verticalmente */
+        @media (max-width: 768px) {
+            #split-screen { flex-direction: column; }
+            .left-side { padding: 40px 20px !important; }
+            .right-side { padding: 40px 5% !important; }
+            header { flex-wrap: wrap; height: auto !important; padding: 10px 5% !important; }
+            nav { overflow-x: auto; width: 100%; justify-content: flex-start !important; padding-top: 10px; }
+            .nav-link { white-space: nowrap; margin-left: 8px; font-size: 10px; }
         }
 
         .left-side {
@@ -25,21 +38,14 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             padding: 60px; text-align: center;
         }
-        .left-side h1 { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
 
         .right-side {
             flex: 1.2; background-color: white; display: flex; flex-direction: column;
             justify-content: center; padding: 0 10%; position: relative;
         }
 
-        .form-container { animation: fadeIn 0.4s ease; }
+        .form-container { animation: fadeIn 0.4s ease; width: 100%; max-width: 500px; margin: 0 auto; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .full-width { grid-column: span 2; }
-
-        .form-group label { display: block; font-size: 11px; font-weight: bold; color: var(--magenta); text-transform: uppercase; margin-bottom: 5px; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; background: var(--gris); outline: none; }
 
         .btn-fill {
             background: var(--magenta); color: white; border: none; padding: 15px;
@@ -48,177 +54,151 @@
         }
         .btn-fill:hover { background: #9e006a; box-shadow: 0 5px 15px rgba(186,0,124,0.2); }
 
-        #gallery-panel { display: none; padding: 50px; background: #fdfdfd; min-height: 100vh; }
-        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        
-        .card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .card-img { height: 180px; background-size: cover; background-position: center; }
-        .card-body { padding: 20px; text-align: center; }
-        .countdown { font-size: 22px; font-weight: bold; color: var(--magenta); margin-top: 10px; font-family: monospace; }
-        
-        /* Estilo para el mensaje de "Sin eventos" */
+        .nav-link { text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+
+        #gallery-panel { display: none; padding: 50px 5%; background: #fdfdfd; min-height: 100vh; }
         .no-events-msg { grid-column: 1 / -1; text-align: center; padding: 40px; color: #888; font-style: italic; }
     </style>
 </head>
 <body onload="checkSession()">
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000; font-family: Arial, sans-serif;">
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid #ba007c; position: sticky; top:0; z-index:1000;">
     <div style="display: flex; align-items: center; gap: 20px;">
-        <button onclick="history.back()" style="background: #f4f4f4; border: 1px solid #ccc; padding: 8px 12px; cursor: pointer; font-size: 10px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 5px; border-radius: 4px; text-transform: uppercase;">
-            &#10094; VOLVER
-        </button>
         <a href="index.html">
-            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 45px; display: block;">
+            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo Happiness & Co" style="height: 40px; display: block;">
         </a>
     </div>
 
-    <nav style="display: flex; align-items: center; gap: 10px;">
-        <a href="index.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Inicio</a>
-        <a href="eventos.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Eventos</a>
-        <a href="historial.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Historial</a>
-        <a href="empresa.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Sobre Nosotros</a>
-        <a href="fuentes.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Fuentes</a>
-        <a href="contacto.html" style="text-decoration: none; background: #ba007c; color: white; margin-left: 12px; padding: 8px 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Contacto</a>
-        <a href="inicioSesion.html" style="text-decoration: none; color: #333; margin-left: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border: 1px solid #ccc; padding: 7px 12px; border-radius: 4px;">MI CUENTA</a>
+    <nav style="display: flex; align-items: center; justify-content: flex-end;">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="eventos.html" class="nav-link">Eventos</a>
+        <a href="historial.html" class="nav-link">Historial</a>
+        <a href="empresa.html" class="nav-link">Sobre Nosotros</a>
+        <a href="fuentes.html" class="nav-link">Fuentes</a>
+        <a href="contacto.html" class="nav-link" style="background: #ba007c; color: white !important; padding: 6px 12px; border-radius: 4px;">Contacto</a>
+        <a href="inicioSesion.html" class="nav-link" style="border: 1px solid #ccc; padding: 5px 10px; border-radius: 4px;">MI CUENTA</a>
     </nav>
 </header>
 
-    <div id="split-screen">
-        <div class="left-side">
-            <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" style="height: 60px; filter: brightness(0) invert(1); margin-bottom: 20px;">
-            <p id="left-text">Regístrate para activar tu agenda de eventos.</p>
-        </div>
-
-        <div class="right-side">
-            <div id="register-container" class="form-container">
-                <h2 style="margin-bottom: 20px;">Crear Cuenta</h2>
-                <form onsubmit="handleAuth(event, 'register')">
-                    <div class="form-grid">
-                        <div class="form-group"><label>Nombre</label><input type="text" id="regName" required></div>
-                        <div class="form-group"><label>Apellidos</label><input type="text" id="regSurname" required></div>
-                        <div class="form-group"><label>Teléfono</label><input type="tel" required></div>
-                        <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
-                        <div class="form-group full-width"><label>Contraseña</label><input type="password" required></div>
-                    </div>
-                    <button type="submit" class="btn-fill">Registrarse y Activar</button>
-                </form>
-                <p style="margin-top:20px; text-align:center; font-size:14px;">¿Ya tienes cuenta? <span onclick="toggleAuth()" style="color:var(--magenta); cursor:pointer; font-weight:bold;">Inicia Sesión</span></p>
-            </div>
-
-            <div id="login-container" class="form-container" style="display:none;">
-                <h2 style="margin-bottom: 20px;">Iniciar Sesión</h2>
-                <form onsubmit="handleAuth(event, 'login')">
-                    <div class="form-group" style="margin-bottom:15px;">
-                        <label>Email</label>
-                        <input type="email" id="logEmail" required>
-                    </div>
-                    <div class="form-group" style="margin-bottom:20px;">
-                        <label>Contraseña</label>
-                        <input type="password" required>
-                    </div>
-                    <button type="submit" class="btn-fill">Entrar a mi Agenda</button>
-                </form>
-                <p style="margin-top:20px; text-align:center; font-size:14px;">¿No tienes cuenta? <span onclick="toggleAuth()" style="color:var(--magenta); cursor:pointer; font-weight:bold;">Regístrate aquí</span></p>
-            </div>
-        </div>
+<div id="split-screen">
+    <div class="left-side">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+        <p id="left-text" class="text-lg font-light">Regístrate para activar tu agenda de eventos.</p>
     </div>
 
-    <div id="gallery-panel">
-        <header style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-            <h1>Hola, <span id="userDisp" style="color: var(--magenta);"></span></h1>
-            <button onclick="logout()" style="padding: 10px 20px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc;">Cerrar Sesión</button>
-        </header>
-
-        <div id="event-container" class="event-grid">
-            </div>
-    </div>
-
-    <script>
-        // HEMOS VACIADO ESTA LISTA PARA QUE NO SALGA NINGÚN EVENTO
-        const eventosData = [];
-
-        function toggleAuth() {
-            const reg = document.getElementById('register-container');
-            const log = document.getElementById('login-container');
-            const txt = document.getElementById('left-text');
-            
-            if(reg.style.display === 'none') {
-                reg.style.display = 'block';
-                log.style.display = 'none';
-                txt.innerText = "Regístrate para activar tu agenda de eventos.";
-            } else {
-                reg.style.display = 'none';
-                log.style.display = 'block';
-                txt.innerText = "¡Qué bueno verte de nuevo! Accede a tu contenido.";
-            }
-        }
-
-        function handleAuth(e, type) {
-            e.preventDefault();
-            let name;
-            if(type === 'register') {
-                name = document.getElementById('regName').value + " " + document.getElementById('regSurname').value;
-            } else {
-                name = document.getElementById('logEmail').value.split('@')[0];
-            }
-            sessionStorage.setItem("userSession", name);
-            activateGallery(name);
-        }
-
-        function checkSession() {
-            const user = sessionStorage.getItem("userSession");
-            if(user) activateGallery(user);
-        }
-
-        function activateGallery(name) {
-            document.getElementById('split-screen').style.display = 'none';
-            document.getElementById('gallery-panel').style.display = 'block';
-            document.getElementById('userDisp').innerText = name;
-
-            const container = document.getElementById('event-container');
-            container.innerHTML = ""; 
-
-            // Si no hay eventos, mostramos un mensaje amigable
-            if (eventosData.length === 0) {
-                container.innerHTML = "<div class='no-events-msg'><h3>No tienes eventos en tu agenda todavía.</h3><p>Explora nuestra web para añadir nuevos planes.</p></div>";
-            }
-
-            eventosData.forEach((ev, i) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="card-img" style="background-image: url('${ev.img}')"></div>
-                    <div class="card-body">
-                        <h3>${ev.titulo}</h3>
-                        <p style="color:#666; font-size:12px;">${ev.lugar}</p>
-                        <div class="countdown" id="timer-${i}">--d --h --m --s</div>
+    <div class="right-side">
+        <div id="register-container" class="form-container">
+            <h2 class="text-2xl font-bold mb-6">Crear Cuenta</h2>
+            <form onsubmit="handleAuth(event, 'register')">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div class="flex flex-col">
+                        <label class="text-[10px] font-bold text-magenta uppercase mb-1">Nombre</label>
+                        <input type="text" id="regName" required class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
                     </div>
-                `;
-                container.appendChild(card);
-            });
-            startClocks();
-        }
+                    <div class="flex flex-col">
+                        <label class="text-[10px] font-bold text-magenta uppercase mb-1">Apellidos</label>
+                        <input type="text" id="regSurname" required class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-[10px] font-bold text-magenta uppercase mb-1">Teléfono</label>
+                        <input type="tel" required class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-[10px] font-bold text-magenta uppercase mb-1">Email</label>
+                        <input type="email" id="regEmail" required class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                    </div>
+                </div>
+                <div class="flex flex-col mb-4">
+                    <label class="text-[10px] font-bold text-magenta uppercase mb-1">Contraseña</label>
+                    <input type="password" required class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                </div>
+                <button type="submit" class="btn-fill">Registrarse y Activar</button>
+            </form>
+            <p class="mt-6 text-center text-sm text-gray-600">¿Ya tienes cuenta? <span onclick="toggleAuth()" class="text-magenta font-bold cursor-pointer underline">Inicia Sesión</span></p>
+        </div>
 
-        function startClocks() {
-            if (eventosData.length === 0) return;
-            setInterval(() => {
-                const now = new Date().getTime();
-                eventosData.forEach((ev, i) => {
-                    const diff = new Date(ev.fecha).getTime() - now;
-                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const s = Math.floor((diff % (1000 * 60)) / 1000);
-                    const el = document.getElementById(`timer-${i}`);
-                    if(el) el.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-                });
-            }, 1000);
-        }
+        <div id="login-container" class="form-container" style="display:none;">
+            <h2 class="text-2xl font-bold mb-6">Iniciar Sesión</h2>
+            <form onsubmit="handleAuth(event, 'login')">
+                <div class="flex flex-col mb-4">
+                    <label class="text-[10px] font-bold text-magenta uppercase mb-1">Email</label>
+                    <input type="email" id="logEmail" required class="w-full p-4 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                </div>
+                <div class="flex flex-col mb-6">
+                    <label class="text-[10px] font-bold text-magenta uppercase mb-1">Contraseña</label>
+                    <input type="password" required class="w-full p-4 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:border-magenta text-sm">
+                </div>
+                <button type="submit" class="btn-fill">Entrar a mi Agenda</button>
+            </form>
+            <p class="mt-6 text-center text-sm text-gray-600">¿No tienes cuenta? <span onclick="toggleAuth()" class="text-magenta font-bold cursor-pointer underline">Regístrate aquí</span></p>
+        </div>
+    </div>
+</div>
 
-        function logout() {
-            sessionStorage.clear();
-            location.reload();
+<div id="gallery-panel">
+    <header class="flex flex-col sm:flex-row justify-between items-center border-b pb-6 mb-10 gap-4">
+        <h1 class="text-2xl md:text-3xl font-light">Hola, <span id="userDisp" class="font-bold text-magenta"></span></h1>
+        <button onclick="logout()" class="w-full sm:w-auto px-6 py-2 border border-gray-300 rounded-md text-xs font-bold uppercase hover:bg-gray-100 transition">Cerrar Sesión</button>
+    </header>
+
+    <div id="event-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+</div>
+
+<script>
+    const eventosData = [];
+
+    function toggleAuth() {
+        const reg = document.getElementById('register-container');
+        const log = document.getElementById('login-container');
+        const txt = document.getElementById('left-text');
+        
+        if(reg.style.display === 'none') {
+            reg.style.display = 'block';
+            log.style.display = 'none';
+            txt.innerText = "Regístrate para activar tu agenda de eventos.";
+        } else {
+            reg.style.display = 'none';
+            log.style.display = 'block';
+            txt.innerText = "¡Qué bueno verte de nuevo! Accede a tu contenido.";
         }
-    </script>
+    }
+
+    function handleAuth(e, type) {
+        e.preventDefault();
+        let name;
+        if(type === 'register') {
+            name = document.getElementById('regName').value + " " + document.getElementById('regSurname').value;
+        } else {
+            name = document.getElementById('logEmail').value.split('@')[0];
+        }
+        sessionStorage.setItem("userSession", name);
+        activateGallery(name);
+    }
+
+    function checkSession() {
+        const user = sessionStorage.getItem("userSession");
+        if(user) activateGallery(user);
+    }
+
+    function activateGallery(name) {
+        document.getElementById('split-screen').style.display = 'none';
+        document.getElementById('gallery-panel').style.display = 'block';
+        document.getElementById('userDisp').innerText = name;
+
+        const container = document.getElementById('event-container');
+        container.innerHTML = ""; 
+
+        if (eventosData.length === 0) {
+            container.innerHTML = "<div class='no-events-msg'><h3>No tienes eventos en tu agenda todavía.</h3><p class='mt-2 text-sm'>Explora nuestra web para añadir nuevos planes.</p></div>";
+        }
+    }
+
+    function logout() {
+        sessionStorage.clear();
+        location.reload();
+    }
+</script>
+
 </body>
 </html>
