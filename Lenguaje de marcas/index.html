@@ -30,7 +30,6 @@
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('Assets/img/puente.jpg');
         }
-        /* Efecto Zoom de tus fotos */
         .zoom-img {
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -87,7 +86,7 @@
                 </div>
                 <h3 class="text-sm font-semibold tracking-widest uppercase">SOCIAL</h3>
             </div>
-            <div onclick="filtrarHome('gris')" class="group cursor-pointer text-center hover:bg-white hover:shadow-xl border border-transparent hover:border-gray-100 rounded-xl p-2 transition-all">
+            <div onclick="filtrarHome('extras')" class="group cursor-pointer text-center hover:bg-white hover:shadow-xl border border-transparent hover:border-gray-100 rounded-xl p-2 transition-all">
                 <div class="overflow-hidden rounded-xl mb-3">
                     <img src="Assets/img/LOGOS/happines-and-co-upper-01.jpg" class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
@@ -114,7 +113,7 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">16-19 ABRIL 2026</small>
                         <h4 class="text-magenta text-xl font-bold mb-1">Gijón Sound Festival</h4>
                         <p class="text-gray-600 text-sm">Festival urbano que llena de música independiente los teatros y plazas de Gijón.</p>
-                        <a href="eventos.html" class="text-magenta text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Reservar Plaza &rarr;</a>
+                        <a href="musica-GijonSound.html" class="text-magenta text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Reservar Plaza &rarr;</a>
                     </div>
                 </article>
 
@@ -126,7 +125,7 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">16-18 JULIO 2026</small>
                         <h4 class="text-magenta text-xl font-bold mb-1">Boombastic Asturias</h4>
                         <p class="text-gray-600 text-sm">El mayor festival de música urbana en La Morgal, Llanera.</p>
-                        <a href="eventos.html" class="text-magenta text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Reservar ahora &rarr;</a>
+                        <a href="musica-Boombastic.html" class="text-magenta text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Reservar ahora &rarr;</a>
                     </div>
                 </article>
 
@@ -138,7 +137,7 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">09-19 ABRIL 2026</small>
                         <h4 class="text-azul text-xl font-bold mb-1">Festival Cine LGTBI</h4>
                         <p class="text-gray-600 text-sm">Proyecciones internacionales en la cúpula del Centro Niemeyer de Avilés.</p>
-                        <a href="eventos.html" class="text-azul text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Cartelera &rarr;</a>
+                        <a href="escena-LGTBI.html" class="text-azul text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Cartelera &rarr;</a>
                     </div>
                 </article>
 
@@ -150,11 +149,11 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">03-12 JULIO 2026</small>
                         <h4 class="text-naranja text-xl font-bold mb-1">Semana Negra</h4>
                         <p class="text-gray-600 text-sm">Encuentro literario, cultural y festivo a orillas del Arbeyal en Gijón.</p>
-                        <a href="eventos.html" class="text-naranja text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Explorar Social &rarr;</a>
+                        <a href="social-semananegra.html" class="text-naranja text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Explorar Social &rarr;</a>
                     </div>
                 </article>
 
-                <article class="event-item flex flex-col md:flex-row gap-6 items-start" data-category="gris">
+                <article class="event-item flex flex-col md:flex-row gap-6 items-start" data-category="extras">
                     <div class="w-full md:w-44 h-32 flex-shrink-0 relative z-10">
                         <img src="Assets/img/EVENTOS/descenso del sella/SELLA.jfif" class="zoom-img w-full h-full object-cover rounded-lg shadow-md cursor-zoom-in">
                     </div>
@@ -162,11 +161,11 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">08 AGOSTO 2026</small>
                         <h4 class="text-gris text-xl font-bold mb-1">Descenso del Sella</h4>
                         <p class="text-gray-600 text-sm">La fiesta de las piraguas. Aventura y tradición entre Arriondas y Ribadesella.</p>
-                        <a href="eventos.html" class="text-gris text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Info &rarr;</a>
+                        <a href="extras-sella.html" class="text-gris text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Info &rarr;</a>
                     </div>
                 </article>
 
-                <article class="event-item flex flex-col md:flex-row gap-6 items-start" data-category="gris">
+                <article class="event-item flex flex-col md:flex-row gap-6 items-start" data-category="extras">
                     <div class="w-full md:w-44 h-32 flex-shrink-0 relative z-10">
                         <img src="Assets/img/EVENTOS/rally/RALLY.jfif" class="zoom-img w-full h-full object-cover rounded-lg shadow-md cursor-zoom-in">
                     </div>
@@ -174,28 +173,34 @@
                         <small class="text-gray-400 font-bold uppercase tracking-tighter text-[11px]">SEPTIEMBRE 2026</small>
                         <h4 class="text-gris text-xl font-bold mb-1">Rally Princesa de Asturias</h4>
                         <p class="text-gray-600 text-sm">Prueba legendaria del Supercampeonato de España por las carreteras asturianas.</p>
-                        <a href="eventos.html" class="text-gris text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Info &rarr;</a>
+                        <a href="extras-rally.html" class="text-gris text-[11px] font-bold uppercase mt-3 inline-block hover:underline italic">Ver Info &rarr;</a>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <aside class="sidebar bg-white p-6 rounded-xl border border-gray-100 shadow-sm h-fit self-start sticky top-24">
-            <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-700">Lo más buscado</h3>
+        <aside class="bg-white p-6 rounded-xl border border-gray-100 h-fit">
+            <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
             <div class="space-y-5">
-                <div class="group cursor-pointer">
-                    <strong class="block text-magenta text-sm group-hover:underline">Descenso del Sella</strong>
-                    <p class="text-[12px] text-gray-400">Aventura en el río</p>
-                </div>
-                <div class="group cursor-pointer">
-                    <strong class="block text-magenta text-sm group-hover:underline">Boombastic</strong>
-                    <p class="text-[12px] text-gray-400">Música urbana</p>
-                </div>
-                <div class="group cursor-pointer">
-                    <strong class="block text-magenta text-sm group-hover:underline">Semana Negra</strong>
-                    <p class="text-[12px] text-gray-400">Cultura en Gijón</p>
-                </div>
+                <a href="extras-sella.html" class="block group">
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm group-hover:underline">Descenso del Sella</strong>
+                        <p class="text-xs text-gray-400">Aventura en el río</p>
+                    </div>
+                </a>
+                <a href="musica-Boombastic.html" class="block group">
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm group-hover:underline">Boombastic</strong>
+                        <p class="text-xs text-gray-400">Música urbana</p>
+                    </div>
+                </a>
+                <a href="social-semananegra.html" class="block group">
+                    <div class="sidebar-item">
+                        <strong class="block text-magenta text-sm group-hover:underline">Semana Negra</strong>
+                        <p class="text-xs text-gray-400">Cultura en Gijón</p>
+                    </div>
+                </a>
             </div>
         </aside>
     </div>
@@ -235,7 +240,6 @@
                 resetBtn.classList.remove('hidden');
             }
             
-            // Scroll suave a la lista de eventos
             document.querySelector('.lg\\:col-span-2').scrollIntoView({ behavior: 'smooth' });
         }
     </script>

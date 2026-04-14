@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vetusta Morla - Happiness & Co</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { magenta: '#ba007c' } } } }
+    </script>
+    <style>
+        .gallery-img.hidden { display: none; }
+        .star-rating i { cursor: pointer; transition: color 0.2s; }
+        .star-rating i:hover, .star-rating i.active { color: #ba007b; }
+        .italic-custom { font-style: italic; }
+    </style>
+</head>
+<body class="bg-[#fcfcfc] text-gray-800">
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-50">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" class="h-11">
+        <a href="historial.html" class="text-[11px] font-bold uppercase text-magenta hover:underline">← Volver al Historial</a>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto my-10 px-5">
+        <div class="mb-10 text-center lg:text-left">
+            <span class="bg-magenta text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Música • Indie Rock</span>
+            <h1 class="text-5xl font-black text-gray-900 mt-4 uppercase tracking-tighter italic">Vetusta Morla</h1>
+            <p class="text-gray-500 text-lg mt-2"><i class="fa-solid fa-location-dot text-magenta mr-2"></i>Oviedo, Asturias — Septiembre 2025</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16 italic-custom">
+            <div class="lg:col-span-2">
+                <div class="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group mb-8">
+                    <button onclick="moveGallery(this, -1)" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl z-10 opacity-0 group-hover:opacity-100 transition-all text-magenta">❮</button>
+                    <img src="Assets/img/EVENTOS/vetusta morla/morla.jfif" class="w-full h-full object-cover gallery-img block">
+                    <img src="Assets/img/EVENTOS/vetusta morla/vetustamorla.jfif" class="w-full h-full object-cover gallery-img hidden">
+                    <button onclick="moveGallery(this, 1)" class="absolute right-5 top-1/2 -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl z-10 opacity-0 group-hover:opacity-100 transition-all text-magenta">❯</button>
+                </div>
+                <h3 class="text-2xl font-black text-magenta mb-4 uppercase italic">Sobre el Concierto</h3>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    La banda referente del indie nacional ofreció un espectáculo inolvidable en Oviedo. Con una producción sonora impecable y una puesta en escena que jugaba con luces y sombras, Vetusta Morla repasó sus grandes himnos, logrando una conexión emocional única con el público asturiano en una noche cargada de misticismo y energía rockera.
+                </p>
+            </div>
+            <aside>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl sticky top-28">
+                    <h4 class="font-black text-magenta border-b-2 border-magenta/20 pb-4 mb-6 uppercase text-sm tracking-widest italic">Ficha Técnica</h4>
+                    <ul class="space-y-6 text-sm font-medium">
+                        <li class="flex flex-col"><span class="text-gray-400 text-[10px] uppercase font-bold">Lugar</span> <span class="text-gray-900">Oviedo</span></li>
+                        <li class="flex flex-col"><span class="text-gray-400 text-[10px] uppercase font-bold">Artista</span> <span class="text-gray-900">Vetusta Morla</span></li>
+                        <li class="flex flex-col"><span class="text-gray-400 text-[10px] uppercase font-bold">Estado</span> <span class="text-magenta font-bold underline italic">EVENTO FINALIZADO</span></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t pt-16">
+            <div>
+                <h3 class="text-2xl font-black text-gray-900 mb-8 uppercase italic">Críticas de los asistentes</h3>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="flex text-yellow-400 mb-3 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-700 italic-custom">"La mejor banda en directo de este país. El sonido fue atronador y la interpretación de Pucho, de otro planeta."</p>
+                        <span class="text-magenta text-[10px] font-bold block mt-4 uppercase">Carlos D. — Sep 2025</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-8 rounded-3xl border-2 border-dashed border-magenta/30">
+                <h3 class="text-2xl font-black text-gray-900 mb-4 uppercase italic">¿Qué te pareció el show?</h3>
+                <form onsubmit="event.preventDefault(); alert('Reseña recibida. ¡Gracias!');" class="space-y-4">
+                    <div class="star-rating flex gap-2 text-2xl text-gray-300 mb-4">
+                        <i class="fas fa-star" onclick="rate(1)"></i><i class="fas fa-star" onclick="rate(2)"></i><i class="fas fa-star" onclick="rate(3)"></i><i class="fas fa-star" onclick="rate(4)"></i><i class="fas fa-star" onclick="rate(5)"></i>
+                    </div>
+                    <input type="text" placeholder="Tu nombre" class="w-full p-4 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-magenta">
+                    <textarea placeholder="Cuéntanos tu experiencia en el concierto..." rows="4" class="w-full p-4 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-magenta"></textarea>
+                    <button type="submit" class="w-full bg-magenta text-white font-black py-4 rounded-xl uppercase tracking-widest hover:bg-black transition-all">Enviar Reseña</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function moveGallery(btn, dir) {
+            const imgs = btn.parentElement.querySelectorAll('.gallery-img');
+            let idx = Array.from(imgs).findIndex(img => !img.classList.contains('hidden'));
+            imgs[idx].classList.add('hidden');
+            idx = (idx + dir + imgs.length) % imgs.length;
+            imgs[idx].classList.remove('hidden');
+        }
+        function rate(n) {
+            const stars = document.querySelectorAll('.star-rating i');
+            stars.forEach((s, i) => { if(i < n) s.classList.add('active', 'fas'), s.classList.remove('far'); else s.classList.add('far'), s.classList.remove('active', 'fas'); });
+        }
+    </script>
+</body>
+</html>

@@ -4,139 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festival de la Sidra - Happiness & Co</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-        :root { 
-            --magenta: #ba007c; --magenta-dark: #8e005f;
-            --naranja: #ff7b00; --azul: #009bdb; --gris: #555555; 
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { 
+                        naranja: '#ff7b00', 
+                        'naranja-dark': '#cc6200' 
+                    } 
+                } 
+            } 
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: #fcfcfc; color: #333; line-height: 1.6; }
-
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #ffffff; border-bottom: 2px solid var(--magenta); position: sticky; top: 0; z-index: 1000; }
-        .nav-link { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
-
-        .event-hero { position: relative; height: 400px; color: white; display: flex; align-items: flex-end; padding: 40px 5%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('Assets/img/EVENTOS/festival sidra/sidra.jfif'); background-size: cover; background-position: center; }
-        .hero-content h1 { font-size: 3rem; text-transform: uppercase; margin-bottom: 10px; }
-
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-        
-        .btn-reserva { 
-            background: linear-gradient(135deg, var(--magenta) 0%, var(--magenta-dark) 100%); 
-            color: white; border: none; padding: 16px; cursor: pointer; font-weight: 700; width: 100%; 
-            text-transform: uppercase; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 8px; transition: 0.3s;
-        }
-
-        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; overflow-y: auto; padding: 10px; }
-        .modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 12px; overflow: hidden; position: relative; border-top: 5px solid var(--magenta); }
-        .checkout-body { padding: 25px; max-height: 85vh; overflow-y: auto; }
-        .section-block { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
-        .section-block h3 { font-size: 14px; text-transform: uppercase; color: var(--magenta); margin-bottom: 10px; }
-        .ticket-row { display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; padding: 10px; border-radius: 6px; margin-bottom: 8px; }
-        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; }
-        .pay-method { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 4px; font-size: 11px; text-align: center; cursor: pointer; }
-        .pay-method.active { border-color: var(--magenta); background: #fff0f9; font-weight: bold; }
-        .modal-footer { padding: 20px; background: #fdfdfd; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-
-        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-[#fcfcfc] text-gray-800 font-sans">
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-50">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" class="h-11">
+        <a href="eventos.html" class="text-[11px] font-bold uppercase text-magenta hover:underline">← Volver a los eventos</a>
+    </header>
 
-<header>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <a href="index.html"><img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
-    </div>
-    <nav>
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="eventos.html" class="nav-link">Eventos</a>
-        <a href="historial.html" class="nav-link">Historial</a>
-        <a href="contacto.html" class="nav-link" style="background: var(--magenta); color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
-    </nav>
-</header>
+    <main>
+        <section class="relative h-[40vh] flex items-center justify-center text-white">
+            <img src="Assets/img/EVENTOS/festival sidra/sidra.jfif" class="absolute inset-0 w-full h-full object-cover brightness-50">
+            <div class="relative text-center px-5">
+                <span class="bg-naranja px-3 py-1 rounded text-xs font-bold uppercase mb-4 inline-block italic">Fiesta de Interés Nacional</span>
+                <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tighter italic">Festival de la <br><span class="text-naranja">Sidra</span></h1>
+                <p class="mt-4 text-lg font-light tracking-widest uppercase italic">JULIO, 2026 | NAVA</p>
+            </div>
+        </section>
 
-<section class="event-hero">
-    <div class="hero-content">
-        <h1>Festival de la Sidra</h1>
-        <p>Nava 2026 - Fiesta de Interés Turístico Nacional</p>
-    </div>
-</section>
+        <section class="max-w-5xl mx-auto py-16 px-5 grid md:grid-cols-3 gap-12">
+            <div class="md:col-span-2 space-y-6">
+                <h2 class="text-3xl font-bold border-l-4 border-naranja pl-4 italic">El aroma de la manzana inunda Nava.</h2>
+                <p class="text-gray-600 leading-relaxed text-lg text-justify">Nava celebra su gran fiesta dedicada a la sidra, una de las citas más importantes del calendario asturiano. Un evento que reúne a los mejores escanciadores, degustaciones populares directamente de las pipas y la esencia más pura de nuestra cultura regional en un ambiente festivo inigualable.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-wine-glass text-naranja"></i> Degustaciones populares de sidra</li>
+                    <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-trophy text-naranja"></i> Concurso Internacional de Escanciadores</li>
+                    <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-music text-naranja"></i> Música tradicional y grandes verbenas</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 h-fit sticky top-24">
+                <h3 class="text-xl font-bold mb-4 uppercase text-center italic">Tickets & Catas</h3>
+                <button onclick="openCheckout('Festival Sidra Nava', 5, 20)" class="w-full bg-naranja text-white py-4 rounded-xl font-bold uppercase shadow-lg hover:bg-naranja-dark transition-all">
+                    <i class="fa-solid fa-ticket mr-2"></i> Adquirir Tickets
+                </button>
+                <p class="text-xs text-center text-gray-400 mt-4 italic">Pases de cata desde 5,00€</p>
+            </div>
+        </section>
+    </main>
 
-<main class="container">
-    <section>
-        <h2 style="border-left: 5px solid var(--magenta); padding-left: 15px; margin-bottom: 20px;">Tradición Sidrera</h2>
-        <p>El festival más emblemático dedicado a nuestra bebida regional. Concursos de escanciadores, catas populares y un ambiente inigualable en las calles de Nava...</p>
-    </section>
-
-    <aside>
-        <div style="background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-            <p style="text-align: center; font-size: 11px; color: #999; text-transform: uppercase;">Tickets</p>
-            <h2 style="text-align: center; color: var(--magenta); margin-bottom: 20px;">5,00€</h2>
-            <button class="btn-reserva" onclick="openCheckout('Festival Sidra Nava', 5.00, 15.00)">
-                <i class="fa-solid fa-ticket"></i> RESERVAR PASE
-            </button>
-        </div>
-    </aside>
-</main>
-
-<div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <div class="checkout-body">
-            <h2 id="modalEventName" style="margin-bottom:20px; font-size:20px;">NOMBRE EVENTO</h2>
-            <div class="section-block">
-                <h3>1. ENTRADAS</h3>
-                <div class="ticket-row">
-                    <div><b>Pase Básico</b><br><small id="p1_val">0€</small></div>
-                    <select id="q1" onchange="calculate()"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center z-[2000] p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-[550px] rounded-xl overflow-hidden relative border-t-[5px] border-t-naranja">
+            <div class="p-6 max-h-[85vh] overflow-y-auto text-left">
+                <h2 id="modalEventName" class="text-xl font-bold mb-5 text-gray-800 uppercase text-center italic">NOMBRE EVENTO</h2>
+                
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-naranja uppercase mb-3 italic">1. SELECCIÓN DE ENTRADAS</h3>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg mb-2">
+                        <div><p class="font-bold text-sm">Vaso + 12 Vales Cata</p><small id="p1_val" class="text-gray-500">0€</small></div>
+                        <select id="q1" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                        <div><p class="font-bold text-sm">Pase VIP (Zona Autor)</p><small id="p2_val" class="text-gray-500">0€</small></div>
+                        <select id="q2" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+                    </div>
                 </div>
-                <div class="ticket-row">
-                    <div><b>Cata Especial</b><br><small id="p2_val">0€</small></div>
-                    <select id="q2" onchange="calculate()"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-naranja uppercase mb-3 italic">2. TUS DATOS</h3>
+                    <input type="text" placeholder="Nombre completo" class="w-full border border-gray-300 rounded p-2 text-sm mb-2 focus:border-naranja outline-none">
+                    <input type="email" placeholder="Email para recibir los tickets" class="w-full border border-gray-300 rounded p-2 text-sm focus:border-naranja outline-none">
+                </div>
+
+                <div class="mb-2">
+                    <h3 class="text-xs font-bold text-naranja uppercase mb-3 italic">3. PAGO SEGURO</h3>
+                    <div class="flex gap-2 mb-3">
+                        <button id="payT" onclick="setPay('T')" class="flex-1 border border-naranja bg-naranja/5 font-bold text-naranja py-2 rounded text-[10px] flex flex-col items-center gap-1"><i class="fa-solid fa-credit-card"></i> TARJETA</button>
+                        <button id="payB" onclick="setPay('B')" class="flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1"><i class="fa-solid fa-mobile-screen-button"></i> BIZUM</button>
+                    </div>
+                    <input type="text" id="payInput" placeholder="Nº de tarjeta" class="w-full border border-gray-300 rounded p-2 text-sm outline-none">
                 </div>
             </div>
-            <div class="section-block">
-                <h3>2. TUS DATOS</h3>
-                <input type="text" placeholder="Nombre completo">
-                <input type="email" placeholder="Email (donde recibirás el ticket)">
-            </div>
-            <div class="section-block">
-                <h3>3. PAGO SEGURO</h3>
-                <div style="display:flex; gap:10px; margin-bottom:10px;">
-                    <div id="payT" class="pay-method active" onclick="setPay('T')"><i class="fa-solid fa-credit-card"></i> TARJETA</div>
-                    <div id="payB" class="pay-method" onclick="setPay('B')"><i class="fa-solid fa-mobile-screen-button"></i> BIZUM</div>
-                </div>
-                <input type="text" id="payInput" placeholder="Nº de tarjeta: 0000 0000 0000 0000">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div><p style="font-size:10px; color:#999;">TOTAL</p><h2 id="grandTotal">0,00€</h2></div>
-            <button class="btn-reserva" style="width:auto; padding:12px 30px; border-radius:30px;" onclick="alert('¡Compra realizada con éxito!'); location.reload();">FINALIZAR COMPRA</button>
-        </div>
-        <p onclick="closeCheckout()" style="text-align:center; padding:15px; cursor:pointer; color:#bbb; font-size:11px;">CANCELAR</p>
-    </div>
-</div>
 
-<script>
-    let p1 = 0; let p2 = 0;
-    function openCheckout(name, price1, price2) {
-        document.getElementById('checkoutModal').style.display='flex';
-        document.getElementById('modalEventName').innerText = name;
-        document.getElementById('p1_val').innerText = price1.toFixed(2) + "€";
-        document.getElementById('p2_val').innerText = price2.toFixed(2) + "€";
-        p1 = price1; p2 = price2;
-        calculate();
-    }
-    function calculate() {
-        let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
-        document.getElementById('grandTotal').innerText = total.toFixed(2).replace('.', ',') + "€";
-    }
-    function setPay(type) {
-        document.getElementById('payT').className = (type === 'T') ? 'pay-method active' : 'pay-method';
-        document.getElementById('payB').className = (type === 'B') ? 'pay-method active' : 'pay-method';
-        document.getElementById('payInput').placeholder = (type === 'T') ? 'Nº de tarjeta: 0000 0000 0000 0000' : 'Introduce tu número de teléfono';
-    }
-    function closeCheckout() { document.getElementById('checkoutModal').style.display='none'; }
-</script>
+            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                <div><p class="text-[10px] text-gray-400 uppercase font-bold">Total a pagar</p><h2 id="grandTotal" class="text-2xl font-bold text-gray-800">0,00€</h2></div>
+                <button onclick="alert('¡Tickets reservados con éxito! Disfruta del festival.'); location.reload();" class="bg-naranja text-white px-8 py-3 rounded-full text-xs font-bold uppercase hover:bg-naranja-dark transition shadow-lg">Pagar Ahora</button>
+            </div>
+            <p onclick="closeCheckout()" class="text-center py-4 cursor-pointer text-gray-400 text-[10px] uppercase font-bold hover:text-gray-600">Cancelar proceso</p>
+        </div>
+    </div>
+
+    <script>
+        let p1 = 0; let p2 = 0;
+        function openCheckout(name, price1, price2) {
+            document.getElementById('checkoutModal').classList.replace('hidden', 'flex');
+            document.getElementById('modalEventName').innerText = name;
+            document.getElementById('p1_val').innerText = price1.toFixed(2) + "€";
+            document.getElementById('p2_val').innerText = price2.toFixed(2) + "€";
+            p1 = price1; p2 = price2;
+            calculate();
+        }
+        function calculate() {
+            let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
+            document.getElementById('grandTotal').innerText = total.toFixed(2).replace('.', ',') + "€";
+        }
+        function setPay(type) {
+            const btnT = document.getElementById('payT'); const btnB = document.getElementById('payB');
+            const input = document.getElementById('payInput');
+            if(type === 'T') {
+                btnT.className = "flex-1 border border-naranja bg-naranja/5 font-bold text-naranja py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnB.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Nº de tarjeta: 0000 0000 0000 0000';
+            } else {
+                btnB.className = "flex-1 border border-naranja bg-naranja/5 font-bold text-naranja py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnT.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Nº de móvil para Bizum';
+            }
+        }
+        function closeCheckout() { 
+            document.getElementById('checkoutModal').classList.replace('flex', 'hidden');
+        }
+    </script>
 </body>
 </html>

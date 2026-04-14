@@ -22,14 +22,15 @@
             }
         }
     </script>
+    <style>
+        .gallery-img.hidden { display: none; }
+    </style>
 </head>
 <body class="bg-[#fcfcfc] text-gray-800 font-sans">
 
     <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-[1000]">
         <div class="flex items-center gap-5">
-            <button onclick="history.back()" class="bg-gray-100 border border-gray-300 px-3 py-2 cursor-pointer text-[10px] font-bold text-gray-600 flex items-center gap-1 rounded uppercase hover:bg-gray-200 transition">
-                <i class="fa-solid fa-chevron-left"></i> Volver
-            </button>
+         
             <a href="index.html">
                 <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" class="h-11">
             </a>
@@ -51,170 +52,158 @@
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
             <section class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/Aitana/aitana.png" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/Aitana/atour.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="musica-aitana-pasado.html">
+                            <img src="Assets/img/EVENTOS/Aitana/aitana.png" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-magenta text-white inline-block mb-2">Música</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Aitana - Alpha Tour</h4>
+                        <a href="musica-aitana-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-magenta transition">Aitana - Alpha Tour</h4></a>
                         <p class="text-xs text-gray-500">Gijón - Agosto 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/vetusta morla/morla.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/vetusta morla/vetustamorla.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="musica-vetustamorla -pasado.html">
+                            <img src="Assets/img/EVENTOS/vetusta morla/morla.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-magenta text-white inline-block mb-2">Música</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Vetusta Morla</h4>
+                        <a href="musica-vetustamorla -pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-magenta transition">Vetusta Morla</h4></a>
                         <p class="text-xs text-gray-500">Oviedo - Septiembre 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/melendi/melendi.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/melendi/melendi2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="musica-melendi-pasado.html">
+                            <img src="Assets/img/EVENTOS/melendi/melendi.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-magenta text-white inline-block mb-2">Música</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Melendi - 20 Años</h4>
+                        <a href="musica-melendi-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-magenta transition">Melendi - 20 Años</h4></a>
                         <p class="text-xs text-gray-500">Avilés - Octubre 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/los miserables/miserables.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/los miserables/Miserables2.jpg" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="escena -los miserables-pasado.html">
+                            <img src="Assets/img/EVENTOS/los miserables/miserables.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-azul text-white inline-block mb-2">Escena</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Los Miserables</h4>
+                        <a href="escena -los miserables-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-azul transition">Los Miserables</h4></a>
                         <p class="text-xs text-gray-500">Oviedo - Noviembre 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/hamlet/hamlet.jpg" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/hamlet/hamlet2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="escena-hamlet-pasado.html">
+                            <img src="Assets/img/EVENTOS/hamlet/hamlet.jpg" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-azul text-white inline-block mb-2">Escena</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Hamlet</h4>
+                        <a href="escena-hamlet-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-azul transition">Hamlet</h4></a>
                         <p class="text-xs text-gray-500">Avilés - Diciembre 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/circo del sol/circosol.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/circo del sol/circosol2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="escena-circo sol-pasado.html">
+                            <img src="Assets/img/EVENTOS/circo del sol/circosol.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-azul text-white inline-block mb-2">Escena</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Corteo (Cirque du Soleil)</h4>
+                        <a href="escena-circo sol-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-azul transition">Corteo (Cirque du Soleil)</h4></a>
                         <p class="text-xs text-gray-500">Gijón - Enero 2026</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/dali/dali.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/dali/dali2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="social-dali-pasado.html">
+                            <img src="Assets/img/EVENTOS/dali/dali.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-naranja text-white inline-block mb-2">Social</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Exposición: Dalí</h4>
+                        <a href="social-dali-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-naranja transition">Exposición: Dalí</h4></a>
                         <p class="text-xs text-gray-500">Oviedo - Marzo 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/feria del libro/ferialibro.png" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/feria del libro/ferialibro2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="social-feria libro -pasado.html">
+                            <img src="Assets/img/EVENTOS/feria del libro/ferialibro.png" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-naranja text-white inline-block mb-2">Social</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Feria del Libro</h4>
+                        <a href="social-feria libro -pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-naranja transition">Feria del Libro</h4></a>
                         <p class="text-xs text-gray-500">Gijón - Mayo 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/mercado navideño/navidad.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/mercado navideño/navidad2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="social-mercado navidad - pasado.html">
+                            <img src="Assets/img/EVENTOS/mercado navideño/navidad.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-naranja text-white inline-block mb-2">Social</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Mercado Navideño</h4>
+                        <a href="social-mercado navidad - pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-naranja transition">Mercado Navideño</h4></a>
                         <p class="text-xs text-gray-500">Gijón - Diciembre 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/rally/r.jpg" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/rally/r2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="extras-rally picos-pasado.html">
+                            <img src="Assets/img/EVENTOS/rally/r.jpg" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-gris text-white inline-block mb-2">Extras</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Rally Picos de Europa</h4>
+                        <a href="extras-rally picos-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-gray-600 transition">Rally Picos de Europa</h4></a>
                         <p class="text-xs text-gray-500">Cangas - Mayo 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/trail/trail.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/trail/trail2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="extras-trail-pasado.html">
+                            <img src="Assets/img/EVENTOS/trail/trail.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-gris text-white inline-block mb-2">Extras</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Trail Nocturno Gijón</h4>
+                        <a href="extras-trail-pasado.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-gray-600 transition">Trail Nocturno Gijón</h4></a>
                         <p class="text-xs text-gray-500">Gijón - Febrero 2025</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 overflow-hidden shadow-sm">
+                <div class="flex flex-col bg-white border border-gray-200 border-t-4 border-t-gray-400 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shadow-sm">
                     <div class="relative w-full h-36 bg-gray-900 group">
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-r opacity-0 group-hover:opacity-100" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <img src="Assets/img/EVENTOS/bollu/bollo.jfif" class="w-full h-full object-cover block gallery-img active">
-                        <img src="Assets/img/EVENTOS/bollu/bollo2.jfif" class="w-full h-full object-cover hidden gallery-img">
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-3 z-10 hover:bg-magenta transition rounded-l opacity-0 group-hover:opacity-100" onclick="moveGallery(this, 1)">&#10095;</button>
+                        <a href="extras-bollu-pasados.html">
+                            <img src="Assets/img/EVENTOS/bollu/bollo.jfif" class="w-full h-full object-cover block gallery-img">
+                        </a>
                     </div>
                     <div class="p-4">
                         <span class="text-[9px] font-bold uppercase px-2 py-1 rounded bg-gris text-white inline-block mb-2">Extras</span>
-                        <h4 class="text-[15px] font-bold text-gray-800">Fiesta del Bollu</h4>
+                        <a href="extras-bollu-pasados.html"><h4 class="text-[15px] font-bold text-gray-800 hover:text-gray-600 transition">Fiesta del Bollu</h4></a>
                         <p class="text-xs text-gray-500">Avilés - Abril 2025</p>
                     </div>
                 </div>
@@ -222,25 +211,44 @@
             </section>
 
             <aside class="bg-white p-6 rounded-xl border border-gray-100 h-fit">
-                <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
-                <div class="space-y-5">
-                    <div class="sidebar-item">
-                        <strong class="block text-magenta text-sm">Descenso del Sella</strong>
-                        <p class="text-xs text-gray-400">Aventura en el río</p>
-                    </div>
-                    <div class="sidebar-item">
-                        <strong class="block text-magenta text-sm">Boombastic</strong>
-                        <p class="text-xs text-gray-400">Música urbana</p>
-                    </div>
-                    <div class="sidebar-item">
-                        <strong class="block text-magenta text-sm">Semana Negra</strong>
-                        <p class="text-xs text-gray-400">Cultura en Gijón</p>
-                    </div>
-                </div>
-            </aside>
+    <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
+    <div class="space-y-5">
+        
+        <a href="extras-sella.html" class="block group">
+            <div class="sidebar-item">
+                <strong class="block text-magenta text-sm group-hover:underline">Descenso del Sella</strong>
+                <p class="text-xs text-gray-400">Aventura en el río</p>
+            </div>
+        </a>
+
+        <a href="musica-Boombastic.html" class="block group">
+            <div class="sidebar-item">
+                <strong class="block text-magenta text-sm group-hover:underline">Boombastic</strong>
+                <p class="text-xs text-gray-400">Música urbana</p>
+            </div>
+        </a>
+
+        <a href="social-semananegra.html" class="block group">
+            <div class="sidebar-item">
+                <strong class="block text-magenta text-sm group-hover:underline">Semana Negra</strong>
+                <p class="text-xs text-gray-400">Cultura en Gijón</p>
+            </div>
+        </a>
+
+    </div>
+</aside>
         </div>
     </main>
-
+<footer class="bg-black text-gray-500 text-center py-16 mt-20 px-5">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="#" class="text-2xl hover:text-[#1877f2] hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="text-2xl hover:text-magenta hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-2xl hover:text-white hover:-translate-y-1 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="w-10 h-[2px] bg-magenta mx-auto mb-6"></div>
+        <p class="text-sm font-semibold">© 2026 Happiness & Co. - Asturias Agenda Cultural</p>
+        <p class="text-[10px] mt-3 tracking-[3px] uppercase opacity-60">Siempre hay algo que celebrar</p>
+    </footer>
     <script>
         function moveGallery(btn, direction) {
             const container = btn.parentElement;
@@ -248,14 +256,12 @@
             let currentIndex = Array.from(images).findIndex(img => !img.classList.contains('hidden'));
             
             images[currentIndex].classList.add('hidden');
-            images[currentIndex].classList.remove('block');
             
             currentIndex += direction;
             if (currentIndex >= images.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = images.length - 1;
             
             images[currentIndex].classList.remove('hidden');
-            images[currentIndex].classList.add('block');
         }
     </script>
 </body>

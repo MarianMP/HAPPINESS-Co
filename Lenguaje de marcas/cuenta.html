@@ -58,6 +58,9 @@
 
         #gallery-panel { display: none; padding: 50px 5%; background: #fdfdfd; min-height: 100vh; }
         .no-events-msg { grid-column: 1 / -1; text-align: center; padding: 40px; color: #888; font-style: italic; }
+        
+        /* Utility class para el color magenta en Tailwind */
+        .text-magenta { color: #ba007c; }
     </style>
 </head>
 <body onload="checkSession()">
@@ -142,8 +145,19 @@
     </header>
 
     <div id="event-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        </div>
+    </div>
 </div>
+
+<footer class="bg-black text-gray-500 text-center py-16 mt-20 px-5">
+    <div class="flex justify-center gap-8 mb-6">
+        <a href="#" class="text-2xl hover:text-[#1877f2] hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="text-2xl hover:text-[#ba007c] hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="text-2xl hover:text-white hover:-translate-y-1 transition-all duration-300"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <div class="w-10 h-[2px] bg-[#ba007c] mx-auto mb-6"></div>
+    <p class="text-sm font-semibold">© 2026 Happiness & Co. - Asturias Agenda Cultural</p>
+    <p class="text-[10px] mt-3 tracking-[3px] uppercase opacity-60">Siempre hay algo que celebrar</p>
+</footer>
 
 <script>
     const eventosData = [];

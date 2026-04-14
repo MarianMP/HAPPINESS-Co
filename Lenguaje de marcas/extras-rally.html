@@ -4,98 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rally Princesa de Asturias - Happiness & Co</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-        :root { --magenta: #ba007c; --magenta-dark: #8e005f; --naranja: #ff7b00; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: #fcfcfc; color: #333; line-height: 1.6; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #fff; border-bottom: 2px solid var(--naranja); position: sticky; top: 0; z-index: 1000; }
-        .nav-link { text-decoration: none; color: #333; margin-left: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .event-hero { height: 400px; color: white; display: flex; align-items: flex-end; padding: 40px 5%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('Assets/img/EVENTOS/Rally/RALLY.jfif'); background-size: cover; background-position: center; }
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-        .btn-reserva { background: linear-gradient(135deg, var(--magenta) 0%, var(--magenta-dark) 100%); color: white; border: none; padding: 16px; cursor: pointer; font-weight: 700; width: 100%; text-transform: uppercase; font-size: 12px; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
-        .modal-content { background: #fff; width: 100%; max-width: 500px; border-radius: 12px; overflow: hidden; border-top: 5px solid var(--naranja); }
-        .checkout-body { padding: 25px; }
-        .ticket-row { display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; padding: 12px; border-radius: 6px; margin-bottom: 10px; }
-        input { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ddd; border-radius: 4px; }
-        .pay-method { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 4px; font-size: 11px; text-align: center; cursor: pointer; }
-        .pay-method.active { border-color: var(--magenta); background: #fff0f9; font-weight: bold; }
-    </style>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { 
+                        gris: '#4b5563', 
+                        'gris-dark': '#1f2937',
+                        'gris-light': '#9ca3af'
+                    } 
+                } 
+            } 
+        }
+    </script>
 </head>
-<body>
-
-<header>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <a href="index.html"><img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" alt="Logo" style="height: 45px;"></a>
-    </div>
-    <nav>
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="contacto.html" class="nav-link" style="background: var(--magenta); color: white; padding: 8px 15px; border-radius: 4px;">Contacto</a>
-    </nav>
-</header>
-
-<section class="event-hero">
-    <div>
-        <h1 style="font-size: 3rem; text-transform: uppercase;">Rally Princesa de Asturias</h1>
-        <p>Velocidad y emoción en las carreteras asturianas</p>
-    </div>
-</section>
-
-<main class="container">
-    <section>
-        <h2 style="border-left: 5px solid var(--naranja); padding-left: 15px; margin-bottom: 20px;">El Rally</h2>
-        <p>Vive la adrenalina de una de las pruebas más emblemáticas del Campeonato de España...</p>
+<body class="bg-[#fcfcfc] text-gray-800 font-sans">
+    <header class="flex justify-between items-center py-4 px-[5%] bg-white border-b-2 border-magenta sticky top-0 z-50">
+        <img src="Assets/img/LOGOS/happines-and-co-propuesta-02.png" class="h-11">
+        <a href="eventos.html" class="text-[11px] font-bold uppercase text-magenta hover:underline">← Volver a los eventos</a>
+    </header>
+    <main>
+    <section class="relative h-[40vh] flex items-center justify-center text-white">
+        <img src="Assets/img/EVENTOS/rally/RALLY.jfif" class="absolute inset-0 w-full h-full object-cover brightness-[0.4]">
+        <div class="relative text-center px-5">
+            <span class="bg-gris px-3 py-1 rounded text-xs font-bold uppercase mb-4 inline-block">Motor & Competición</span>
+            <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tighter italic">Rally Princesa <br><span class="text-white">de Asturias</span></h1>
+            <p class="mt-4 text-lg font-light tracking-widest uppercase">SEPTIEMBRE, 2026 | ASTURIAS</p>
+        </div>
     </section>
-    <aside>
-        <div style="background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee;">
-            <p style="text-align: center; font-size: 11px; color: #999; text-transform: uppercase;">Acceso desde</p>
-            <h2 style="text-align: center; color: var(--magenta); margin-bottom: 20px; font-size: 32px;">15,00€</h2>
-            <button class="btn-reserva" onclick="openCheckout()">
-                <i class="fa-solid fa-car"></i> COMPRAR ACCESO
+
+    <section class="max-w-5xl mx-auto py-16 px-5 grid md:grid-cols-3 gap-12">
+        <div class="md:col-span-2 space-y-6">
+            <h2 class="text-3xl font-bold border-l-4 border-gris pl-4 italic">Velocidad y adrenalina en el asfalto.</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">Siente el rugido de los motores en la prueba más emblemática del norte de España. El Rally Princesa de Asturias combina tramos técnicos espectaculares con la belleza de las carreteras asturianas, atrayendo a los mejores pilotos del panorama nacional e internacional.</p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-flag-checkered text-gris"></i> Acceso a tramos cronometrados</li>
+                <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-flag-checkered text-gris"></i> Zona de asistencia exclusiva</li>
+                <li class="flex items-center gap-3 text-gray-700 font-semibold"><i class="fa-solid fa-flag-checkered text-gris"></i> Guía oficial y tiempos en directo</li>
+            </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 h-fit sticky top-24">
+            <h3 class="text-xl font-bold mb-4 uppercase text-center text-gris-dark">Pases & Tickets</h3>
+            <button onclick="openCheckout('Rally Princesa de Asturias', 15, 35)" class="w-full bg-gris text-white py-4 rounded-xl font-bold uppercase shadow-lg hover:bg-gris-dark transition-all">
+                <i class="fa-solid fa-ticket mr-2"></i> Obtener Pase
             </button>
+            <p class="text-xs text-center text-gray-400 mt-4">Entradas desde 15,00€</p>
         </div>
-    </aside>
-</main>
+    </section>
+    </main>
 
-<div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <div class="checkout-body">
-            <h2 style="margin-bottom:20px;">Checkout Rally</h2>
-            <div class="ticket-row">
-                <div><b>Tramo Espectáculo</b><br><small>15,00€</small></div>
-                <select id="q1" onchange="calc()" style="width: 60px;"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center z-[2000] p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-[550px] rounded-xl overflow-hidden relative border-t-[5px] border-t-gris">
+            <div class="p-6 max-h-[85vh] overflow-y-auto">
+                <h2 id="modalEventName" class="text-xl font-bold mb-5 text-gray-800 uppercase text-center italic">NOMBRE EVENTO</h2>
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-gris uppercase mb-3 italic">1. SELECCIÓN DE ENTRADAS</h3>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg mb-2">
+                        <div><p class="font-bold text-sm">Entrada General (Tramo)</p><small id="p1_val" class="text-gray-500">0€</small></div>
+                        <select id="q1" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                        <div><p class="font-bold text-sm">Pase VIP (Asistencia + Tramo)</p><small id="p2_val" class="text-gray-500">0€</small></div>
+                        <select id="q2" onchange="calculate()" class="border border-gray-300 rounded p-1 text-sm outline-none"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+                    </div>
+                </div>
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-xs font-bold text-gris uppercase mb-3 italic">2. TUS DATOS</h3>
+                    <input type="text" placeholder="Nombre completo" class="w-full border border-gray-300 rounded p-2 text-sm mb-2 focus:border-gris outline-none">
+                    <input type="email" placeholder="Email para envío de e-ticket" class="w-full border border-gray-300 rounded p-2 text-sm focus:border-gris outline-none">
+                </div>
+                <div class="mb-2">
+                    <h3 class="text-xs font-bold text-gris uppercase mb-3 italic">3. MÉTODO DE PAGO</h3>
+                    <div class="flex gap-2 mb-3">
+                        <button id="payT" onclick="setPay('T')" class="flex-1 border border-gris bg-gris/5 font-bold text-gris py-2 rounded text-[10px] flex flex-col items-center gap-1"><i class="fa-solid fa-credit-card"></i> TARJETA</button>
+                        <button id="payB" onclick="setPay('B')" class="flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1"><i class="fa-solid fa-mobile-screen-button"></i> BIZUM</button>
+                    </div>
+                    <input type="text" id="payInput" placeholder="Nº de tarjeta" class="w-full border border-gray-300 rounded p-2 text-sm outline-none">
+                </div>
             </div>
-            <div class="ticket-row">
-                <div><b>VIP Pass</b><br><small>35,00€</small></div>
-                <select id="q2" onchange="calc()" style="width: 60px;"><option value="0">0</option><option value="1">1</option></select>
+            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                <div><p class="text-[10px] text-gray-400 uppercase font-bold">Total a pagar</p><h2 id="grandTotal" class="text-2xl font-bold text-gray-800">0,00€</h2></div>
+                <button onclick="alert('¡Compra de entradas confirmada!'); location.reload();" class="bg-gris text-white px-8 py-3 rounded-full text-xs font-bold uppercase hover:bg-gris-dark transition shadow-lg">Pagar Ahora</button>
             </div>
-            <input type="text" placeholder="Nombre completo">
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <div id="pT" class="pay-method active" onclick="setPay('T')">TARJETA</div>
-                <div id="pB" class="pay-method" onclick="setPay('B')">BIZUM</div>
-            </div>
+            <p onclick="closeCheckout()" class="text-center py-4 cursor-pointer text-gray-400 text-[10px] uppercase font-bold hover:text-gray-600">Cancelar proceso</p>
         </div>
-        <div style="padding: 20px; background: #fdfdfd; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-            <div><p style="font-size:10px; color:#999;">TOTAL</p><h2 id="mTotal">0,00€</h2></div>
-            <button class="btn-reserva" style="width:auto; padding:12px 25px; border-radius:30px;" onclick="alert('Compra realizada'); location.reload()">PAGAR</button>
-        </div>
-        <p onclick="closeCheckout()" style="text-align:center; padding-bottom:15px; cursor:pointer; color:#bbb; font-size:11px;">CANCELAR</p>
     </div>
-</div>
 
-<script>
-    function openCheckout() { document.getElementById('checkoutModal').style.display='flex'; }
-    function closeCheckout() { document.getElementById('checkoutModal').style.display='none'; }
-    function calc() {
-        let t = (document.getElementById('q1').value * 15) + (document.getElementById('q2').value * 35);
-        document.getElementById('mTotal').innerText = t.toFixed(2).replace('.', ',') + "€";
-    }
-    function setPay(type) {
-        document.getElementById('pT').className = type=='T'?'pay-method active':'pay-method';
-        document.getElementById('pB').className = type=='B'?'pay-method active':'pay-method';
-    }
-</script>
+    <script>
+        let p1 = 0; let p2 = 0;
+        function openCheckout(name, price1, price2) {
+            document.getElementById('checkoutModal').classList.remove('hidden');
+            document.getElementById('checkoutModal').classList.add('flex');
+            document.getElementById('modalEventName').innerText = name;
+            document.getElementById('p1_val').innerText = price1 + "€";
+            document.getElementById('p2_val').innerText = price2 + "€";
+            p1 = price1; p2 = price2;
+            calculate();
+        }
+        function calculate() {
+            let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
+            document.getElementById('grandTotal').innerText = total.toFixed(2).replace('.', ',') + "€";
+        }
+        function setPay(type) {
+            const btnT = document.getElementById('payT'); const btnB = document.getElementById('payB');
+            const input = document.getElementById('payInput');
+            if(type === 'T') {
+                btnT.className = "flex-1 border border-gris bg-gris/5 font-bold text-gris py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnB.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Nº de tarjeta: 0000 0000 0000 0000';
+            } else {
+                btnB.className = "flex-1 border border-gris bg-gris/5 font-bold text-gris py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                btnT.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
+                input.placeholder = 'Nº de móvil para Bizum';
+            }
+        }
+        function closeCheckout() { 
+            document.getElementById('checkoutModal').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('flex');
+        }
+    </script>
 </body>
 </html>
