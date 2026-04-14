@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>Happiness &amp; Co - Agenda Asturias 2026</title>
+        <link>eventos.html</link>
+        <description>Tu agenda cultural de Asturias. Música, Escena, Social y más.</description>
+        <language>es-es</language>
+        
+        <item>
+            <title>Gijón Sound Festival</title>
+            <link>musica-GijonSound.html</link>
+            <description>Festival urbano que llena de música independiente los teatros y plazas de Gijón. Fecha: 16-19 Abr.</description>
+            <category>Música</category>
+        </item>
+        
+        <item>
+            <title>Boombastic Asturias</title>
+            <link>musica-Boombastic.html</link>
+            <description>"The Last Dance". El mayor festival de música urbana en La Morgal. Fecha: 16-18 Jul.</description>
+            <category>Música</category>
+        </item>
+        
+        <item>
+            <title>Aquasella Festival</title>
+            <link>musica-Acuasella.html</link>
+            <description>El festival de música electrónica más veterano. Fecha: 13-16 Ago.</description>
+            <category>Música</category>
+        </item>
+        
+        <item>
+            <title>Festival Cine LGTBI</title>
+            <link>escena-LGTBI.html</link>
+            <description>Proyecciones internacionales en el Centro Niemeyer de Avilés. Fecha: 09-19 Abr.</description>
+            <category>Escena</category>
+        </item>
+        
+        <item>
+            <title>Temporada de Ópera</title>
+            <link>escena-opera.html</link>
+            <description>Producciones líricas de primer nivel en el Teatro Campoamor. Fecha: Mayo.</description>
+            <category>Escena</category>
+        </item>
+        
+        <item>
+            <title>American Buffalo</title>
+            <link>escena-teatro.html</link>
+            <description>Teatro contemporáneo en el Teatro Jovellanos. Fecha: 05 Jun.</description>
+            <category>Escena</category>
+        </item>
+        
+        <item>
+            <title>Semana Negra</title>
+            <link>social-semananegra.html</link>
+            <description>Encuentro literario, cultural y festivo a orillas del Arbeyal. Fecha: 03-12 Jul.</description>
+            <category>Social</category>
+        </item>
+        
+        <item>
+            <title>FIDMA (100ª ed.)</title>
+            <link>social-FIDMA.html</link>
+            <description>Edición centenaria de la Feria Internacional de Muestras. Fecha: 01-16 Ago.</description>
+            <category>Social</category>
+        </item>
+        
+        <item>
+            <title>Festival de la Sidra</title>
+            <link>social-sidra.html</link>
+            <description>Concurso internacional de escanciadores en Nava. Fecha: Julio.</description>
+            <category>Social</category>
+        </item>
+        
+        <item>
+            <title>Descenso del Sella</title>
+            <link>extras-sella.html</link>
+            <description>Fiesta de las Piraguas entre Arriondas y Ribadesella. Fecha: 08 Ago.</description>
+            <category>Otros</category>
+        </item>
+        
+        <item>
+            <title>Rally Princesa</title>
+            <link>extras-rally.html</link>
+            <description>Prueba legendaria del Supercampeonato de España. Fecha: Sept.</description>
+            <category>Otros</category>
+        </item>
+        
+        <item>
+            <title>El Desarme</title>
+            <link>extras-desarme.html</link>
+            <description>Fiesta gastronómica histórica con menú de garbanzos en Oviedo. Fecha: 19 Oct.</description>
+            <category>Otros</category>
+        </item>
+        
+    </channel>
+</rss>
