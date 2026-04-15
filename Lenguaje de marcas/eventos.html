@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link rel="alternate" type="application/rss+xml" title="Happiness & Co RSS" href="RSS/eventos.xml">
+
     <script>
         tailwind.config = {
             theme: {
@@ -24,7 +26,6 @@
         }
     </script>
     <style>
-        /* Estilo para el efecto de expansión de detalles que Tailwind no maneja por defecto con transición suave de altura */
         .details-box { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; }
         .event-card:hover .details-box { max-height: 200px; padding: 1rem; border-top: 1px solid #eee; }
     </style>
@@ -223,32 +224,28 @@
             </section>
 
             <aside class="bg-white p-6 rounded-xl border border-gray-100 h-fit">
-    <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
-    <div class="space-y-5">
-        
-        <a href="extras-sella.html" class="block group">
-            <div class="sidebar-item">
-                <strong class="block text-magenta text-sm group-hover:underline">Descenso del Sella</strong>
-                <p class="text-xs text-gray-400">Aventura en el río</p>
-            </div>
-        </a>
-
-        <a href="musica-Boombastic.html" class="block group">
-            <div class="sidebar-item">
-                <strong class="block text-magenta text-sm group-hover:underline">Boombastic</strong>
-                <p class="text-xs text-gray-400">Música urbana</p>
-            </div>
-        </a>
-
-        <a href="social-semananegra.html" class="block group">
-            <div class="sidebar-item">
-                <strong class="block text-magenta text-sm group-hover:underline">Semana Negra</strong>
-                <p class="text-xs text-gray-400">Cultura en Gijón</p>
-            </div>
-        </a>
-
-    </div>
-</aside>
+                <h3 class="text-sm font-bold border-b border-gray-100 pb-3 mb-5 uppercase tracking-wider text-gray-800">Lo más buscado</h3>
+                <div class="space-y-5">
+                    <a href="extras-sella.html" class="block group">
+                        <div class="sidebar-item">
+                            <strong class="block text-magenta text-sm group-hover:underline">Descenso del Sella</strong>
+                            <p class="text-xs text-gray-400">Aventura en el río</p>
+                        </div>
+                    </a>
+                    <a href="musica-Boombastic.html" class="block group">
+                        <div class="sidebar-item">
+                            <strong class="block text-magenta text-sm group-hover:underline">Boombastic</strong>
+                            <p class="text-xs text-gray-400">Música urbana</p>
+                        </div>
+                    </a>
+                    <a href="social-semananegra.html" class="block group">
+                        <div class="sidebar-item">
+                            <strong class="block text-magenta text-sm group-hover:underline">Semana Negra</strong>
+                            <p class="text-xs text-gray-400">Cultura en Gijón</p>
+                        </div>
+                    </a>
+                </div>
+            </aside>
         </div>
     </main>
 
@@ -256,7 +253,6 @@
         <div class="bg-white w-full max-w-[550px] rounded-xl overflow-hidden relative border-t-[5px] border-t-magenta">
             <div class="p-6 max-h-[85vh] overflow-y-auto">
                 <h2 id="modalEventName" class="text-xl font-bold mb-5 text-gray-800 uppercase">NOMBRE EVENTO</h2>
-                
                 <div class="mb-6 border-b border-gray-100 pb-4">
                     <h3 class="text-xs font-bold text-magenta uppercase mb-3">1. ENTRADAS</h3>
                     <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg mb-2">
@@ -278,13 +274,11 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="mb-6 border-b border-gray-100 pb-4">
                     <h3 class="text-xs font-bold text-magenta uppercase mb-3">2. TUS DATOS</h3>
                     <input type="text" placeholder="Nombre completo" class="w-full border border-gray-300 rounded p-2 text-sm mb-2 focus:border-magenta outline-none">
                     <input type="email" placeholder="Email (donde recibirás el ticket)" class="w-full border border-gray-300 rounded p-2 text-sm focus:border-magenta outline-none">
                 </div>
-
                 <div class="mb-2">
                     <h3 class="text-xs font-bold text-magenta uppercase mb-3">3. PAGO SEGURO</h3>
                     <div class="flex gap-2 mb-3">
@@ -298,7 +292,6 @@
                     <input type="text" id="payInput" placeholder="Nº de tarjeta: 0000 0000 0000 0000" class="w-full border border-gray-300 rounded p-2 text-sm outline-none">
                 </div>
             </div>
-
             <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
                 <div>
                     <p class="text-[10px] text-gray-400 uppercase font-bold">Total</p>
@@ -309,7 +302,8 @@
             <p onclick="closeCheckout()" class="text-center py-4 cursor-pointer text-gray-400 text-[10px] uppercase font-bold hover:text-gray-600">Cancelar</p>
         </div>
     </div>
-<footer class="bg-black text-gray-500 text-center py-16 mt-20 px-5">
+
+    <footer class="bg-black text-gray-500 text-center py-16 mt-20 px-5">
         <div class="flex justify-center gap-8 mb-6">
             <a href="#" class="text-2xl hover:text-[#1877f2] hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="text-2xl hover:text-magenta hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
@@ -319,9 +313,9 @@
         <p class="text-sm font-semibold">© 2026 Happiness & Co. - Asturias Agenda Cultural</p>
         <p class="text-[10px] mt-3 tracking-[3px] uppercase opacity-60">Siempre hay algo que celebrar</p>
     </footer>
+
     <script>
         let p1 = 0; let p2 = 0;
-
         function openCheckout(name, price1, price2) {
             document.getElementById('checkoutModal').classList.remove('hidden');
             document.getElementById('checkoutModal').classList.add('flex');
@@ -331,17 +325,13 @@
             p1 = price1; p2 = price2;
             calculate();
         }
-
         function calculate() {
             let total = (document.getElementById('q1').value * p1) + (document.getElementById('q2').value * p2);
             document.getElementById('grandTotal').innerText = total.toFixed(2) + "€";
         }
-
         function setPay(type) {
-            const btnT = document.getElementById('payT');
-            const btnB = document.getElementById('payB');
+            const btnT = document.getElementById('payT'); const btnB = document.getElementById('payB');
             const input = document.getElementById('payInput');
-
             if(type === 'T') {
                 btnT.className = "flex-1 border border-magenta bg-magenta/5 font-bold text-magenta py-2 rounded text-[10px] flex flex-col items-center gap-1";
                 btnB.className = "flex-1 border border-gray-300 text-gray-400 py-2 rounded text-[10px] flex flex-col items-center gap-1";
@@ -352,12 +342,10 @@
                 input.placeholder = 'Introduce tu número de teléfono móvil';
             }
         }
-
         function closeCheckout() { 
             document.getElementById('checkoutModal').classList.add('hidden');
             document.getElementById('checkoutModal').classList.remove('flex');
         }
-
         function filterCat(c) {
             document.querySelectorAll('.event-card').forEach(card => {
                 card.style.display = (c === 'all' || card.dataset.cat === c) ? 'flex' : 'none';
